@@ -4,6 +4,7 @@ import {
   DefinitionRpc,
   DefinitionRpcSub
 } from "@polkadot/types/types";
+import { ApiOptions } from "@polkadot/api/types";
 
 import { typesFromDefinitions } from "./utils/typesFromDefinitions";
 import * as definitions from "./interfaces/definitions";
@@ -16,8 +17,8 @@ import "./interfaces/augment-api-rpc";
 import "./interfaces/augment-api-tx";
 import "./interfaces/augment-types";
 
-export const types: RegistryTypes = typesFromDefinitions(definitions);
-export const rpc: Record<
+export const mTypes: RegistryTypes = typesFromDefinitions(definitions);
+export const mRpc: Record<
   string,
   Record<string, DefinitionRpc | DefinitionRpcSub>
 > = jsonrpc;
@@ -26,8 +27,29 @@ export const typesBundleForPolkadotApps: OverrideBundleDefinition = {
   types: [
     {
       minmax: [0, undefined],
-      types
+      types: mTypes
     }
   ],
-  rpc
+  rpc: mRpc
 };
+
+export const defaultOptions: ApiOptions = {
+  types: mTypes,
+  rpc: mRpc
+};
+
+export const options = ({
+  types = {},
+  rpc = {},
+  ...otherOptions
+}: ApiOptions = {}): ApiOptions => ({
+  types: {
+    ...mTypes,
+    ...types
+  },
+  rpc: {
+    ...mRpc,
+    ...rpc
+  },
+  ...otherOptions
+});
