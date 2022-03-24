@@ -1,9 +1,9 @@
 import {
   OverrideBundleDefinition,
+  RegistryTypes,
   DefinitionRpc,
   DefinitionRpcSub
 } from "@polkadot/types/types";
-import type { RegistryTypes } from "@polkadot/types-codec/types";
 
 import { typesFromDefinitions } from "./utils/typesFromDefinitions";
 import * as definitions from "./interfaces/definitions";
