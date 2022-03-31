@@ -890,7 +890,7 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       InsufficientOutputAmount: AugmentedError<ApiType>;
       /**
-       * Liquidity token cretion failed
+       * Liquidity token creation failed
        **/
       LiquidityTokenCreationFailed: AugmentedError<ApiType>;
       /**
@@ -906,6 +906,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       NoSuchPool: AugmentedError<ApiType>;
       /**
+       * Not a promoted pool
+       **/
+      NotAPromotedPool: AugmentedError<ApiType>;
+      /**
        * Not enought assets
        **/
       NotEnoughAssets: AugmentedError<ApiType>;
@@ -913,15 +917,26 @@ declare module '@polkadot/api-base/types/errors' {
        * Not enought reserve
        **/
       NotEnoughReserve: AugmentedError<ApiType>;
+      /**
+       * Not enought rewards earned
+       **/
       NotEnoughtRewardsEarned: AugmentedError<ApiType>;
       /**
        * Unexpected failure
        **/
       NotMangataLiquidityAsset: AugmentedError<ApiType>;
       /**
+       * Past time calculation
+       **/
+      PastTimeCalculation: AugmentedError<ApiType>;
+      /**
        * Pool already Exists
        **/
       PoolAlreadyExists: AugmentedError<ApiType>;
+      /**
+       * Pool already promoted
+       **/
+      PoolAlreadyPromoted: AugmentedError<ApiType>;
       /**
        * Asset ids cannot be the same
        **/
@@ -930,6 +945,7 @@ declare module '@polkadot/api-base/types/errors' {
        * Second asset amount exceeded expectations
        **/
       SecondAssetAmountExceededExpectations: AugmentedError<ApiType>;
+      SoldAmountTooLow: AugmentedError<ApiType>;
       /**
        * Unexpected failure
        **/

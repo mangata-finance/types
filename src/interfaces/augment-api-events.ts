@@ -798,6 +798,7 @@ declare module '@polkadot/api-base/types/events' {
       LiquidityBurned: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u32, u128]>;
       LiquidityMinted: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u32, u128]>;
       PoolCreated: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128]>;
+      PoolPromoted: AugmentedEvent<ApiType, [u32]>;
       /**
        * Generic event
        **/

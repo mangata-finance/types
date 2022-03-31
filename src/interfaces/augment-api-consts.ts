@@ -343,5 +343,19 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       [key: string]: Codec;
     };
+    xyk: {
+      buyAndBurnFeePercentage: u128 & AugmentedConst<ApiType>;
+      /**
+       * The account id that holds the liquidity mining issuance
+       **/
+      liquidityMiningIssuanceVault: AccountId32 & AugmentedConst<ApiType>;
+      poolFeePercentage: u128 & AugmentedConst<ApiType>;
+      rewardsDistributionPeriod: u32 & AugmentedConst<ApiType>;
+      treasuryFeePercentage: u128 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
   } // AugmentedConsts
 } // declare module
