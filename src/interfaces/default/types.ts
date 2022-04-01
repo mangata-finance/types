@@ -26,6 +26,12 @@ export interface RpcResult extends Struct {
   readonly price: Balance;
 }
 
+/** @name RpcRewardsResult */
+export interface RpcRewardsResult extends Struct {
+  readonly notYetClaimed: Balance;
+  readonly toBeClaimed: Balance;
+}
+
 /** @name ShufflingSeed */
 export interface ShufflingSeed extends Struct {
   readonly seed: H256;
