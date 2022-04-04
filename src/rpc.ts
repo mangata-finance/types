@@ -105,10 +105,6 @@ const jsonrpc: Record<
         {
           name: "liquidity_asset_id",
           type: "TokenId"
-        },
-        {
-          name: "block_number",
-          type: "u32"
         }
       ],
       type: "RpcRewardsResult<Balance>"
