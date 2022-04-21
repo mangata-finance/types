@@ -5,7 +5,7 @@ import type { ApiTypes } from '@polkadot/api-base/types';
 import type { Null, Option, Result, U256, U8aFixed, Vec, bool, u128, u32, u64, u8 } from '@polkadot/types-codec';
 import type { ITuple } from '@polkadot/types-codec/types';
 import type { AccountId32, H160, H256, Perbill } from '@polkadot/types/interfaces/runtime';
-import type { ArtemisCoreApp, FrameSupportTokensMiscBalanceStatus, FrameSupportWeightsDispatchInfo, PalletAssetsInfoAssetInfo, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingDelegatorAdded, SpRuntimeDispatchError, XcmV1MultiAsset, XcmV1MultiLocation, XcmV1MultiassetMultiAssets, XcmV2Response, XcmV2TraitsError, XcmV2TraitsOutcome, XcmV2Xcm, XcmVersionedMultiAssets, XcmVersionedMultiLocation } from '@polkadot/types/lookup';
+import type { ArtemisCoreApp, FrameSupportTokensMiscBalanceStatus, FrameSupportWeightsDispatchInfo, PalletAssetsInfoAssetInfo, PalletIssuanceIssuanceInfo, PalletIssuanceTgeInfo, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingDelegatorAdded, SpRuntimeDispatchError, XcmV1MultiAsset, XcmV1MultiLocation, XcmV1MultiassetMultiAssets, XcmV2Response, XcmV2TraitsError, XcmV2TraitsOutcome, XcmV2Xcm, XcmVersionedMultiAssets, XcmVersionedMultiLocation } from '@polkadot/types/lookup';
 
 declare module '@polkadot/api-base/types/events' {
   export interface AugmentedEvents<ApiType extends ApiTypes> {
@@ -242,6 +242,10 @@ declare module '@polkadot/api-base/types/events' {
     };
     issuance: {
       /**
+       * Issuance configuration has been finalized
+       **/
+      IssuanceConfigInitialized: AugmentedEvent<ApiType, [PalletIssuanceIssuanceInfo]>;
+      /**
        * Issuance for upcoming session issued
        **/
       SessionIssuanceIssued: AugmentedEvent<ApiType, [u32, u128, u128]>;
@@ -249,6 +253,18 @@ declare module '@polkadot/api-base/types/events' {
        * Issuance for upcoming session calculated and recorded
        **/
       SessionIssuanceRecorded: AugmentedEvent<ApiType, [u32, u128, u128]>;
+      /**
+       * TGE has been finalized
+       **/
+      TGEFinalized: AugmentedEvent<ApiType, []>;
+      /**
+       * A TGE instance has failed
+       **/
+      TGEInstanceFailed: AugmentedEvent<ApiType, [PalletIssuanceTgeInfo]>;
+      /**
+       * A TGE instance has succeeded
+       **/
+      TGEInstanceSucceeded: AugmentedEvent<ApiType, [PalletIssuanceTgeInfo]>;
       /**
        * Generic event
        **/
@@ -795,10 +811,13 @@ declare module '@polkadot/api-base/types/events' {
     };
     xyk: {
       AssetsSwapped: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128]>;
+      LiquidityActivated: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       LiquidityBurned: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u32, u128]>;
+      LiquidityDeactivated: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       LiquidityMinted: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u32, u128]>;
       PoolCreated: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128]>;
       PoolPromoted: AugmentedEvent<ApiType, [u32]>;
+      RewardsClaimed: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       /**
        * Generic event
        **/

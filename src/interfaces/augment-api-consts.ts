@@ -4,7 +4,7 @@
 import type { ApiTypes } from '@polkadot/api-base/types';
 import type { Bytes, Option, U8aFixed, Vec, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { Codec } from '@polkadot/types-codec/types';
-import type { AccountId32, Perbill, Permill } from '@polkadot/types/interfaces/runtime';
+import type { AccountId32, Perbill, Percent, Permill } from '@polkadot/types/interfaces/runtime';
 import type { FrameSupportPalletId, FrameSupportWeightsRuntimeDbWeight, FrameSupportWeightsWeightToFeeCoefficient, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, SpVersionRuntimeVersion, XcmV1MultiLocation } from '@polkadot/types/lookup';
 
 declare module '@polkadot/api-base/types/consts' {
@@ -98,21 +98,49 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       blocksPerRound: u32 & AugmentedConst<ApiType>;
       /**
-       * The account id that holds the liquidity mining issuance
-       **/
-      crowdloanIssuanceVault: AccountId32 & AugmentedConst<ApiType>;
-      /**
        * Number of sessions to store issuance history for
        **/
       historyLimit: u32 & AugmentedConst<ApiType>;
+      /**
+       * The maximum amount of Mangata tokens
+       **/
+      immediateTGEReleasePercent: Percent & AugmentedConst<ApiType>;
+      /**
+       * The maximum amount of Mangata tokens
+       **/
+      issuanceCap: u128 & AugmentedConst<ApiType>;
+      /**
+       * The number of blocks the issuance is linear
+       **/
+      linearIssuanceBlocks: u32 & AugmentedConst<ApiType>;
       /**
        * The account id that holds the liquidity mining issuance
        **/
       liquidityMiningIssuanceVault: AccountId32 & AugmentedConst<ApiType>;
       /**
-       * The account id that holds the liquidity mining issuance
+       * The split of issuance for liquidity mining rewards
+       **/
+      liquidityMiningSplit: Perbill & AugmentedConst<ApiType>;
+      /**
+       * The account id that holds the staking issuance
        **/
       stakingIssuanceVault: AccountId32 & AugmentedConst<ApiType>;
+      /**
+       * The split of issuance for staking rewards
+       **/
+      stakingSplit: Perbill & AugmentedConst<ApiType>;
+      /**
+       * The block at which the tge tokens begin to vest
+       **/
+      tgeReleaseBegin: u32 & AugmentedConst<ApiType>;
+      /**
+       * The number of blocks the tge tokens vest for
+       **/
+      tgeReleasePeriod: u32 & AugmentedConst<ApiType>;
+      /**
+       * The total mga allocated for crowdloans
+       **/
+      totalCrowdloanAllocation: u128 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -144,6 +172,10 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       leaveDelegatorsDelay: u32 & AugmentedConst<ApiType>;
       /**
+       * Maximum collator candidates allowed
+       **/
+      maxCollatorCandidates: u32 & AugmentedConst<ApiType>;
+      /**
        * Maximum delegations per delegator
        **/
       maxDelegationsPerDelegator: u32 & AugmentedConst<ApiType>;
@@ -151,6 +183,10 @@ declare module '@polkadot/api-base/types/consts' {
        * Maximum delegators counted per candidate
        **/
       maxDelegatorsPerCandidate: u32 & AugmentedConst<ApiType>;
+      /**
+       * Maximum delegators allowed per candidate
+       **/
+      maxTotalDelegatorsPerCandidate: u32 & AugmentedConst<ApiType>;
       /**
        * Minimum stake required for any account to be a collator candidate
        **/

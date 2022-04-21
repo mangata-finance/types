@@ -414,6 +414,36 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    issuance: {
+      /**
+       * The issuance config has already been initialized
+       **/
+      IssuanceConfigAlreadyInitialized: AugmentedError<ApiType>;
+      /**
+       * The issuance config is invalid
+       **/
+      IssuanceConfigInvalid: AugmentedError<ApiType>;
+      /**
+       * The issuance config has not been initialized
+       **/
+      IssuanceConfigNotInitialized: AugmentedError<ApiType>;
+      /**
+       * An underflow or an overflow has occured
+       **/
+      MathError: AugmentedError<ApiType>;
+      /**
+       * The TGE is already finalized
+       **/
+      TGEIsAlreadyFinalized: AugmentedError<ApiType>;
+      /**
+       * TGE must be finalized before issuance config is inti
+       **/
+      TGENotFinalized: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     ormlXcm: {
       /**
        * The version of the `Versioned` value used is not able to be
@@ -457,9 +487,12 @@ declare module '@polkadot/api-base/types/errors' {
       DelegatorDNEinTopNorBottom: AugmentedError<ApiType>;
       DelegatorExists: AugmentedError<ApiType>;
       DelegatorNotLeaving: AugmentedError<ApiType>;
+      ExceedMaxCollatorCandidates: AugmentedError<ApiType>;
       ExceedMaxDelegationsPerDelegator: AugmentedError<ApiType>;
+      ExceedMaxTotalDelegatorsPerCandidate: AugmentedError<ApiType>;
       InsufficientBalance: AugmentedError<ApiType>;
       InvalidSchedule: AugmentedError<ApiType>;
+      MathError: AugmentedError<ApiType>;
       NoWritingSameValue: AugmentedError<ApiType>;
       PendingCandidateRequestAlreadyExists: AugmentedError<ApiType>;
       PendingCandidateRequestNotDueYet: AugmentedError<ApiType>;
@@ -945,6 +978,9 @@ declare module '@polkadot/api-base/types/errors' {
        * Second asset amount exceeded expectations
        **/
       SecondAssetAmountExceededExpectations: AugmentedError<ApiType>;
+      /**
+       * Sold Amount too low
+       **/
       SoldAmountTooLow: AugmentedError<ApiType>;
       /**
        * Unexpected failure
