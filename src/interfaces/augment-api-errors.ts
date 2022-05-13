@@ -104,6 +104,64 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    bootstrap: {
+      /**
+       * Bootstrate event already started
+       **/
+      AlreadyStarted: AugmentedError<ApiType>;
+      /**
+       * Bootstrap cant be scheduled in past
+       **/
+      BootstrapStartInThePast: AugmentedError<ApiType>;
+      /**
+       * First provision must be in MGA/MGX
+       **/
+      FirstProvisionInMga: AugmentedError<ApiType>;
+      /**
+       * Math problem
+       **/
+      MathOverflow: AugmentedError<ApiType>;
+      /**
+       * Not enought funds for provisio
+       **/
+      NotEnoughAssets: AugmentedError<ApiType>;
+      /**
+       * Not enought funds for provisio (vested)
+       **/
+      NotEnoughVestedAssets: AugmentedError<ApiType>;
+      /**
+       * Cannot claim rewards before bootstrap finish
+       **/
+      NotFinishedYet: AugmentedError<ApiType>;
+      /**
+       * no rewards to claim
+       **/
+      NothingToClaim: AugmentedError<ApiType>;
+      /**
+       * Bootstarap phases cannot lasts 0 blocks
+       **/
+      PhaseLengthCannotBeZero: AugmentedError<ApiType>;
+      /**
+       * Bootstraped pool already exists
+       **/
+      PoolAlreadyExists: AugmentedError<ApiType>;
+      /**
+       * User cannot participate at this moment
+       **/
+      Unauthorized: AugmentedError<ApiType>;
+      /**
+       * Only MGA & KSM can be used for provisions
+       **/
+      UnsupportedTokenId: AugmentedError<ApiType>;
+      /**
+       * Valuation ratio exceeded
+       **/
+      ValuationRatio: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     bridge: {
       /**
        * Target application not found.
@@ -764,6 +822,16 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    utility: {
+      /**
+       * Too many calls batched.
+       **/
+      TooManyCalls: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     verifier: {
       /**
        * The message failed verification.
@@ -792,6 +860,15 @@ declare module '@polkadot/api-base/types/errors' {
        * Failed to create a new schedule because some parameter was invalid.
        **/
       InvalidScheduleParams: AugmentedError<ApiType>;
+      /**
+       * An overflow or underflow has occured
+       **/
+      MathError: AugmentedError<ApiType>;
+      /**
+       * No suitable schedule found
+       * Perhaps the user could merge vesting schedules and try again
+       **/
+      NoSuitableScheduleFound: AugmentedError<ApiType>;
       /**
        * The account given is not vesting.
        **/
@@ -978,9 +1055,6 @@ declare module '@polkadot/api-base/types/errors' {
        * Second asset amount exceeded expectations
        **/
       SecondAssetAmountExceededExpectations: AugmentedError<ApiType>;
-      /**
-       * Sold Amount too low
-       **/
       SoldAmountTooLow: AugmentedError<ApiType>;
       /**
        * Unexpected failure

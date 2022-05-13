@@ -33,6 +33,28 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
+    bootstrap: {
+      /**
+       * account whitelisted
+       **/
+      AccountsWhitelisted: AugmentedEvent<ApiType, []>;
+      /**
+       * Funds provisioned
+       **/
+      Provisioned: AugmentedEvent<ApiType, [u32, u128]>;
+      /**
+       * Rewards claimed
+       **/
+      RewardsClaimed: AugmentedEvent<ApiType, [u32, u128]>;
+      /**
+       * Funds provisioned using vested tokens
+       **/
+      VestedProvisioned: AugmentedEvent<ApiType, [u32, u128]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
     bridge: {
       /**
        * An AppRegistry entry has been updated
@@ -719,6 +741,29 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
+    utility: {
+      /**
+       * Batch of dispatches completed fully with no error.
+       **/
+      BatchCompleted: AugmentedEvent<ApiType, []>;
+      /**
+       * Batch of dispatches did not complete fully. Index of first failing dispatch given, as
+       * well as the error.
+       **/
+      BatchInterrupted: AugmentedEvent<ApiType, [u32, SpRuntimeDispatchError]>;
+      /**
+       * A call was dispatched.
+       **/
+      DispatchedAs: AugmentedEvent<ApiType, [Result<Null, SpRuntimeDispatchError>]>;
+      /**
+       * A single item within a Batch of dispatches has completed with no error.
+       **/
+      ItemCompleted: AugmentedEvent<ApiType, []>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
     verifier: {
       /**
        * Generic event
@@ -729,13 +774,13 @@ declare module '@polkadot/api-base/types/events' {
       /**
        * An \[account\] has become fully vested.
        **/
-      VestingCompleted: AugmentedEvent<ApiType, [AccountId32]>;
+      VestingCompleted: AugmentedEvent<ApiType, [AccountId32, u32]>;
       /**
        * The amount vested has been updated. This could indicate a change in funds available.
        * The balance given is the amount which is left unvested (and thus locked).
        * \[account, unvested\]
        **/
-      VestingUpdated: AugmentedEvent<ApiType, [AccountId32, u128]>;
+      VestingUpdated: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       /**
        * Generic event
        **/
@@ -811,13 +856,10 @@ declare module '@polkadot/api-base/types/events' {
     };
     xyk: {
       AssetsSwapped: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128]>;
-      LiquidityActivated: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       LiquidityBurned: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u32, u128]>;
-      LiquidityDeactivated: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       LiquidityMinted: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u32, u128]>;
       PoolCreated: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128]>;
       PoolPromoted: AugmentedEvent<ApiType, [u32]>;
-      RewardsClaimed: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       /**
        * Generic event
        **/

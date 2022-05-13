@@ -28,6 +28,16 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       [key: string]: Codec;
     };
+    bootstrap: {
+      ksmTokenId: u32 & AugmentedConst<ApiType>;
+      ksmToMgaRatioDenominator: u128 & AugmentedConst<ApiType>;
+      ksmToMgaRatioNumerator: u128 & AugmentedConst<ApiType>;
+      mgaTokenId: u32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
     crowdloan: {
       /**
        * Percentage to be payed at initialization
@@ -346,6 +356,16 @@ declare module '@polkadot/api-base/types/consts' {
        * Period between successive spends.
        **/
       spendPeriod: u32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
+    utility: {
+      /**
+       * The limit on the number of batched calls.
+       **/
+      batchedCallsLimit: u32 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
