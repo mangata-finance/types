@@ -1,7 +1,7 @@
 import { Observable, IExtrinsic, RegistryTypes, DefinitionRpc, DefinitionRpcSub, OverrideBundleDefinition } from '@polkadot/types/types';
 import { ApiOptions } from '@polkadot/api/types';
 import { ApiTypes } from '@polkadot/api-base/types';
-import { u32, u128, Bytes, U8aFixed, u16, u64, u8, Vec, Option, U256, Result, Null, bool, BTreeMap, Compact, Text, HashMap, U64, Json, BitVec, Bool, i128, I128, i16, I16, i256, I256, i32, I32, i64, I64, i8, I8, Raw, Type, U128, U16, u256, U32, U8, usize, USize } from '@polkadot/types-codec';
+import { u128, u32, Bytes, U8aFixed, u16, u64, u8, Vec, Option, U256, Result, Null, bool, BTreeMap, Compact, Text, HashMap, U64, Json, BitVec, Bool, i128, I128, i16, I16, i256, I256, i32, I32, i64, I64, i8, I8, Raw, Type, U128, U16, u256, U32, U8, usize, USize } from '@polkadot/types-codec';
 import { Codec, ITuple, AnyNumber } from '@polkadot/types-codec/types';
 import { AccountId32, Perbill, Percent, Permill, H160, H256, Call, MultiAddress, Hash, SignedBlock, BlockNumber, Header, StorageData, AccountId, Justification, H64, KeyValue, Index, AccountId20, AccountIdOf, AccountIndex, Address, AssetId, Balance, BalanceOf, Block, BlockNumberFor, BlockNumberOf, CallHash, CallHashOf, ChangesTrieConfiguration, ChangesTrieSignal, CodecHash, Consensus, ConsensusEngineId, CrateVersion, Digest, DigestItem, EncodedJustification, ExtrinsicsWeight, Fixed128, Fixed64, FixedI128, FixedI64, FixedU128, FixedU64, H1024, H128, H2048, H32, H512, HeaderPartial, I32F32, IndicesLookupSource, Justifications, KeyTypeId, LockIdentifier, LookupSource, LookupTarget, ModuleId, Moment, MultiSigner, OpaqueCall, Origin, OriginCaller, PalletId, PalletsOrigin, PalletVersion, Pays, Perquintill, PerU16, Phantom, PhantomData, PreRuntime, Releases, RuntimeDbWeight, Seal, SealV0, SignedBlockWithJustification, SignedBlockWithJustifications, Slot, StorageProof, TransactionInfo, TransactionPriority, TransactionStorageProof, U32F32, ValidatorId, ValidatorIdOf, Weight, WeightMultiplier } from '@polkadot/types/interfaces/runtime';
 import { FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, FrameSupportWeightsRuntimeDbWeight, SpVersionRuntimeVersion, FrameSupportWeightsWeightToFeeCoefficient, FrameSupportPalletId, XcmV1MultiLocation, PalletAssetsInfoAssetInfo, ArtemisCoreApp, SpRuntimeDispatchError, XcmV2TraitsOutcome, PalletIssuanceIssuanceInfo, PalletIssuanceTgeInfo, XcmV2Xcm, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingDelegatorAdded, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmV2TraitsError, XcmV2Response, FrameSupportWeightsDispatchInfo, FrameSupportTokensMiscBalanceStatus, XcmV1MultiAsset, XcmV1MultiassetMultiAssets, SpConsensusAuraSr25519AppSr25519Public, PalletAuthorshipUncleEntryItem, PalletBootstrapBootstrapPhase, PalletCollectiveVotes, PalletCrowdloanRewardsRewardInfo, CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueuePageIndexData, PalletElectionsPhragmenSeatHolder, PalletElectionsPhragmenVoter, ParachainStakingCollatorSnapshot, ParachainStakingBond, ParachainStakingCollatorCandidate, ParachainStakingDelegator, ParachainStakingRoundInfo, PolkadotPrimitivesV1AbridgedHostConfiguration, PolkadotCorePrimitivesOutboundHrmpMessage, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, PolkadotPrimitivesV1UpgradeRestriction, PolkadotPrimitivesV1PersistedValidationData, PalletXcmVersionMigrationStage, PalletXcmQueryStatus, SpCoreCryptoKeyTypeId, MangataRuntimeSessionKeys, FrameSystemAccountInfo, FrameSupportWeightsPerDispatchClassU64, SpRuntimeDigest, FrameSystemEventRecord, FrameSystemPhase, FrameSystemLastRuntimeUpgradeInfo, OrmlTokensAccountData, OrmlTokensBalanceLock, PalletTransactionPaymentReleases, PalletTreasuryProposal, PalletVestingMangataReleases, PalletVestingMangataVestingInfo, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueQueueConfigData, SpRuntimeHeaderVerHeader, ArtemisCoreMessage, SpRuntimeMultiSignature, PalletElectionsPhragmenRenouncing, XcmVersionedXcm, ParachainStakingPairedOrLiquidityToken, CumulusPrimitivesParachainInherentParachainInherentData, XcmV2WeightLimit, MangataRuntimeOriginCaller, XcmVersionedMultiAsset } from '@polkadot/types/lookup';
@@ -24,7 +24,7 @@ import { FeeDetails, RuntimeDispatchInfo, InclusionFee } from '@polkadot/types/i
 import { RpcMethods } from '@polkadot/types/interfaces/rpc';
 import { ReadProof, RuntimeVersion, TraceBlockResponse, MigrationStatusResult, ApiId, BlockTrace, BlockTraceEvent, BlockTraceEventData, BlockTraceSpan, KeyValueOption, RuntimeVersionApi, RuntimeVersionPartial, SpecVersion, StorageChangeSet, TraceError } from '@polkadot/types/interfaces/state';
 import { ChainType, ApplyExtrinsicResult, Health, NetworkState, NodeRole, PeerInfo, ChainProperties, SyncState, AccountInfo, AccountInfoWithDualRefCount, AccountInfoWithProviders, AccountInfoWithRefCount, AccountInfoWithRefCountU8, AccountInfoWithTripleRefCount, ArithmeticError, BlockLength, BlockWeights, ConsumedWeight, DigestOf, DispatchClass, DispatchError, DispatchErrorModule, DispatchErrorTo198, DispatchInfo, DispatchInfoTo190, DispatchInfoTo244, DispatchOutcome, DispatchResult, DispatchResultOf, DispatchResultTo198, Event, EventId, EventIndex, EventRecord, InvalidTransaction, Key, LastRuntimeUpgradeInfo, NetworkStatePeerset, NetworkStatePeersetInfo, NotConnectedPeer, Peer, PeerEndpoint, PeerEndpointAddr, PeerPing, PerDispatchClassU32, PerDispatchClassWeight, PerDispatchClassWeightsPerClass, Phase, RawOrigin, RefCount, RefCountTo259, SystemOrigin, TokenError, TransactionValidityError, UnknownTransaction, WeightPerClass } from '@polkadot/types/interfaces/system';
-import { RPCAmountsResult, RpcResult, RpcRewardsResult, ShufflingSeed, TokenId } from '@mangata-finance/types/interfaces/default';
+import { RPCAmountsResult, RpcResult, RpcRewardsResult, ShufflingSeed, TokenId } from '@mangata-finance/interfaces/default';
 import { AssetApproval, AssetApprovalKey, AssetBalance, AssetDestroyWitness, AssetDetails, AssetMetadata, TAssetBalance, TAssetDepositBalance } from '@polkadot/types/interfaces/assets';
 import { BlockAttestations, IncludedBlocks, MoreAttestations } from '@polkadot/types/interfaces/attestations';
 import { RawAuraPreDigest } from '@polkadot/types/interfaces/aura';
@@ -73,6 +73,13 @@ declare module '@polkadot/api-base/types/consts' {
              **/
             [key: string]: Codec;
         };
+        assetsInfo: {
+            relayNativeTokensValueScaleFactor: u128 & AugmentedConst<ApiType>;
+            /**
+             * Generic const
+             **/
+            [key: string]: Codec;
+        };
         authorship: {
             /**
              * The number of blocks back we should accept uncles.
@@ -87,8 +94,6 @@ declare module '@polkadot/api-base/types/consts' {
         };
         bootstrap: {
             ksmTokenId: u32 & AugmentedConst<ApiType>;
-            ksmToMgaRatioDenominator: u128 & AugmentedConst<ApiType>;
-            ksmToMgaRatioNumerator: u128 & AugmentedConst<ApiType>;
             mgaTokenId: u32 & AugmentedConst<ApiType>;
             /**
              * Generic const
@@ -627,6 +632,10 @@ declare module '@polkadot/api-base/types/errors' {
              * Valuation ratio exceeded
              **/
             ValuationRatio: AugmentedError<ApiType>;
+            /**
+             * no rewards to claim
+             **/
+            WrongRatio: AugmentedError<ApiType>;
             /**
              * Generic error
              **/
@@ -1525,6 +1534,9 @@ declare module '@polkadot/api-base/types/errors' {
              * Second asset amount exceeded expectations
              **/
             SecondAssetAmountExceededExpectations: AugmentedError<ApiType>;
+            /**
+             * Sold Amount too low
+             **/
             SoldAmountTooLow: AugmentedError<ApiType>;
             /**
              * Unexpected failure
@@ -2391,10 +2403,13 @@ declare module '@polkadot/api-base/types/events' {
         };
         xyk: {
             AssetsSwapped: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128]>;
+            LiquidityActivated: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
             LiquidityBurned: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u32, u128]>;
+            LiquidityDeactivated: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
             LiquidityMinted: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u32, u128]>;
             PoolCreated: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128]>;
             PoolPromoted: AugmentedEvent<ApiType, [u32]>;
+            RewardsClaimed: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
             /**
              * Generic event
              **/
@@ -2482,7 +2497,7 @@ declare module '@polkadot/api-base/types/storage' {
             [key: string]: QueryableStorageEntry<ApiType>;
         };
         bootstrap: {
-            bootstrapSchedule: AugmentedQuery<ApiType, () => Observable<Option<ITuple<[u32, u32, u32]>>>, []> & QueryableStorageEntry<ApiType, []>;
+            bootstrapSchedule: AugmentedQuery<ApiType, () => Observable<Option<ITuple<[u32, u32, u32, ITuple<[u128, u128]>]>>>, []> & QueryableStorageEntry<ApiType, []>;
             claimedRewards: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: u32 | AnyNumber | Uint8Array) => Observable<u128>, [AccountId32, u32]> & QueryableStorageEntry<ApiType, [AccountId32, u32]>;
             mintedLiquidity: AugmentedQuery<ApiType, () => Observable<ITuple<[u32, u128]>>, []> & QueryableStorageEntry<ApiType, []>;
             phase: AugmentedQuery<ApiType, () => Observable<PalletBootstrapBootstrapPhase>, []> & QueryableStorageEntry<ApiType, []>;
@@ -3218,11 +3233,12 @@ declare module '@polkadot/api-base/types/storage' {
         };
         xyk: {
             liquidityAssets: AugmentedQuery<ApiType, (arg: ITuple<[u32, u32]> | [u32 | AnyNumber | Uint8Array, u32 | AnyNumber | Uint8Array]) => Observable<Option<u32>>, [ITuple<[u32, u32]>]> & QueryableStorageEntry<ApiType, [ITuple<[u32, u32]>]>;
+            liquidityMiningActivePool: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<u128>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
+            liquidityMiningActiveUser: AugmentedQuery<ApiType, (arg: ITuple<[AccountId32, u32]> | [AccountId32 | string | Uint8Array, u32 | AnyNumber | Uint8Array]) => Observable<u128>, [ITuple<[AccountId32, u32]>]> & QueryableStorageEntry<ApiType, [ITuple<[AccountId32, u32]>]>;
             liquidityMiningPool: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<ITuple<[u32, U256, U256]>>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
             liquidityMiningUser: AugmentedQuery<ApiType, (arg: ITuple<[AccountId32, u32]> | [AccountId32 | string | Uint8Array, u32 | AnyNumber | Uint8Array]) => Observable<ITuple<[u32, U256, U256]>>, [ITuple<[AccountId32, u32]>]> & QueryableStorageEntry<ApiType, [ITuple<[AccountId32, u32]>]>;
             liquidityMiningUserToBeClaimed: AugmentedQuery<ApiType, (arg: ITuple<[AccountId32, u32]> | [AccountId32 | string | Uint8Array, u32 | AnyNumber | Uint8Array]) => Observable<u128>, [ITuple<[AccountId32, u32]>]> & QueryableStorageEntry<ApiType, [ITuple<[AccountId32, u32]>]>;
             liquidityPools: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<Option<ITuple<[u32, u32]>>>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
-            poolPromotionStart: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<u32>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
             pools: AugmentedQuery<ApiType, (arg: ITuple<[u32, u32]> | [u32 | AnyNumber | Uint8Array, u32 | AnyNumber | Uint8Array]) => Observable<ITuple<[u128, u128]>>, [ITuple<[u32, u32]>]> & QueryableStorageEntry<ApiType, [ITuple<[u32, u32]>]>;
             /**
              * Generic query
@@ -3276,10 +3292,38 @@ declare module '@polkadot/api-base/types/submittable' {
             [key: string]: SubmittableExtrinsicFunction<ApiType>;
         };
         bootstrap: {
+            /**
+             * claim liquidity tokens from pool created as a result of bootstrap event finish
+             **/
             claimRewards: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
+            /**
+             * provisions non-vested/non-locked tokens into the boostrstrap
+             **/
             provision: AugmentedSubmittable<(tokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
+            /**
+             * provisions vested/locked tokens into the boostrstrap
+             **/
             provisionVested: AugmentedSubmittable<(tokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
-            startIdo: AugmentedSubmittable<(idoStart: u32 | AnyNumber | Uint8Array, whitelistPhaseLength: u32 | AnyNumber | Uint8Array, publicPhaseLenght: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u32]>;
+            /**
+             * schedules start of an bootstrap event where
+             * - ido_start - number of block when bootstrap event should be started
+             * - whitelist_phase_length - length of whitelist phase in blocks.
+             * - public_phase_length - length of public phase in blocks
+             * - max_ksm_to_mgx_ratio - maximum tokens ratio that is held by the pallet during bootstrap event
+             *
+             * max_ksm_to_mgx_ratio[0]       KSM VALUATION
+             * ----------------------- < ---------------------
+             * max_ksm_to_mgx_ratio[1]       MGX VALUATION
+             *
+             * bootstrap phases:
+             * - BeforeStart - blocks 0..ido_start
+             * - WhitelistPhase - blocks ido_start..(ido_start + whitelist_phase_length)
+             * - PublicPhase - blocks (ido_start + whitelist_phase_length)..(ido_start + whitelist_phase_length  + public_phase_lenght)
+             **/
+            startIdo: AugmentedSubmittable<(idoStart: u32 | AnyNumber | Uint8Array, whitelistPhaseLength: u32 | AnyNumber | Uint8Array, publicPhaseLenght: u32 | AnyNumber | Uint8Array, maxKsmToMgxRatio: ITuple<[u128, u128]> | [u128 | AnyNumber | Uint8Array, u128 | AnyNumber | Uint8Array]) => SubmittableExtrinsic<ApiType>, [u32, u32, u32, ITuple<[u128, u128]>]>;
+            /**
+             * provides a list of whitelisted accounts, list is extended with every call
+             **/
             whitelistAccounts: AugmentedSubmittable<(accounts: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<AccountId32>]>;
             /**
              * Generic tx
@@ -4983,10 +5027,12 @@ declare module '@polkadot/api-base/types/submittable' {
             [key: string]: SubmittableExtrinsicFunction<ApiType>;
         };
         xyk: {
+            activateLiquidity: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
             burnLiquidity: AugmentedSubmittable<(firstAssetId: u32 | AnyNumber | Uint8Array, secondAssetId: u32 | AnyNumber | Uint8Array, liquidityAssetAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u128]>;
             buyAsset: AugmentedSubmittable<(soldAssetId: u32 | AnyNumber | Uint8Array, boughtAssetId: u32 | AnyNumber | Uint8Array, boughtAssetAmount: u128 | AnyNumber | Uint8Array, maxAmountIn: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u128, u128]>;
             claimRewards: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
             createPool: AugmentedSubmittable<(firstAssetId: u32 | AnyNumber | Uint8Array, firstAssetAmount: u128 | AnyNumber | Uint8Array, secondAssetId: u32 | AnyNumber | Uint8Array, secondAssetAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128, u32, u128]>;
+            deactivateLiquidity: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
             mintLiquidity: AugmentedSubmittable<(firstAssetId: u32 | AnyNumber | Uint8Array, secondAssetId: u32 | AnyNumber | Uint8Array, firstAssetAmount: u128 | AnyNumber | Uint8Array, expectedSecondAssetAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u128, u128]>;
             mintLiquidityUsingVestingNativeTokens: AugmentedSubmittable<(vestingNativeAssetAmount: u128 | AnyNumber | Uint8Array, secondAssetId: u32 | AnyNumber | Uint8Array, expectedSecondAssetAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128, u32, u128]>;
             promotePool: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32]>;

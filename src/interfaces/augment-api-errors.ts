@@ -158,6 +158,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       ValuationRatio: AugmentedError<ApiType>;
       /**
+       * no rewards to claim
+       **/
+      WrongRatio: AugmentedError<ApiType>;
+      /**
        * Generic error
        **/
       [key: string]: AugmentedError<ApiType>;
@@ -1055,6 +1059,9 @@ declare module '@polkadot/api-base/types/errors' {
        * Second asset amount exceeded expectations
        **/
       SecondAssetAmountExceededExpectations: AugmentedError<ApiType>;
+      /**
+       * Sold Amount too low
+       **/
       SoldAmountTooLow: AugmentedError<ApiType>;
       /**
        * Unexpected failure

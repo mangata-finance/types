@@ -10,16 +10,16 @@
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,
-    "declarationDir": "build/types",
+    "declarationDir": "build/",
     "typeRoots": ["./node_modules/@polkadot/ts", "./node_modules/@types"],
     "paths": {
       // this is the package name we use (in the interface imports, --package for generators)
-      "@mangata-finance/types/*": ["src/*"],
+      "@mangata-finance/*": ["src/*"],
       // here we replace the @polkadot/api augmentation with our own, generated from chain
       "@polkadot/api/augment": ["src/interfaces/augment-api.ts"],
+      "@polkadot/types/lookup": ["src/interfaces/types-lookup.ts"],
       // replace the augmented types with our own, as generated from definitions
-      "@polkadot/types/augment": ["src/interfaces/augment-types.ts"],
-      "@polkadot/types/lookup": ["src/interfaces/types-lookup.ts"]
+      "@polkadot/types/augment": ["src/interfaces/augment-types.ts"]
     }
   },
   "exclude": ["node_modules", "build"],

@@ -9,7 +9,7 @@ export default [
     }
   },
   {
-    input: "build/types/index.d.ts",
+    input: "build/index.d.ts",
     output: {
       file: "index.d.ts",
       format: "es"

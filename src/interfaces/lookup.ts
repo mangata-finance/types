@@ -268,7 +268,10 @@ export default {
       AssetsSwapped: '(AccountId32,u32,u128,u32,u128)',
       LiquidityMinted: '(AccountId32,u32,u128,u32,u128,u32,u128)',
       LiquidityBurned: '(AccountId32,u32,u128,u32,u128,u32,u128)',
-      PoolPromoted: 'u32'
+      PoolPromoted: 'u32',
+      LiquidityActivated: '(AccountId32,u32,u128)',
+      LiquidityDeactivated: '(AccountId32,u32,u128)',
+      RewardsClaimed: '(AccountId32,u32,u128)'
     }
   },
   /**
@@ -1637,7 +1640,15 @@ export default {
         amount: 'u128',
       },
       promote_pool: {
-        liquidityTokenId: 'u32'
+        liquidityTokenId: 'u32',
+      },
+      activate_liquidity: {
+        liquidityTokenId: 'u32',
+        amount: 'u128',
+      },
+      deactivate_liquidity: {
+        liquidityTokenId: 'u32',
+        amount: 'u128'
       }
     }
   },
@@ -2743,6 +2754,7 @@ export default {
         idoStart: 'u32',
         whitelistPhaseLength: 'u32',
         publicPhaseLenght: 'u32',
+        maxKsmToMgxRatio: '(u128,u128)',
       },
       claim_rewards: 'Null'
     }
@@ -2927,7 +2939,7 @@ export default {
    * Lookup371: pallet_bootstrap::pallet::Error<T>
    **/
   PalletBootstrapError: {
-    _enum: ['UnsupportedTokenId', 'NotEnoughAssets', 'NotEnoughVestedAssets', 'MathOverflow', 'Unauthorized', 'BootstrapStartInThePast', 'PhaseLengthCannotBeZero', 'AlreadyStarted', 'ValuationRatio', 'FirstProvisionInMga', 'PoolAlreadyExists', 'NotFinishedYet', 'NothingToClaim']
+    _enum: ['UnsupportedTokenId', 'NotEnoughAssets', 'NotEnoughVestedAssets', 'MathOverflow', 'Unauthorized', 'BootstrapStartInThePast', 'PhaseLengthCannotBeZero', 'AlreadyStarted', 'ValuationRatio', 'FirstProvisionInMga', 'PoolAlreadyExists', 'NotFinishedYet', 'NothingToClaim', 'WrongRatio']
   },
   /**
    * Lookup372: pallet_utility::pallet::Error<T>

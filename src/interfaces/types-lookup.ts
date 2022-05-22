@@ -285,7 +285,13 @@ declare module '@polkadot/types/lookup' {
     readonly asLiquidityBurned: ITuple<[AccountId32, u32, u128, u32, u128, u32, u128]>;
     readonly isPoolPromoted: boolean;
     readonly asPoolPromoted: u32;
-    readonly type: 'PoolCreated' | 'AssetsSwapped' | 'LiquidityMinted' | 'LiquidityBurned' | 'PoolPromoted';
+    readonly isLiquidityActivated: boolean;
+    readonly asLiquidityActivated: ITuple<[AccountId32, u32, u128]>;
+    readonly isLiquidityDeactivated: boolean;
+    readonly asLiquidityDeactivated: ITuple<[AccountId32, u32, u128]>;
+    readonly isRewardsClaimed: boolean;
+    readonly asRewardsClaimed: ITuple<[AccountId32, u32, u128]>;
+    readonly type: 'PoolCreated' | 'AssetsSwapped' | 'LiquidityMinted' | 'LiquidityBurned' | 'PoolPromoted' | 'LiquidityActivated' | 'LiquidityDeactivated' | 'RewardsClaimed';
   }
 
   /** @name PalletVestingMangataEvent (43) */
@@ -1816,7 +1822,17 @@ declare module '@polkadot/types/lookup' {
     readonly asPromotePool: {
       readonly liquidityTokenId: u32;
     } & Struct;
-    readonly type: 'CreatePool' | 'SellAsset' | 'BuyAsset' | 'MintLiquidityUsingVestingNativeTokens' | 'MintLiquidity' | 'BurnLiquidity' | 'ClaimRewards' | 'PromotePool';
+    readonly isActivateLiquidity: boolean;
+    readonly asActivateLiquidity: {
+      readonly liquidityTokenId: u32;
+      readonly amount: u128;
+    } & Struct;
+    readonly isDeactivateLiquidity: boolean;
+    readonly asDeactivateLiquidity: {
+      readonly liquidityTokenId: u32;
+      readonly amount: u128;
+    } & Struct;
+    readonly type: 'CreatePool' | 'SellAsset' | 'BuyAsset' | 'MintLiquidityUsingVestingNativeTokens' | 'MintLiquidity' | 'BurnLiquidity' | 'ClaimRewards' | 'PromotePool' | 'ActivateLiquidity' | 'DeactivateLiquidity';
   }
 
   /** @name PalletXykError (200) */
@@ -3094,6 +3110,7 @@ declare module '@polkadot/types/lookup' {
       readonly idoStart: u32;
       readonly whitelistPhaseLength: u32;
       readonly publicPhaseLenght: u32;
+      readonly maxKsmToMgxRatio: ITuple<[u128, u128]>;
     } & Struct;
     readonly isClaimRewards: boolean;
     readonly type: 'ProvisionVested' | 'Provision' | 'WhitelistAccounts' | 'StartIdo' | 'ClaimRewards';
@@ -3268,7 +3285,8 @@ declare module '@polkadot/types/lookup' {
     readonly isPoolAlreadyExists: boolean;
     readonly isNotFinishedYet: boolean;
     readonly isNothingToClaim: boolean;
-    readonly type: 'UnsupportedTokenId' | 'NotEnoughAssets' | 'NotEnoughVestedAssets' | 'MathOverflow' | 'Unauthorized' | 'BootstrapStartInThePast' | 'PhaseLengthCannotBeZero' | 'AlreadyStarted' | 'ValuationRatio' | 'FirstProvisionInMga' | 'PoolAlreadyExists' | 'NotFinishedYet' | 'NothingToClaim';
+    readonly isWrongRatio: boolean;
+    readonly type: 'UnsupportedTokenId' | 'NotEnoughAssets' | 'NotEnoughVestedAssets' | 'MathOverflow' | 'Unauthorized' | 'BootstrapStartInThePast' | 'PhaseLengthCannotBeZero' | 'AlreadyStarted' | 'ValuationRatio' | 'FirstProvisionInMga' | 'PoolAlreadyExists' | 'NotFinishedYet' | 'NothingToClaim' | 'WrongRatio';
   }
 
   /** @name PalletUtilityError (372) */

@@ -16,6 +16,13 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       [key: string]: Codec;
     };
+    assetsInfo: {
+      relayNativeTokensValueScaleFactor: u128 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
     authorship: {
       /**
        * The number of blocks back we should accept uncles.
@@ -30,8 +37,6 @@ declare module '@polkadot/api-base/types/consts' {
     };
     bootstrap: {
       ksmTokenId: u32 & AugmentedConst<ApiType>;
-      ksmToMgaRatioDenominator: u128 & AugmentedConst<ApiType>;
-      ksmToMgaRatioNumerator: u128 & AugmentedConst<ApiType>;
       mgaTokenId: u32 & AugmentedConst<ApiType>;
       /**
        * Generic const

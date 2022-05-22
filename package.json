@@ -1,19 +1,19 @@
 {
   "name": "@mangata-finance/types",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "Polkadot.js type definitions for Mangata Network",
   "author": "Mangata Finance <solutions@mangata.finance>",
   "types": "index.d.ts",
+  "type": "module",
   "exports": {
     ".": "./index.js"
   },
-  "type": "module",
   "license": "GPL-3.0",
   "scripts": {
     "build": "rm -fr build/* && tsc --project tsconfig.json && rollup -c",
     "buildTypes": "yarn generate:defs && yarn generate:meta",
-    "generate:defs": "ts-node --skip-project node_modules/.bin/polkadot-types-from-defs --package @mangata-finance/types/interfaces --input ./src/interfaces --endpoint ./metadata.json",
-    "generate:meta": "ts-node --skip-project node_modules/.bin/polkadot-types-from-chain --package @mangata-finance/types/interfaces --endpoint ./metadata.json --output ./src/interfaces"
+    "generate:defs": "ts-node --skip-project node_modules/.bin/polkadot-types-from-defs --package @mangata-finance/interfaces --input ./src/interfaces --endpoint ./metadata.json",
+    "generate:meta": "ts-node --skip-project node_modules/.bin/polkadot-types-from-chain --package @mangata-finance/interfaces --endpoint ./metadata.json --output ./src/interfaces"
   },
   "files": [
     "index.js",

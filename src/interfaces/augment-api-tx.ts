@@ -35,10 +35,38 @@ declare module '@polkadot/api-base/types/submittable' {
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
     bootstrap: {
+      /**
+       * claim liquidity tokens from pool created as a result of bootstrap event finish
+       **/
       claimRewards: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
+      /**
+       * provisions non-vested/non-locked tokens into the boostrstrap
+       **/
       provision: AugmentedSubmittable<(tokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
+      /**
+       * provisions vested/locked tokens into the boostrstrap
+       **/
       provisionVested: AugmentedSubmittable<(tokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
-      startIdo: AugmentedSubmittable<(idoStart: u32 | AnyNumber | Uint8Array, whitelistPhaseLength: u32 | AnyNumber | Uint8Array, publicPhaseLenght: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u32]>;
+      /**
+       * schedules start of an bootstrap event where
+       * - ido_start - number of block when bootstrap event should be started
+       * - whitelist_phase_length - length of whitelist phase in blocks.
+       * - public_phase_length - length of public phase in blocks
+       * - max_ksm_to_mgx_ratio - maximum tokens ratio that is held by the pallet during bootstrap event
+       * 
+       * max_ksm_to_mgx_ratio[0]       KSM VALUATION
+       * ----------------------- < ---------------------
+       * max_ksm_to_mgx_ratio[1]       MGX VALUATION
+       * 
+       * bootstrap phases:
+       * - BeforeStart - blocks 0..ido_start
+       * - WhitelistPhase - blocks ido_start..(ido_start + whitelist_phase_length)
+       * - PublicPhase - blocks (ido_start + whitelist_phase_length)..(ido_start + whitelist_phase_length  + public_phase_lenght)
+       **/
+      startIdo: AugmentedSubmittable<(idoStart: u32 | AnyNumber | Uint8Array, whitelistPhaseLength: u32 | AnyNumber | Uint8Array, publicPhaseLenght: u32 | AnyNumber | Uint8Array, maxKsmToMgxRatio: ITuple<[u128, u128]> | [u128 | AnyNumber | Uint8Array, u128 | AnyNumber | Uint8Array]) => SubmittableExtrinsic<ApiType>, [u32, u32, u32, ITuple<[u128, u128]>]>;
+      /**
+       * provides a list of whitelisted accounts, list is extended with every call
+       **/
       whitelistAccounts: AugmentedSubmittable<(accounts: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<AccountId32>]>;
       /**
        * Generic tx
@@ -1360,10 +1388,12 @@ declare module '@polkadot/api-base/types/submittable' {
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
     xyk: {
+      activateLiquidity: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
       burnLiquidity: AugmentedSubmittable<(firstAssetId: u32 | AnyNumber | Uint8Array, secondAssetId: u32 | AnyNumber | Uint8Array, liquidityAssetAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u128]>;
       buyAsset: AugmentedSubmittable<(soldAssetId: u32 | AnyNumber | Uint8Array, boughtAssetId: u32 | AnyNumber | Uint8Array, boughtAssetAmount: u128 | AnyNumber | Uint8Array, maxAmountIn: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u128, u128]>;
       claimRewards: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
       createPool: AugmentedSubmittable<(firstAssetId: u32 | AnyNumber | Uint8Array, firstAssetAmount: u128 | AnyNumber | Uint8Array, secondAssetId: u32 | AnyNumber | Uint8Array, secondAssetAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128, u32, u128]>;
+      deactivateLiquidity: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
       mintLiquidity: AugmentedSubmittable<(firstAssetId: u32 | AnyNumber | Uint8Array, secondAssetId: u32 | AnyNumber | Uint8Array, firstAssetAmount: u128 | AnyNumber | Uint8Array, expectedSecondAssetAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u128, u128]>;
       mintLiquidityUsingVestingNativeTokens: AugmentedSubmittable<(vestingNativeAssetAmount: u128 | AnyNumber | Uint8Array, secondAssetId: u32 | AnyNumber | Uint8Array, expectedSecondAssetAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128, u32, u128]>;
       promotePool: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32]>;
