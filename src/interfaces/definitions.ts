@@ -20,10 +20,6 @@ export default {
       firstAssetAmount: "Balance",
       secondAssetAmount: "Balance"
     },
-    TokenId: "u32",
-    RpcRewardsResult: {
-      notYetClaimed: "Balance",
-      toBeClaimed: "Balance"
-    }
+    TokenId: "u32"
   }
 };

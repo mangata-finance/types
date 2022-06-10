@@ -107,7 +107,7 @@ const jsonrpc: Record<
           type: "TokenId"
         }
       ],
-      type: "RpcRewardsResult<Balance>"
+      type: "RpcResult<Balance>"
     }
   }
 };

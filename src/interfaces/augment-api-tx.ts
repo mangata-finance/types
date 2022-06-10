@@ -5,7 +5,7 @@ import type { ApiTypes } from '@polkadot/api-base/types';
 import type { Bytes, Compact, Option, U256, U8aFixed, Vec, bool, u128, u16, u32, u64 } from '@polkadot/types-codec';
 import type { AnyNumber, ITuple } from '@polkadot/types-codec/types';
 import type { AccountId32, Call, H160, H256, MultiAddress, Perbill } from '@polkadot/types/interfaces/runtime';
-import type { ArtemisCoreApp, ArtemisCoreMessage, CumulusPrimitivesParachainInherentParachainInherentData, MangataRuntimeOriginCaller, MangataRuntimeSessionKeys, PalletElectionsPhragmenRenouncing, PalletIssuanceTgeInfo, PalletVestingMangataVestingInfo, ParachainStakingPairedOrLiquidityToken, SpRuntimeHeaderVerHeader, SpRuntimeMultiSignature, XcmV1MultiLocation, XcmV2WeightLimit, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm } from '@polkadot/types/lookup';
+import type { ArtemisCoreApp, ArtemisCoreMessage, CumulusPrimitivesParachainInherentParachainInherentData, MangataKusamaRuntimeOriginCaller, MangataKusamaRuntimeSessionKeys, PalletElectionsPhragmenRenouncing, PalletIssuanceTgeInfo, PalletVestingMangataVestingInfo, ParachainStakingPairedOrLiquidityToken, SpRuntimeHeaderVerHeader, SpRuntimeMultiSignature, XcmV1MultiLocation, XcmV2WeightLimit, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm } from '@polkadot/types/lookup';
 
 declare module '@polkadot/api-base/types/submittable' {
   export interface AugmentedSubmittables<ApiType extends ApiTypes> {
@@ -751,7 +751,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - DbWrites per key id: `KeyOwner`
        * # </weight>
        **/
-      setKeys: AugmentedSubmittable<(keys: MangataRuntimeSessionKeys | { aura?: any } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataRuntimeSessionKeys, Bytes]>;
+      setKeys: AugmentedSubmittable<(keys: MangataKusamaRuntimeSessionKeys | { aura?: any } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataKusamaRuntimeSessionKeys, Bytes]>;
       /**
        * Generic tx
        **/
@@ -1148,7 +1148,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - Weight of derivative `call` execution + T::WeightInfo::dispatch_as().
        * # </weight>
        **/
-      dispatchAs: AugmentedSubmittable<(asOrigin: MangataRuntimeOriginCaller | { system: any } | { Void: any } | { PolkadotXcm: any } | { CumulusXcm: any } | { Council: any } | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataRuntimeOriginCaller, Call]>;
+      dispatchAs: AugmentedSubmittable<(asOrigin: MangataKusamaRuntimeOriginCaller | { system: any } | { Void: any } | { PolkadotXcm: any } | { CumulusXcm: any } | { Council: any } | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataKusamaRuntimeOriginCaller, Call]>;
       /**
        * Generic tx
        **/

@@ -4,7 +4,7 @@ import { ApiTypes } from '@polkadot/api-base/types';
 import { u128, u32, Bytes, U8aFixed, u16, u64, u8, Vec, Option, U256, Result, Null, bool, BTreeMap, Compact, Text, HashMap, U64, Json, BitVec, Bool, i128, I128, i16, I16, i256, I256, i32, I32, i64, I64, i8, I8, Raw, Type, U128, U16, u256, U32, U8, usize, USize } from '@polkadot/types-codec';
 import { Codec, ITuple, AnyNumber } from '@polkadot/types-codec/types';
 import { AccountId32, Perbill, Percent, Permill, H160, H256, Call, MultiAddress, Hash, SignedBlock, BlockNumber, Header, StorageData, AccountId, Justification, H64, KeyValue, Index, AccountId20, AccountIdOf, AccountIndex, Address, AssetId, Balance, BalanceOf, Block, BlockNumberFor, BlockNumberOf, CallHash, CallHashOf, ChangesTrieConfiguration, ChangesTrieSignal, CodecHash, Consensus, ConsensusEngineId, CrateVersion, Digest, DigestItem, EncodedJustification, ExtrinsicsWeight, Fixed128, Fixed64, FixedI128, FixedI64, FixedU128, FixedU64, H1024, H128, H2048, H32, H512, HeaderPartial, I32F32, IndicesLookupSource, Justifications, KeyTypeId, LockIdentifier, LookupSource, LookupTarget, ModuleId, Moment, MultiSigner, OpaqueCall, Origin, OriginCaller, PalletId, PalletsOrigin, PalletVersion, Pays, Perquintill, PerU16, Phantom, PhantomData, PreRuntime, Releases, RuntimeDbWeight, Seal, SealV0, SignedBlockWithJustification, SignedBlockWithJustifications, Slot, StorageProof, TransactionInfo, TransactionPriority, TransactionStorageProof, U32F32, ValidatorId, ValidatorIdOf, Weight, WeightMultiplier } from '@polkadot/types/interfaces/runtime';
-import { FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, FrameSupportWeightsRuntimeDbWeight, SpVersionRuntimeVersion, FrameSupportWeightsWeightToFeeCoefficient, FrameSupportPalletId, XcmV1MultiLocation, PalletAssetsInfoAssetInfo, ArtemisCoreApp, SpRuntimeDispatchError, XcmV2TraitsOutcome, PalletIssuanceIssuanceInfo, PalletIssuanceTgeInfo, XcmV2Xcm, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingDelegatorAdded, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmV2TraitsError, XcmV2Response, FrameSupportWeightsDispatchInfo, FrameSupportTokensMiscBalanceStatus, XcmV1MultiAsset, XcmV1MultiassetMultiAssets, SpConsensusAuraSr25519AppSr25519Public, PalletAuthorshipUncleEntryItem, PalletBootstrapBootstrapPhase, PalletCollectiveVotes, PalletCrowdloanRewardsRewardInfo, CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueuePageIndexData, PalletElectionsPhragmenSeatHolder, PalletElectionsPhragmenVoter, ParachainStakingCollatorSnapshot, ParachainStakingBond, ParachainStakingCollatorCandidate, ParachainStakingDelegator, ParachainStakingRoundInfo, PolkadotPrimitivesV1AbridgedHostConfiguration, PolkadotCorePrimitivesOutboundHrmpMessage, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, PolkadotPrimitivesV1UpgradeRestriction, PolkadotPrimitivesV1PersistedValidationData, PalletXcmVersionMigrationStage, PalletXcmQueryStatus, SpCoreCryptoKeyTypeId, MangataRuntimeSessionKeys, FrameSystemAccountInfo, FrameSupportWeightsPerDispatchClassU64, SpRuntimeDigest, FrameSystemEventRecord, FrameSystemPhase, FrameSystemLastRuntimeUpgradeInfo, OrmlTokensAccountData, OrmlTokensBalanceLock, PalletTransactionPaymentReleases, PalletTreasuryProposal, PalletVestingMangataReleases, PalletVestingMangataVestingInfo, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueQueueConfigData, SpRuntimeHeaderVerHeader, ArtemisCoreMessage, SpRuntimeMultiSignature, PalletElectionsPhragmenRenouncing, XcmVersionedXcm, ParachainStakingPairedOrLiquidityToken, CumulusPrimitivesParachainInherentParachainInherentData, XcmV2WeightLimit, MangataRuntimeOriginCaller, XcmVersionedMultiAsset } from '@polkadot/types/lookup';
+import { FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, FrameSupportWeightsRuntimeDbWeight, SpVersionRuntimeVersion, FrameSupportWeightsWeightToFeeCoefficient, FrameSupportPalletId, XcmV1MultiLocation, PalletAssetsInfoAssetInfo, ArtemisCoreApp, SpRuntimeDispatchError, XcmV2TraitsOutcome, PalletIssuanceIssuanceInfo, PalletIssuanceTgeInfo, XcmV2Xcm, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingDelegatorAdded, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmV2TraitsError, XcmV2Response, FrameSupportWeightsDispatchInfo, FrameSupportTokensMiscBalanceStatus, XcmV1MultiAsset, XcmV1MultiassetMultiAssets, SpConsensusAuraSr25519AppSr25519Public, PalletAuthorshipUncleEntryItem, PalletBootstrapBootstrapPhase, PalletCollectiveVotes, PalletCrowdloanRewardsRewardInfo, CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueuePageIndexData, PalletElectionsPhragmenSeatHolder, PalletElectionsPhragmenVoter, ParachainStakingCollatorSnapshot, ParachainStakingBond, ParachainStakingCollatorCandidate, ParachainStakingDelegator, ParachainStakingRoundInfo, PolkadotPrimitivesV1AbridgedHostConfiguration, PolkadotCorePrimitivesOutboundHrmpMessage, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, PolkadotPrimitivesV1UpgradeRestriction, PolkadotPrimitivesV1PersistedValidationData, PalletXcmVersionMigrationStage, PalletXcmQueryStatus, SpCoreCryptoKeyTypeId, MangataKusamaRuntimeSessionKeys, FrameSystemAccountInfo, FrameSupportWeightsPerDispatchClassU64, SpRuntimeDigest, FrameSystemEventRecord, FrameSystemPhase, FrameSystemLastRuntimeUpgradeInfo, OrmlTokensAccountData, OrmlTokensBalanceLock, PalletTransactionPaymentReleases, PalletTreasuryProposal, PalletVestingMangataReleases, PalletVestingMangataVestingInfo, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueQueueConfigData, SpRuntimeHeaderVerHeader, ArtemisCoreMessage, SpRuntimeMultiSignature, PalletElectionsPhragmenRenouncing, XcmVersionedXcm, ParachainStakingPairedOrLiquidityToken, CumulusPrimitivesParachainInherentParachainInherentData, XcmV2WeightLimit, MangataKusamaRuntimeOriginCaller, XcmVersionedMultiAsset } from '@polkadot/types/lookup';
 import { AugmentedRpc } from '@polkadot/rpc-core/types';
 import { StorageKey, Metadata, Data } from '@polkadot/types';
 import { ExtrinsicOrHash, ExtrinsicStatus } from '@polkadot/types/interfaces/author';
@@ -1470,6 +1470,10 @@ declare module '@polkadot/api-base/types/errors' {
              * Division by zero
              **/
             DivisionByZero: AugmentedError<ApiType>;
+            /**
+             * Asset id is blacklisted
+             **/
+            FunctionNotAvailableForThisToken: AugmentedError<ApiType>;
             /**
              * Insufficient input amount
              **/
@@ -2937,7 +2941,7 @@ declare module '@polkadot/api-base/types/storage' {
             /**
              * The next session keys for a validator.
              **/
-            nextKeys: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<Option<MangataRuntimeSessionKeys>>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
+            nextKeys: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<Option<MangataKusamaRuntimeSessionKeys>>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
             /**
              * True if the underlying economic identities or weighting behind the validators
              * has changed in the queued validator set.
@@ -2947,7 +2951,7 @@ declare module '@polkadot/api-base/types/storage' {
              * The queued keys for the next session. When the next session begins, these keys
              * will be used to determine the validator's session keys.
              **/
-            queuedKeys: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[AccountId32, MangataRuntimeSessionKeys]>>>, []> & QueryableStorageEntry<ApiType, []>;
+            queuedKeys: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[AccountId32, MangataKusamaRuntimeSessionKeys]>>>, []> & QueryableStorageEntry<ApiType, []>;
             /**
              * The current set of validators.
              **/
@@ -3237,6 +3241,7 @@ declare module '@polkadot/api-base/types/storage' {
             liquidityMiningActiveUser: AugmentedQuery<ApiType, (arg: ITuple<[AccountId32, u32]> | [AccountId32 | string | Uint8Array, u32 | AnyNumber | Uint8Array]) => Observable<u128>, [ITuple<[AccountId32, u32]>]> & QueryableStorageEntry<ApiType, [ITuple<[AccountId32, u32]>]>;
             liquidityMiningPool: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<ITuple<[u32, U256, U256]>>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
             liquidityMiningUser: AugmentedQuery<ApiType, (arg: ITuple<[AccountId32, u32]> | [AccountId32 | string | Uint8Array, u32 | AnyNumber | Uint8Array]) => Observable<ITuple<[u32, U256, U256]>>, [ITuple<[AccountId32, u32]>]> & QueryableStorageEntry<ApiType, [ITuple<[AccountId32, u32]>]>;
+            liquidityMiningUserClaimed: AugmentedQuery<ApiType, (arg: ITuple<[AccountId32, u32]> | [AccountId32 | string | Uint8Array, u32 | AnyNumber | Uint8Array]) => Observable<u128>, [ITuple<[AccountId32, u32]>]> & QueryableStorageEntry<ApiType, [ITuple<[AccountId32, u32]>]>;
             liquidityMiningUserToBeClaimed: AugmentedQuery<ApiType, (arg: ITuple<[AccountId32, u32]> | [AccountId32 | string | Uint8Array, u32 | AnyNumber | Uint8Array]) => Observable<u128>, [ITuple<[AccountId32, u32]>]> & QueryableStorageEntry<ApiType, [ITuple<[AccountId32, u32]>]>;
             liquidityPools: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<Option<ITuple<[u32, u32]>>>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
             pools: AugmentedQuery<ApiType, (arg: ITuple<[u32, u32]> | [u32 | AnyNumber | Uint8Array, u32 | AnyNumber | Uint8Array]) => Observable<ITuple<[u128, u128]>>, [ITuple<[u32, u32]>]> & QueryableStorageEntry<ApiType, [ITuple<[u32, u32]>]>;
@@ -4154,9 +4159,9 @@ declare module '@polkadot/api-base/types/submittable' {
              * - DbWrites per key id: `KeyOwner`
              * # </weight>
              **/
-            setKeys: AugmentedSubmittable<(keys: MangataRuntimeSessionKeys | {
+            setKeys: AugmentedSubmittable<(keys: MangataKusamaRuntimeSessionKeys | {
                 aura?: any;
-            } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataRuntimeSessionKeys, Bytes]>;
+            } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataKusamaRuntimeSessionKeys, Bytes]>;
             /**
              * Generic tx
              **/
@@ -4700,7 +4705,7 @@ declare module '@polkadot/api-base/types/submittable' {
              * - Weight of derivative `call` execution + T::WeightInfo::dispatch_as().
              * # </weight>
              **/
-            dispatchAs: AugmentedSubmittable<(asOrigin: MangataRuntimeOriginCaller | {
+            dispatchAs: AugmentedSubmittable<(asOrigin: MangataKusamaRuntimeOriginCaller | {
                 system: any;
             } | {
                 Void: any;
@@ -4713,7 +4718,7 @@ declare module '@polkadot/api-base/types/submittable' {
             } | string | Uint8Array, call: Call | {
                 callIndex?: any;
                 args?: any;
-            } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataRuntimeOriginCaller, Call]>;
+            } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataKusamaRuntimeOriginCaller, Call]>;
             /**
              * Generic tx
              **/

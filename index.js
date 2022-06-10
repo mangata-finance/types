@@ -27,11 +27,7 @@ var definitions = {
             firstAssetAmount: "Balance",
             secondAssetAmount: "Balance"
         },
-        TokenId: "u32",
-        RpcRewardsResult: {
-            notYetClaimed: "Balance",
-            toBeClaimed: "Balance"
-        }
+        TokenId: "u32"
     }
 };
 
@@ -144,7 +140,7 @@ const jsonrpc = {
                     type: "TokenId"
                 }
             ],
-            type: "RpcRewardsResult<Balance>"
+            type: "RpcResult<Balance>"
         }
     }
 };

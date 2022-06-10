@@ -996,6 +996,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       DivisionByZero: AugmentedError<ApiType>;
       /**
+       * Asset id is blacklisted
+       **/
+      FunctionNotAvailableForThisToken: AugmentedError<ApiType>;
+      /**
        * Insufficient input amount
        **/
       InsufficientInputAmount: AugmentedError<ApiType>;

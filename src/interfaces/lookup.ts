@@ -45,7 +45,7 @@ export default {
     }
   },
   /**
-   * Lookup15: frame_system::EventRecord<mangata_runtime::Event, primitive_types::H256>
+   * Lookup15: frame_system::EventRecord<mangata_kusama_runtime::Event, primitive_types::H256>
    **/
   FrameSystemEventRecord: {
     phase: 'FrameSystemPhase',
@@ -1656,7 +1656,7 @@ export default {
    * Lookup200: pallet_xyk::pallet::Error<T>
    **/
   PalletXykError: {
-    _enum: ['PoolAlreadyExists', 'NotEnoughAssets', 'NoSuchPool', 'NoSuchLiquidityAsset', 'NotEnoughReserve', 'ZeroAmount', 'InsufficientInputAmount', 'InsufficientOutputAmount', 'SameAsset', 'AssetAlreadyExists', 'AssetDoesNotExists', 'DivisionByZero', 'UnexpectedFailure', 'NotMangataLiquidityAsset', 'SecondAssetAmountExceededExpectations', 'MathOverflow', 'LiquidityTokenCreationFailed', 'NotEnoughtRewardsEarned', 'NotAPromotedPool', 'PastTimeCalculation', 'PoolAlreadyPromoted', 'SoldAmountTooLow']
+    _enum: ['PoolAlreadyExists', 'NotEnoughAssets', 'NoSuchPool', 'NoSuchLiquidityAsset', 'NotEnoughReserve', 'ZeroAmount', 'InsufficientInputAmount', 'InsufficientOutputAmount', 'SameAsset', 'AssetAlreadyExists', 'AssetDoesNotExists', 'DivisionByZero', 'UnexpectedFailure', 'NotMangataLiquidityAsset', 'SecondAssetAmountExceededExpectations', 'MathOverflow', 'LiquidityTokenCreationFailed', 'NotEnoughtRewardsEarned', 'NotAPromotedPool', 'PastTimeCalculation', 'PoolAlreadyPromoted', 'SoldAmountTooLow', 'FunctionNotAvailableForThisToken']
   },
   /**
    * Lookup202: pallet_vesting_mangata::vesting_info::VestingInfo<Balance, BlockNumber>
@@ -2018,9 +2018,9 @@ export default {
     _enum: ['DelegatorDNE', 'DelegatorDNEinTopNorBottom', 'DelegatorDNEInDelegatorSet', 'CandidateDNE', 'DelegationDNE', 'DelegatorExists', 'CandidateExists', 'CandidateBondBelowMin', 'InsufficientBalance', 'DelegationBelowMin', 'AlreadyOffline', 'AlreadyActive', 'DelegatorAlreadyLeaving', 'DelegatorNotLeaving', 'DelegatorCannotLeaveYet', 'CannotDelegateIfLeaving', 'CandidateAlreadyLeaving', 'CandidateNotLeaving', 'CandidateCannotLeaveYet', 'CannotGoOnlineIfLeaving', 'ExceedMaxDelegationsPerDelegator', 'AlreadyDelegatedCandidate', 'InvalidSchedule', 'CannotSetBelowMin', 'NoWritingSameValue', 'TooLowCandidateCountWeightHintJoinCandidates', 'TooLowCandidateCountWeightHintCancelLeaveCandidates', 'TooLowCandidateCountToLeaveCandidates', 'TooLowDelegationCountToDelegate', 'TooLowCandidateDelegationCountToDelegate', 'TooLowDelegationCountToLeaveDelegators', 'PendingCandidateRequestsDNE', 'PendingCandidateRequestAlreadyExists', 'PendingCandidateRequestNotDueYet', 'PendingDelegationRequestDNE', 'PendingDelegationRequestAlreadyExists', 'PendingDelegationRequestNotDueYet', 'StakingLiquidityTokenNotListed', 'TooLowCurrentStakingLiquidityTokensCount', 'StakingLiquidityTokenAlreadyListed', 'ExceedMaxCollatorCandidates', 'ExceedMaxTotalDelegatorsPerCandidate', 'MathError']
   },
   /**
-   * Lookup259: mangata_runtime::SessionKeys
+   * Lookup259: mangata_kusama_runtime::SessionKeys
    **/
-  MangataRuntimeSessionKeys: {
+  MangataKusamaRuntimeSessionKeys: {
     aura: 'SpConsensusAuraSr25519AppSr25519Public'
   },
   /**
@@ -2044,7 +2044,7 @@ export default {
         _alias: {
           keys_: 'keys',
         },
-        keys_: 'MangataRuntimeSessionKeys',
+        keys_: 'MangataKusamaRuntimeSessionKeys',
         proof: 'Bytes',
       },
       purge_keys: 'Null'
@@ -2775,15 +2775,15 @@ export default {
         calls: 'Vec<Call>',
       },
       dispatch_as: {
-        asOrigin: 'MangataRuntimeOriginCaller',
+        asOrigin: 'MangataKusamaRuntimeOriginCaller',
         call: 'Call'
       }
     }
   },
   /**
-   * Lookup354: mangata_runtime::OriginCaller
+   * Lookup354: mangata_kusama_runtime::OriginCaller
    **/
-  MangataRuntimeOriginCaller: {
+  MangataKusamaRuntimeOriginCaller: {
     _enum: {
       system: 'FrameSystemRawOrigin',
       __Unused1: 'Null',
@@ -2972,7 +2972,7 @@ export default {
    **/
   PalletTransactionPaymentChargeTransactionPayment: 'Compact<u128>',
   /**
-   * Lookup383: mangata_runtime::Runtime
+   * Lookup383: mangata_kusama_runtime::Runtime
    **/
-  MangataRuntimeRuntime: 'Null'
+  MangataKusamaRuntimeRuntime: 'Null'
 };
