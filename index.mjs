@@ -1,7 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
 const typesFromDefinitions = (definitions) => {
     return Object.values(definitions).reduce((res, { types }) => ({
         ...res,
@@ -176,8 +172,4 @@ const options = ({ types = {}, rpc = {}, ...otherOptions } = {}) => ({
     ...otherOptions
 });
 
-exports.defaultOptions = defaultOptions;
-exports.mRpc = mRpc;
-exports.mTypes = mTypes;
-exports.options = options;
-exports.typesBundleForPolkadotApps = typesBundleForPolkadotApps;
+export { defaultOptions, mRpc, mTypes, options, typesBundleForPolkadotApps };
