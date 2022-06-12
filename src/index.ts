@@ -1,6 +1,5 @@
 import {
   OverrideBundleDefinition,
-  RegistryTypes,
   DefinitionRpc,
   DefinitionRpcSub
 } from "@polkadot/types/types";
@@ -17,7 +16,7 @@ import "./interfaces/augment-api-rpc";
 import "./interfaces/augment-api-tx";
 import "./interfaces/augment-types";
 
-export const mTypes: RegistryTypes = typesFromDefinitions(definitions);
+export const mTypes = typesFromDefinitions(definitions);
 export const mRpc: Record<
   string,
   Record<string, DefinitionRpc | DefinitionRpcSub>

@@ -1,4 +1,4 @@
-import { Observable, IExtrinsic, RegistryTypes, DefinitionRpc, DefinitionRpcSub, OverrideBundleDefinition } from '@polkadot/types/types';
+import { Observable, IExtrinsic, DefinitionRpc, DefinitionRpcSub, OverrideBundleDefinition } from '@polkadot/types/types';
 import { ApiOptions } from '@polkadot/api/types';
 import { ApiTypes } from '@polkadot/api-base/types';
 import { u128, u32, Bytes, U8aFixed, u16, u64, u8, Vec, Option, U256, Result, Null, bool, BTreeMap, Compact, Text, HashMap, U64, Json, BitVec, Bool, i128, I128, i16, I16, i256, I256, i32, I32, i64, I64, i8, I8, Raw, Type, U128, U16, u256, U32, U8, usize, USize } from '@polkadot/types-codec';
@@ -24,7 +24,7 @@ import { FeeDetails, RuntimeDispatchInfo, InclusionFee } from '@polkadot/types/i
 import { RpcMethods } from '@polkadot/types/interfaces/rpc';
 import { ReadProof, RuntimeVersion, TraceBlockResponse, MigrationStatusResult, ApiId, BlockTrace, BlockTraceEvent, BlockTraceEventData, BlockTraceSpan, KeyValueOption, RuntimeVersionApi, RuntimeVersionPartial, SpecVersion, StorageChangeSet, TraceError } from '@polkadot/types/interfaces/state';
 import { ChainType, ApplyExtrinsicResult, Health, NetworkState, NodeRole, PeerInfo, ChainProperties, SyncState, AccountInfo, AccountInfoWithDualRefCount, AccountInfoWithProviders, AccountInfoWithRefCount, AccountInfoWithRefCountU8, AccountInfoWithTripleRefCount, ArithmeticError, BlockLength, BlockWeights, ConsumedWeight, DigestOf, DispatchClass, DispatchError, DispatchErrorModule, DispatchErrorTo198, DispatchInfo, DispatchInfoTo190, DispatchInfoTo244, DispatchOutcome, DispatchResult, DispatchResultOf, DispatchResultTo198, Event, EventId, EventIndex, EventRecord, InvalidTransaction, Key, LastRuntimeUpgradeInfo, NetworkStatePeerset, NetworkStatePeersetInfo, NotConnectedPeer, Peer, PeerEndpoint, PeerEndpointAddr, PeerPing, PerDispatchClassU32, PerDispatchClassWeight, PerDispatchClassWeightsPerClass, Phase, RawOrigin, RefCount, RefCountTo259, SystemOrigin, TokenError, TransactionValidityError, UnknownTransaction, WeightPerClass } from '@polkadot/types/interfaces/system';
-import { RPCAmountsResult, RpcResult, RpcRewardsResult, ShufflingSeed, TokenId } from '@mangata-finance/interfaces/default';
+import { RPCAmountsResult, RpcResult, ShufflingSeed, TokenId } from '@mangata-finance/interfaces/default';
 import { AssetApproval, AssetApprovalKey, AssetBalance, AssetDestroyWitness, AssetDetails, AssetMetadata, TAssetBalance, TAssetDepositBalance } from '@polkadot/types/interfaces/assets';
 import { BlockAttestations, IncludedBlocks, MoreAttestations } from '@polkadot/types/interfaces/attestations';
 import { RawAuraPreDigest } from '@polkadot/types/interfaces/aura';
@@ -6416,7 +6416,6 @@ declare module '@polkadot/types/types/registry' {
         RPCAmountsResult: RPCAmountsResult;
         RpcMethods: RpcMethods;
         RpcResult: RpcResult;
-        RpcRewardsResult: RpcRewardsResult;
         RuntimeDbWeight: RuntimeDbWeight;
         RuntimeDispatchInfo: RuntimeDispatchInfo;
         RuntimeVersion: RuntimeVersion;
@@ -6717,7 +6716,7 @@ declare module '@polkadot/types/types/registry' {
     }
 }
 
-declare const mTypes: RegistryTypes;
+declare const mTypes: Record<string, any>;
 declare const mRpc: Record<string, Record<string, DefinitionRpc | DefinitionRpcSub>>;
 declare const typesBundleForPolkadotApps: OverrideBundleDefinition;
 declare const defaultOptions: ApiOptions;
