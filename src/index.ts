@@ -1,8 +1,4 @@
-import {
-  OverrideBundleDefinition,
-  DefinitionRpc,
-  DefinitionRpcSub
-} from "@polkadot/types/types";
+import { OverrideBundleDefinition } from "@polkadot/types/types";
 import { ApiOptions } from "@polkadot/api/types";
 
 import { typesFromDefinitions } from "./utils/typesFromDefinitions";
@@ -17,10 +13,7 @@ import "./interfaces/augment-api-tx";
 import "./interfaces/augment-types";
 
 export const mTypes = typesFromDefinitions(definitions);
-export const mRpc: Record<
-  string,
-  Record<string, DefinitionRpc | DefinitionRpcSub>
-> = jsonrpc;
+export const mRpc = jsonrpc;
 
 export const typesBundleForPolkadotApps: OverrideBundleDefinition = {
   types: [

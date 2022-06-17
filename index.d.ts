@@ -1,4 +1,5 @@
-import { Observable, IExtrinsic, DefinitionRpc, DefinitionRpcSub, OverrideBundleDefinition } from '@polkadot/types/types';
+import * as _polkadot_types_types from '@polkadot/types/types';
+import { Observable, IExtrinsic, OverrideBundleDefinition } from '@polkadot/types/types';
 import { ApiOptions } from '@polkadot/api/types';
 import { ApiTypes } from '@polkadot/api-base/types';
 import { u128, u32, Bytes, U8aFixed, u16, u64, u8, Vec, Option, U256, Result, Null, bool, BTreeMap, Compact, Text, HashMap, U64, Json, BitVec, Bool, i128, I128, i16, I16, i256, I256, i32, I32, i64, I64, i8, I8, Raw, Type, U128, U16, u256, U32, U8, usize, USize } from '@polkadot/types-codec';
@@ -1356,6 +1357,10 @@ declare module '@polkadot/api-base/types/errors' {
              * An index was out of bounds of the vesting schedules.
              **/
             ScheduleIndexOutOfBounds: AugmentedError<ApiType>;
+            /**
+             * Sudo is not allowed to unlock tokens
+             **/
+            SudoUnlockIsDisallowed: AugmentedError<ApiType>;
             /**
              * Generic error
              **/
@@ -4800,6 +4805,17 @@ declare module '@polkadot/api-base/types/submittable' {
              * - `schedule2_index`: index of the second schedule to merge.
              **/
             mergeSchedules: AugmentedSubmittable<(tokenId: u32 | AnyNumber | Uint8Array, schedule1Index: u32 | AnyNumber | Uint8Array, schedule2Index: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u32]>;
+            sudoUnlockAllVestingTokens: AugmentedSubmittable<(target: MultiAddress | {
+                Id: any;
+            } | {
+                Index: any;
+            } | {
+                Raw: any;
+            } | {
+                Address32: any;
+            } | {
+                Address20: any;
+            } | string | Uint8Array, tokenId: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, u32]>;
             /**
              * Unlock any vested funds of the sender account.
              *
@@ -6717,7 +6733,7 @@ declare module '@polkadot/types/types/registry' {
 }
 
 declare const mTypes: Record<string, any>;
-declare const mRpc: Record<string, Record<string, DefinitionRpc | DefinitionRpcSub>>;
+declare const mRpc: Record<string, Record<string, _polkadot_types_types.DefinitionRpc | _polkadot_types_types.DefinitionRpcSub>>;
 declare const typesBundleForPolkadotApps: OverrideBundleDefinition;
 declare const defaultOptions: ApiOptions;
 declare const options: ({ types, rpc, ...otherOptions }?: ApiOptions) => ApiOptions;

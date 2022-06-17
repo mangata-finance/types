@@ -1693,7 +1693,11 @@ export default {
       merge_schedules: {
         tokenId: 'u32',
         schedule1Index: 'u32',
-        schedule2Index: 'u32'
+        schedule2Index: 'u32',
+      },
+      sudo_unlock_all_vesting_tokens: {
+        target: 'MultiAddress',
+        tokenId: 'u32'
       }
     }
   },
@@ -1701,7 +1705,7 @@ export default {
    * Lookup206: pallet_vesting_mangata::pallet::Error<T>
    **/
   PalletVestingMangataError: {
-    _enum: ['NotVesting', 'AtMaxVestingSchedules', 'AmountLow', 'ScheduleIndexOutOfBounds', 'InvalidScheduleParams', 'NoSuitableScheduleFound', 'MathError']
+    _enum: ['NotVesting', 'AtMaxVestingSchedules', 'AmountLow', 'ScheduleIndexOutOfBounds', 'InvalidScheduleParams', 'NoSuitableScheduleFound', 'SudoUnlockIsDisallowed', 'MathError']
   },
   /**
    * Lookup207: pallet_crowdloan_rewards::pallet::RewardInfo<T>

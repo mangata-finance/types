@@ -882,6 +882,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       ScheduleIndexOutOfBounds: AugmentedError<ApiType>;
       /**
+       * Sudo is not allowed to unlock tokens
+       **/
+      SudoUnlockIsDisallowed: AugmentedError<ApiType>;
+      /**
        * Generic error
        **/
       [key: string]: AugmentedError<ApiType>;

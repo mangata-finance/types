@@ -1901,7 +1901,12 @@ declare module '@polkadot/types/lookup' {
       readonly schedule1Index: u32;
       readonly schedule2Index: u32;
     } & Struct;
-    readonly type: 'Vest' | 'VestOther' | 'ForceVestedTransfer' | 'MergeSchedules';
+    readonly isSudoUnlockAllVestingTokens: boolean;
+    readonly asSudoUnlockAllVestingTokens: {
+      readonly target: MultiAddress;
+      readonly tokenId: u32;
+    } & Struct;
+    readonly type: 'Vest' | 'VestOther' | 'ForceVestedTransfer' | 'MergeSchedules' | 'SudoUnlockAllVestingTokens';
   }
 
   /** @name PalletVestingMangataError (206) */
@@ -1912,8 +1917,9 @@ declare module '@polkadot/types/lookup' {
     readonly isScheduleIndexOutOfBounds: boolean;
     readonly isInvalidScheduleParams: boolean;
     readonly isNoSuitableScheduleFound: boolean;
+    readonly isSudoUnlockIsDisallowed: boolean;
     readonly isMathError: boolean;
-    readonly type: 'NotVesting' | 'AtMaxVestingSchedules' | 'AmountLow' | 'ScheduleIndexOutOfBounds' | 'InvalidScheduleParams' | 'NoSuitableScheduleFound' | 'MathError';
+    readonly type: 'NotVesting' | 'AtMaxVestingSchedules' | 'AmountLow' | 'ScheduleIndexOutOfBounds' | 'InvalidScheduleParams' | 'NoSuitableScheduleFound' | 'SudoUnlockIsDisallowed' | 'MathError';
   }
 
   /** @name PalletCrowdloanRewardsRewardInfo (207) */
