@@ -110,13 +110,17 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       AlreadyStarted: AugmentedError<ApiType>;
       /**
+       * no rewards to claim
+       **/
+      BootstrapNotReadyToBeFinished: AugmentedError<ApiType>;
+      /**
        * Bootstrap cant be scheduled in past
        **/
       BootstrapStartInThePast: AugmentedError<ApiType>;
       /**
-       * First provision must be in MGA/MGX
+       * First provision must be in non restricted token
        **/
-      FirstProvisionInMga: AugmentedError<ApiType>;
+      FirstProvisionInSecondTokenId: AugmentedError<ApiType>;
       /**
        * Math problem
        **/
@@ -146,11 +150,19 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       PoolAlreadyExists: AugmentedError<ApiType>;
       /**
+       * Tokens used in bootstrap cannot be the same
+       **/
+      SameToken: AugmentedError<ApiType>;
+      /**
+       * Token does not exists
+       **/
+      TokenIdDoesNotExists: AugmentedError<ApiType>;
+      /**
        * User cannot participate at this moment
        **/
       Unauthorized: AugmentedError<ApiType>;
       /**
-       * Only MGA & KSM can be used for provisions
+       * Only scheduled token pair can be used for provisions
        **/
       UnsupportedTokenId: AugmentedError<ApiType>;
       /**
@@ -158,7 +170,7 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       ValuationRatio: AugmentedError<ApiType>;
       /**
-       * no rewards to claim
+       * wrong ratio
        **/
       WrongRatio: AugmentedError<ApiType>;
       /**
@@ -501,6 +513,36 @@ declare module '@polkadot/api-base/types/errors' {
        * TGE must be finalized before issuance config is inti
        **/
       TGENotFinalized: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    multiPurposeLiquidity: {
+      /**
+       * Math error
+       **/
+      MathError: AugmentedError<ApiType>;
+      /**
+       * The token is not a liquidity token
+       **/
+      NotALiquidityToken: AugmentedError<ApiType>;
+      /**
+       * Not enough tokens
+       **/
+      NotEnoughTokens: AugmentedError<ApiType>;
+      /**
+       * Not enough unspend reserves
+       **/
+      NotEnoughUnspentReserves: AugmentedError<ApiType>;
+      /**
+       * The limit on the maximum number of relocks was exceeded
+       **/
+      RelockCountLimitExceeded: AugmentedError<ApiType>;
+      /**
+       * Provided index for relock is out of bounds
+       **/
+      RelockInstanceIndexOOB: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -995,6 +1037,10 @@ declare module '@polkadot/api-base/types/errors' {
        * Asset does not exists
        **/
       AssetDoesNotExists: AugmentedError<ApiType>;
+      /**
+       * Pool considting of passed tokens id is blacklisted
+       **/
+      DisallowedPool: AugmentedError<ApiType>;
       /**
        * Division by zero
        **/

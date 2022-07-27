@@ -39,6 +39,14 @@ declare module '@polkadot/api-base/types/events' {
        **/
       AccountsWhitelisted: AugmentedEvent<ApiType, []>;
       /**
+       * finalization process finished
+       **/
+      BootstrapFinalized: AugmentedEvent<ApiType, []>;
+      /**
+       * finalization process tarted
+       **/
+      BootstrapParitallyFinalized: AugmentedEvent<ApiType, []>;
+      /**
        * Funds provisioned
        **/
       Provisioned: AugmentedEvent<ApiType, [u32, u128]>;
@@ -287,6 +295,14 @@ declare module '@polkadot/api-base/types/events' {
        * A TGE instance has succeeded
        **/
       TGEInstanceSucceeded: AugmentedEvent<ApiType, [PalletIssuanceTgeInfo]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    multiPurposeLiquidity: {
+      TokensRelockedFromReserve: AugmentedEvent<ApiType, [AccountId32, u32, u128, u128]>;
+      VestingTokensReserved: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       /**
        * Generic event
        **/

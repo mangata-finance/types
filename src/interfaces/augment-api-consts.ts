@@ -36,8 +36,7 @@ declare module '@polkadot/api-base/types/consts' {
       [key: string]: Codec;
     };
     bootstrap: {
-      ksmTokenId: u32 & AugmentedConst<ApiType>;
-      mgaTokenId: u32 & AugmentedConst<ApiType>;
+      treasuryPalletId: FrameSupportPalletId & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/

@@ -5,7 +5,7 @@ import type { ApiTypes } from '@polkadot/api-base/types';
 import type { Bytes, Compact, Option, U256, U8aFixed, Vec, bool, u128, u16, u32, u64 } from '@polkadot/types-codec';
 import type { AnyNumber, ITuple } from '@polkadot/types-codec/types';
 import type { AccountId32, Call, H160, H256, MultiAddress, Perbill } from '@polkadot/types/interfaces/runtime';
-import type { ArtemisCoreApp, ArtemisCoreMessage, CumulusPrimitivesParachainInherentParachainInherentData, MangataKusamaRuntimeOriginCaller, MangataKusamaRuntimeSessionKeys, PalletElectionsPhragmenRenouncing, PalletIssuanceTgeInfo, PalletVestingMangataVestingInfo, ParachainStakingPairedOrLiquidityToken, SpRuntimeHeaderVerHeader, SpRuntimeMultiSignature, XcmV1MultiLocation, XcmV2WeightLimit, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm } from '@polkadot/types/lookup';
+import type { ArtemisCoreApp, ArtemisCoreMessage, CumulusPrimitivesParachainInherentParachainInherentData, MangataRococoRuntimeOriginCaller, MangataRococoRuntimeSessionKeys, MpMultipurposeLiquidityActivateKind, MpMultipurposeLiquidityBondKind, PalletElectionsPhragmenRenouncing, PalletIssuanceTgeInfo, PalletVestingMangataVestingInfo, ParachainStakingPairedOrLiquidityToken, SpRuntimeHeaderVerHeader, SpRuntimeMultiSignature, XcmV1MultiLocation, XcmV2WeightLimit, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm } from '@polkadot/types/lookup';
 
 declare module '@polkadot/api-base/types/submittable' {
   export interface AugmentedSubmittables<ApiType extends ApiTypes> {
@@ -39,6 +39,8 @@ declare module '@polkadot/api-base/types/submittable' {
        * claim liquidity tokens from pool created as a result of bootstrap event finish
        **/
       claimRewards: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
+      claimRewardsForAccount: AugmentedSubmittable<(account: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
+      finalize: AugmentedSubmittable<(limit: Option<u32> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Option<u32>]>;
       /**
        * provisions non-vested/non-locked tokens into the boostrstrap
        **/
@@ -52,18 +54,18 @@ declare module '@polkadot/api-base/types/submittable' {
        * - ido_start - number of block when bootstrap event should be started
        * - whitelist_phase_length - length of whitelist phase in blocks.
        * - public_phase_length - length of public phase in blocks
-       * - max_ksm_to_mgx_ratio - maximum tokens ratio that is held by the pallet during bootstrap event
+       * - max_first_token_to_mgx_ratio - maximum tokens ratio that is held by the pallet during bootstrap event
        * 
-       * max_ksm_to_mgx_ratio[0]       KSM VALUATION
-       * ----------------------- < ---------------------
-       * max_ksm_to_mgx_ratio[1]       MGX VALUATION
+       * max_first_token_to_mgx_ratio[0]       KSM VALUATION
+       * --------------------------------- < ---------------------
+       * max_first_token_to_mgx_ratio[1]       MGX VALUATION
        * 
        * bootstrap phases:
        * - BeforeStart - blocks 0..ido_start
        * - WhitelistPhase - blocks ido_start..(ido_start + whitelist_phase_length)
        * - PublicPhase - blocks (ido_start + whitelist_phase_length)..(ido_start + whitelist_phase_length  + public_phase_lenght)
        **/
-      startIdo: AugmentedSubmittable<(idoStart: u32 | AnyNumber | Uint8Array, whitelistPhaseLength: u32 | AnyNumber | Uint8Array, publicPhaseLenght: u32 | AnyNumber | Uint8Array, maxKsmToMgxRatio: ITuple<[u128, u128]> | [u128 | AnyNumber | Uint8Array, u128 | AnyNumber | Uint8Array]) => SubmittableExtrinsic<ApiType>, [u32, u32, u32, ITuple<[u128, u128]>]>;
+      scheduleBootstrap: AugmentedSubmittable<(firstTokenId: u32 | AnyNumber | Uint8Array, secondTokenId: u32 | AnyNumber | Uint8Array, idoStart: u32 | AnyNumber | Uint8Array, whitelistPhaseLength: u32 | AnyNumber | Uint8Array, publicPhaseLenght: u32 | AnyNumber | Uint8Array, maxFirstToSecondRatio: ITuple<[u128, u128]> | [u128 | AnyNumber | Uint8Array, u128 | AnyNumber | Uint8Array]) => SubmittableExtrinsic<ApiType>, [u32, u32, u32, u32, u32, ITuple<[u128, u128]>]>;
       /**
        * provides a list of whitelisted accounts, list is extended with every call
        **/
@@ -457,6 +459,14 @@ declare module '@polkadot/api-base/types/submittable' {
        **/
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
+    multiPurposeLiquidity: {
+      reserveVestingLiquidityTokens: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, liquidityTokenAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
+      unreserveAndRelockInstance: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, relockInstanceIndex: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32]>;
+      /**
+       * Generic tx
+       **/
+      [key: string]: SubmittableExtrinsicFunction<ApiType>;
+    };
     ormlXcm: {
       /**
        * Send an XCM message as parachain sovereign.
@@ -492,15 +502,15 @@ declare module '@polkadot/api-base/types/submittable' {
        * If caller is not a delegator and not a collator, then join the set of delegators
        * If caller is a delegator, then makes delegation to change their delegation state
        **/
-      delegate: AugmentedSubmittable<(collator: AccountId32 | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array, candidateDelegationCount: u32 | AnyNumber | Uint8Array, delegationCount: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, u128, u32, u32]>;
+      delegate: AugmentedSubmittable<(collator: AccountId32 | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array, useBalanceFrom: Option<MpMultipurposeLiquidityBondKind> | null | object | string | Uint8Array, candidateDelegationCount: u32 | AnyNumber | Uint8Array, delegationCount: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, u128, Option<MpMultipurposeLiquidityBondKind>, u32, u32]>;
       /**
        * Execute pending request to adjust the collator candidate self bond
        **/
-      executeCandidateBondRequest: AugmentedSubmittable<(candidate: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
+      executeCandidateBondRequest: AugmentedSubmittable<(candidate: AccountId32 | string | Uint8Array, useBalanceFrom: Option<MpMultipurposeLiquidityBondKind> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, Option<MpMultipurposeLiquidityBondKind>]>;
       /**
        * Execute pending request to change an existing delegation
        **/
-      executeDelegationRequest: AugmentedSubmittable<(delegator: AccountId32 | string | Uint8Array, candidate: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, AccountId32]>;
+      executeDelegationRequest: AugmentedSubmittable<(delegator: AccountId32 | string | Uint8Array, candidate: AccountId32 | string | Uint8Array, useBalanceFrom: Option<MpMultipurposeLiquidityBondKind> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, AccountId32, Option<MpMultipurposeLiquidityBondKind>]>;
       /**
        * Execute leave candidates request
        **/
@@ -520,7 +530,7 @@ declare module '@polkadot/api-base/types/submittable' {
       /**
        * Join the set of collator candidates
        **/
-      joinCandidates: AugmentedSubmittable<(bond: u128 | AnyNumber | Uint8Array, liquidityToken: u32 | AnyNumber | Uint8Array, candidateCount: u32 | AnyNumber | Uint8Array, liquidityTokenCount: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128, u32, u32, u32]>;
+      joinCandidates: AugmentedSubmittable<(bond: u128 | AnyNumber | Uint8Array, liquidityToken: u32 | AnyNumber | Uint8Array, useBalanceFrom: Option<MpMultipurposeLiquidityBondKind> | null | object | string | Uint8Array, candidateCount: u32 | AnyNumber | Uint8Array, liquidityTokenCount: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128, u32, Option<MpMultipurposeLiquidityBondKind>, u32, u32]>;
       removeStakingLiquidityToken: AugmentedSubmittable<(pairedOrLiquidityToken: ParachainStakingPairedOrLiquidityToken | { Paired: any } | { Liquidity: any } | string | Uint8Array, currentLiquidityTokens: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [ParachainStakingPairedOrLiquidityToken, u32]>;
       /**
        * Request by collator candidate to decrease self bond by `less`
@@ -529,7 +539,7 @@ declare module '@polkadot/api-base/types/submittable' {
       /**
        * Request by collator candidate to increase self bond by `more`
        **/
-      scheduleCandidateBondMore: AugmentedSubmittable<(more: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
+      scheduleCandidateBondMore: AugmentedSubmittable<(more: u128 | AnyNumber | Uint8Array, useBalanceFrom: Option<MpMultipurposeLiquidityBondKind> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128, Option<MpMultipurposeLiquidityBondKind>]>;
       /**
        * Request bond less for delegators wrt a specific collator candidate.
        **/
@@ -537,7 +547,7 @@ declare module '@polkadot/api-base/types/submittable' {
       /**
        * Request to bond more for delegators wrt a specific collator candidate.
        **/
-      scheduleDelegatorBondMore: AugmentedSubmittable<(candidate: AccountId32 | string | Uint8Array, more: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, u128]>;
+      scheduleDelegatorBondMore: AugmentedSubmittable<(candidate: AccountId32 | string | Uint8Array, more: u128 | AnyNumber | Uint8Array, useBalanceFrom: Option<MpMultipurposeLiquidityBondKind> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, u128, Option<MpMultipurposeLiquidityBondKind>]>;
       /**
        * Request to leave the set of candidates. If successful, the account is immediately
        * removed from the candidate pool to prevent selection as a collator.
@@ -751,7 +761,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - DbWrites per key id: `KeyOwner`
        * # </weight>
        **/
-      setKeys: AugmentedSubmittable<(keys: MangataKusamaRuntimeSessionKeys | { aura?: any } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataKusamaRuntimeSessionKeys, Bytes]>;
+      setKeys: AugmentedSubmittable<(keys: MangataRococoRuntimeSessionKeys | { aura?: any } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataRococoRuntimeSessionKeys, Bytes]>;
       /**
        * Generic tx
        **/
@@ -1148,7 +1158,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - Weight of derivative `call` execution + T::WeightInfo::dispatch_as().
        * # </weight>
        **/
-      dispatchAs: AugmentedSubmittable<(asOrigin: MangataKusamaRuntimeOriginCaller | { system: any } | { Void: any } | { PolkadotXcm: any } | { CumulusXcm: any } | { Council: any } | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataKusamaRuntimeOriginCaller, Call]>;
+      dispatchAs: AugmentedSubmittable<(asOrigin: MangataRococoRuntimeOriginCaller | { system: any } | { Void: any } | { PolkadotXcm: any } | { CumulusXcm: any } | { Council: any } | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataRococoRuntimeOriginCaller, Call]>;
       /**
        * Generic tx
        **/
@@ -1389,7 +1399,7 @@ declare module '@polkadot/api-base/types/submittable' {
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
     xyk: {
-      activateLiquidity: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
+      activateLiquidity: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array, useBalanceFrom: Option<MpMultipurposeLiquidityActivateKind> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128, Option<MpMultipurposeLiquidityActivateKind>]>;
       burnLiquidity: AugmentedSubmittable<(firstAssetId: u32 | AnyNumber | Uint8Array, secondAssetId: u32 | AnyNumber | Uint8Array, liquidityAssetAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u128]>;
       buyAsset: AugmentedSubmittable<(soldAssetId: u32 | AnyNumber | Uint8Array, boughtAssetId: u32 | AnyNumber | Uint8Array, boughtAssetAmount: u128 | AnyNumber | Uint8Array, maxAmountIn: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u128, u128]>;
       claimRewards: AugmentedSubmittable<(liquidityTokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
