@@ -842,6 +842,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       InvalidIndex: AugmentedError<ApiType>;
       /**
+       * Proposal has not been approved.
+       **/
+      ProposalNotApproved: AugmentedError<ApiType>;
+      /**
        * Too many approvals in the queue.
        **/
       TooManyApprovals: AugmentedError<ApiType>;
@@ -907,6 +911,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       InvalidScheduleParams: AugmentedError<ApiType>;
       /**
+       * The provided vesting index exceeds the current number of vesting schedules
+       **/
+      InvalidVestingIndex: AugmentedError<ApiType>;
+      /**
        * An overflow or underflow has occured
        **/
       MathError: AugmentedError<ApiType>;
@@ -964,7 +972,7 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       AssetHasNoReserve: AugmentedError<ApiType>;
       /**
-       * The specified index does not exist in a MultiAssets struct
+       * The specified index does not exist in a MultiAssets struct.
        **/
       AssetIndexNonExistent: AugmentedError<ApiType>;
       /**
@@ -983,22 +991,29 @@ declare module '@polkadot/api-base/types/errors' {
       DestinationNotInvertible: AugmentedError<ApiType>;
       /**
        * We tried sending distinct asset and fee but they have different
-       * reserve chains
+       * reserve chains.
        **/
       DistinctReserveForAssetAndFee: AugmentedError<ApiType>;
       /**
-       * The fee amount was zero when the fee specification extrinsic is
-       * being used.
+       * Fee is not enough.
        **/
-      FeeCannotBeZero: AugmentedError<ApiType>;
+      FeeNotEnough: AugmentedError<ApiType>;
       /**
        * Could not get ancestry of asset reserve location.
        **/
       InvalidAncestry: AugmentedError<ApiType>;
       /**
+       * The MultiAsset is invalid.
+       **/
+      InvalidAsset: AugmentedError<ApiType>;
+      /**
        * Invalid transfer destination.
        **/
       InvalidDest: AugmentedError<ApiType>;
+      /**
+       * MinXcmFee not registered for certain reserve location
+       **/
+      MinXcmFeeNotDefined: AugmentedError<ApiType>;
       /**
        * Not cross-chain transfer.
        **/
@@ -1008,11 +1023,11 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       NotCrossChainTransferableCurrency: AugmentedError<ApiType>;
       /**
-       * Not fungible asset.
+       * Not supported MultiLocation
        **/
-      NotFungible: AugmentedError<ApiType>;
+      NotSupportedMultiLocation: AugmentedError<ApiType>;
       /**
-       * The number of assets to be sent is over the maximum
+       * The number of assets to be sent is over the maximum.
        **/
       TooManyAssetsBeingSent: AugmentedError<ApiType>;
       /**
@@ -1023,6 +1038,14 @@ declare module '@polkadot/api-base/types/errors' {
        * XCM execution failed.
        **/
       XcmExecutionFailed: AugmentedError<ApiType>;
+      /**
+       * The transfering asset amount is zero.
+       **/
+      ZeroAmount: AugmentedError<ApiType>;
+      /**
+       * The fee is zero.
+       **/
+      ZeroFee: AugmentedError<ApiType>;
       /**
        * Generic error
        **/

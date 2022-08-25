@@ -174,32 +174,26 @@ declare module '@polkadot/api-base/types/events' {
     dmpQueue: {
       /**
        * Downward message executed with the given outcome.
-       * \[ id, outcome \]
        **/
       ExecutedDownward: AugmentedEvent<ApiType, [U8aFixed, XcmV2TraitsOutcome]>;
       /**
        * Downward message is invalid XCM.
-       * \[ id \]
        **/
       InvalidFormat: AugmentedEvent<ApiType, [U8aFixed]>;
       /**
        * Downward message is overweight and was placed in the overweight queue.
-       * \[ id, index, required \]
        **/
       OverweightEnqueued: AugmentedEvent<ApiType, [U8aFixed, u64, u64]>;
       /**
        * Downward message from the overweight queue was executed.
-       * \[ index, used \]
        **/
       OverweightServiced: AugmentedEvent<ApiType, [u64, u64]>;
       /**
        * Downward message is unsupported version of XCM.
-       * \[ id \]
        **/
       UnsupportedVersion: AugmentedEvent<ApiType, [U8aFixed]>;
       /**
        * The weight limit for handling downward messages was reached.
-       * \[ id, remaining, required \]
        **/
       WeightExhausted: AugmentedEvent<ApiType, [U8aFixed, u64, u64]>;
       /**
@@ -441,12 +435,10 @@ declare module '@polkadot/api-base/types/events' {
     parachainSystem: {
       /**
        * Downward messages were processed using the given weight.
-       * \[ weight_used, result_mqc_head \]
        **/
       DownwardMessagesProcessed: AugmentedEvent<ApiType, [u64, H256]>;
       /**
        * Some downward messages have been received and will be processed.
-       * \[ count \]
        **/
       DownwardMessagesReceived: AugmentedEvent<ApiType, [u32]>;
       /**
@@ -763,6 +755,10 @@ declare module '@polkadot/api-base/types/events' {
        **/
       BatchCompleted: AugmentedEvent<ApiType, []>;
       /**
+       * Batch of dispatches completed but has errors.
+       **/
+      BatchCompletedWithErrors: AugmentedEvent<ApiType, []>;
+      /**
        * Batch of dispatches did not complete fully. Index of first failing dispatch given, as
        * well as the error.
        **/
@@ -775,6 +771,10 @@ declare module '@polkadot/api-base/types/events' {
        * A single item within a Batch of dispatches has completed with no error.
        **/
       ItemCompleted: AugmentedEvent<ApiType, []>;
+      /**
+       * A single item within a Batch of dispatches has completed with error.
+       **/
+      ItemFailed: AugmentedEvent<ApiType, [SpRuntimeDispatchError]>;
       /**
        * Generic event
        **/
@@ -842,29 +842,9 @@ declare module '@polkadot/api-base/types/events' {
     };
     xTokens: {
       /**
-       * Transferred.
-       **/
-      Transferred: AugmentedEvent<ApiType, [AccountId32, u32, u128, XcmV1MultiLocation]>;
-      /**
-       * Transferred `MultiAsset`.
-       **/
-      TransferredMultiAsset: AugmentedEvent<ApiType, [AccountId32, XcmV1MultiAsset, XcmV1MultiLocation]>;
-      /**
        * Transferred `MultiAsset` with fee.
        **/
-      TransferredMultiAssets: AugmentedEvent<ApiType, [AccountId32, XcmV1MultiassetMultiAssets, XcmV1MultiLocation]>;
-      /**
-       * Transferred `MultiAsset` with fee.
-       **/
-      TransferredMultiAssetWithFee: AugmentedEvent<ApiType, [AccountId32, XcmV1MultiAsset, XcmV1MultiAsset, XcmV1MultiLocation]>;
-      /**
-       * Transferred `MultiAsset` with fee.
-       **/
-      TransferredMultiCurrencies: AugmentedEvent<ApiType, [AccountId32, Vec<ITuple<[u32, u128]>>, XcmV1MultiLocation]>;
-      /**
-       * Transferred with fee.
-       **/
-      TransferredWithFee: AugmentedEvent<ApiType, [AccountId32, u32, u128, u128, XcmV1MultiLocation]>;
+      TransferredMultiAssets: AugmentedEvent<ApiType, [AccountId32, XcmV1MultiassetMultiAssets, XcmV1MultiAsset, XcmV1MultiLocation]>;
       /**
        * Generic event
        **/

@@ -36,7 +36,7 @@ export const mRpc = {
           type: "Balance"
         }
       ],
-      type: "RpcResult<Balance>"
+      type: "XYKRpcResult<Balance>"
     },
     calculate_sell_price: {
       description: "",
@@ -54,7 +54,7 @@ export const mRpc = {
           type: "Balance"
         }
       ],
-      type: "RpcResult<Balance>"
+      type: "XYKRpcResult<Balance>"
     },
     get_burn_amount: {
       description: "",
@@ -90,7 +90,7 @@ export const mRpc = {
           type: "Balance"
         }
       ],
-      type: "RpcResult<Balance>"
+      type: "XYKRpcResult<Balance>"
     },
     calculate_buy_price_id: {
       description: "",
@@ -108,7 +108,7 @@ export const mRpc = {
           type: "Balance"
         }
       ],
-      type: "RpcResult<Balance>"
+      type: "XYKRpcResult<Balance>"
     },
     calculate_rewards_amount: {
       description: "",
@@ -122,7 +122,49 @@ export const mRpc = {
           type: "TokenId"
         }
       ],
-      type: "RpcResult<Balance>"
+      type: "XYKRpcResult<Balance>"
+    },
+    get_max_instant_unreserve_amount: {
+      description: "",
+      params: [
+        {
+          name: "user",
+          type: "AccountId"
+        },
+        {
+          name: "liquidity_asset_id",
+          type: "TokenId"
+        }
+      ],
+      type: "Balance"
+    },
+    get_max_instant_burn_amount: {
+      description: "",
+      params: [
+        {
+          name: "user",
+          type: "AccountId"
+        },
+        {
+          name: "liquidity_asset_id",
+          type: "TokenId"
+        }
+      ],
+      type: "Balance"
+    },
+    get_vesting_locked_at: {
+      description: "",
+      params: [
+        {
+          name: "who",
+          type: "AccountId"
+        },
+        {
+          name: "token_id",
+          type: "TokenId"
+        }
+      ],
+      type: "VestingInfosWithLockedAt<Balance, BlockNumber>"
     }
   }
 };

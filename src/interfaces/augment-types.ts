@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { RPCAmountsResult, RpcResult, ShufflingSeed, TokenId } from '@mangata-finance/interfaces/default';
+import type { RPCAmountsResult, ShufflingSeed, TokenId, VestingInfosWithLockedAt, XYKRpcResult } from '@mangata-finance/interfaces/default';
 import type { Data, StorageKey } from '@polkadot/types';
 import type { BitVec, Bool, Bytes, I128, I16, I256, I32, I64, I8, Json, Null, Raw, Text, Type, U128, U16, U256, U32, U64, U8, USize, bool, i128, i16, i256, i32, i64, i8, u128, u16, u256, u32, u64, u8, usize } from '@polkadot/types-codec';
 import type { AssetApproval, AssetApprovalKey, AssetBalance, AssetDestroyWitness, AssetDetails, AssetMetadata, TAssetBalance, TAssetDepositBalance } from '@polkadot/types/interfaces/assets';
@@ -814,7 +814,6 @@ declare module '@polkadot/types/types/registry' {
     RoundState: RoundState;
     RPCAmountsResult: RPCAmountsResult;
     RpcMethods: RpcMethods;
-    RpcResult: RpcResult;
     RuntimeDbWeight: RuntimeDbWeight;
     RuntimeDispatchInfo: RuntimeDispatchInfo;
     RuntimeVersion: RuntimeVersion;
@@ -1058,6 +1057,7 @@ declare module '@polkadot/types/types/registry' {
     VersionedXcm: VersionedXcm;
     VersionMigrationStage: VersionMigrationStage;
     VestingInfo: VestingInfo;
+    VestingInfosWithLockedAt: VestingInfosWithLockedAt;
     VestingSchedule: VestingSchedule;
     Vote: Vote;
     VoteIndex: VoteIndex;
@@ -1112,5 +1112,6 @@ declare module '@polkadot/types/types/registry' {
     XcmV1: XcmV1;
     XcmV2: XcmV2;
     XcmVersion: XcmVersion;
+    XYKRpcResult: XYKRpcResult;
   } // InterfaceTypes
 } // declare module

@@ -13,13 +13,21 @@ export default {
       seed: "ShufflingSeed",
       count: "BlockNumber"
     },
-    RpcResult: {
+    XYKRpcResult: {
       price: "Balance"
     },
     RPCAmountsResult: {
       firstAssetAmount: "Balance",
       secondAssetAmount: "Balance"
     },
-    TokenId: "u32"
+    VestingInfo: {
+      locked: "Balance",
+      perBlock: "Balance",
+      startingBlock: "BlockNumber"
+    },
+    TokenId: "u32",
+    VestingInfosWithLockedAt: {
+      vestingInfosWithLockedAt: "Vec<(VestingInfo, Balance)>"
+    }
   }
 };
