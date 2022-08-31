@@ -27,7 +27,8 @@ export default {
     },
     TokenId: "u32",
     VestingInfosWithLockedAt: {
-      vestingInfosWithLockedAt: "Vec<(VestingInfo, Balance)>"
+      vestingInfosWithLockedAt:
+        "Vec<(VestingInfo<Balance, BlockNumber>, Balance)>"
     }
   }
 };
