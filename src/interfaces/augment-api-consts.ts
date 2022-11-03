@@ -9,20 +9,6 @@ import type { FrameSupportPalletId, FrameSupportWeightsRuntimeDbWeight, FrameSys
 
 declare module '@polkadot/api-base/types/consts' {
   export interface AugmentedConsts<ApiType extends ApiTypes> {
-    assetRegistry: {
-      treasuryAddress: AccountId32 & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    assetsInfo: {
-      relayNativeTokensValueScaleFactor: u128 & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
     authorship: {
       /**
        * The number of blocks back we should accept uncles.
@@ -36,6 +22,7 @@ declare module '@polkadot/api-base/types/consts' {
       [key: string]: Codec;
     };
     bootstrap: {
+      bootstrapUpdateBuffer: u32 & AugmentedConst<ApiType>;
       treasuryPalletId: FrameSupportPalletId & AugmentedConst<ApiType>;
       /**
        * Generic const
@@ -80,6 +67,21 @@ declare module '@polkadot/api-base/types/consts' {
        * Number of runners_up to keep.
        **/
       desiredRunnersUp: u32 & AugmentedConst<ApiType>;
+      /**
+       * The maximum number of candidates in a phragmen election.
+       * 
+       * Warning: The election happens onchain, and this value will determine
+       * the size of the election. When this limit is reached no more
+       * candidates are accepted in the election.
+       **/
+      maxCandidates: u32 & AugmentedConst<ApiType>;
+      /**
+       * The maximum number of voters to allow in a phragmen election.
+       * 
+       * Warning: This impacts the size of the election which is run onchain.
+       * When the limit is reached the new voters are ignored.
+       **/
+      maxVoters: u32 & AugmentedConst<ApiType>;
       /**
        * Identifier for the elections-phragmen pallet's lock
        **/
