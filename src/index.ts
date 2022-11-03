@@ -124,7 +124,7 @@ export const mRpc = {
       ],
       type: "XYKRpcResult<Balance>"
     },
-      calculate_rewards_amount_v2: {
+    calculate_rewards_amount_v2: {
       description: "",
       params: [
         {
@@ -150,7 +150,7 @@ export const mRpc = {
           type: "TokenId"
         }
       ],
-      type: "Balance"
+      type: "u128"
     },
     get_max_instant_burn_amount: {
       description: "",
@@ -164,7 +164,7 @@ export const mRpc = {
           type: "TokenId"
         }
       ],
-      type: "Balance"
+      type: "u128"
     },
     get_vesting_locked_at: {
       description: "",

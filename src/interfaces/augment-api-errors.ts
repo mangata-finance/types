@@ -7,64 +7,26 @@ declare module '@polkadot/api-base/types/errors' {
   export interface AugmentedErrors<ApiType extends ApiTypes> {
     assetRegistry: {
       /**
-       * AssetId exists
+       * Asset was not found.
        **/
-      AssetIdExisted: AugmentedError<ApiType>;
+      AssetNotFound: AugmentedError<ApiType>;
       /**
-       * AssetId not exists
+       * The version of the `VersionedMultiLocation` value used is not able
+       * to be interpreted.
        **/
-      AssetIdNotExists: AugmentedError<ApiType>;
+      BadVersion: AugmentedError<ApiType>;
       /**
-       * The given location could not be used (e.g. because it cannot be expressed in the
-       * desired version of XCM).
+       * Another asset was already register with this asset id.
        **/
-      BadLocation: AugmentedError<ApiType>;
+      ConflictingAssetId: AugmentedError<ApiType>;
       /**
-       * MultiLocation existed
+       * Another asset was already register with this location.
        **/
-      MultiLocationExisted: AugmentedError<ApiType>;
+      ConflictingLocation: AugmentedError<ApiType>;
       /**
-       * Creating a token for the foreign asset failed
+       * The asset id is invalid.
        **/
-      TokenCreationFailed: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    assetsInfo: {
-      /**
-       * Asset does not exist
-       **/
-      AssetNotExist: AugmentedError<ApiType>;
-      /**
-       * A decimals point value is out of range
-       **/
-      DecimalsOutOfRange: AugmentedError<ApiType>;
-      /**
-       * A description is too long.
-       **/
-      TooLongDescription: AugmentedError<ApiType>;
-      /**
-       * A name is too long.
-       **/
-      TooLongName: AugmentedError<ApiType>;
-      /**
-       * A symbol is too long.
-       **/
-      TooLongSymbol: AugmentedError<ApiType>;
-      /**
-       * A description is too short.
-       **/
-      TooShortDescription: AugmentedError<ApiType>;
-      /**
-       * A name is too short.
-       **/
-      TooShortName: AugmentedError<ApiType>;
-      /**
-       * A symbol is too short.
-       **/
-      TooShortSymbol: AugmentedError<ApiType>;
+      InvalidAssetId: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -110,9 +72,17 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       AlreadyStarted: AugmentedError<ApiType>;
       /**
+       * Bootstrap already Finished
+       **/
+      BootstrapFinished: AugmentedError<ApiType>;
+      /**
        * no rewards to claim
        **/
       BootstrapNotReadyToBeFinished: AugmentedError<ApiType>;
+      /**
+       * Bootstrap not scheduled
+       **/
+      BootstrapNotSchduled: AugmentedError<ApiType>;
       /**
        * Bootstrap cant be scheduled in past
        **/
@@ -157,6 +127,15 @@ declare module '@polkadot/api-base/types/errors' {
        * Token does not exists
        **/
       TokenIdDoesNotExists: AugmentedError<ApiType>;
+      /**
+       * Token activations failed
+       **/
+      TokensActivationFailed: AugmentedError<ApiType>;
+      /**
+       * Bootstrap can only be updated or cancelled
+       * BootstrapUpdateBuffer blocks or more before bootstrap start
+       **/
+      TooLateToUpdateBootstrap: AugmentedError<ApiType>;
       /**
        * User cannot participate at this moment
        **/
@@ -412,13 +391,13 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       NoVotes: AugmentedError<ApiType>;
       /**
-       * Cannot report self.
-       **/
-      ReportSelf: AugmentedError<ApiType>;
-      /**
        * Runner cannot re-submit candidacy.
        **/
       RunnerUpSubmit: AugmentedError<ApiType>;
+      /**
+       * Too many candidates have been created.
+       **/
+      TooManyCandidates: AugmentedError<ApiType>;
       /**
        * Cannot vote more than candidates.
        **/
@@ -833,6 +812,11 @@ declare module '@polkadot/api-base/types/errors' {
       [key: string]: AugmentedError<ApiType>;
     };
     treasury: {
+      /**
+       * The spend origin is valid but the amount it is allowed to spend is lower than the
+       * amount to be spent.
+       **/
+      InsufficientPermission: AugmentedError<ApiType>;
       /**
        * Proposer's balance is too low.
        **/

@@ -5,29 +5,13 @@ import type { ApiTypes } from '@polkadot/api-base/types';
 import type { Null, Option, Result, U256, U8aFixed, Vec, bool, u128, u32, u64, u8 } from '@polkadot/types-codec';
 import type { ITuple } from '@polkadot/types-codec/types';
 import type { AccountId32, H160, H256, Perbill } from '@polkadot/types/interfaces/runtime';
-import type { ArtemisCoreApp, FrameSupportTokensMiscBalanceStatus, FrameSupportWeightsDispatchInfo, PalletAssetsInfoAssetInfo, PalletIssuanceIssuanceInfo, PalletIssuanceTgeInfo, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingDelegatorAdded, SpRuntimeDispatchError, XcmV1MultiAsset, XcmV1MultiLocation, XcmV1MultiassetMultiAssets, XcmV2Response, XcmV2TraitsError, XcmV2TraitsOutcome, XcmV2Xcm, XcmVersionedMultiAssets, XcmVersionedMultiLocation } from '@polkadot/types/lookup';
+import type { ArtemisCoreApp, FrameSupportTokensMiscBalanceStatus, FrameSupportWeightsDispatchInfo, OrmlTraitsAssetRegistryAssetMetadata, PalletIssuanceIssuanceInfo, PalletIssuanceTgeInfo, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingDelegatorAdded, SpRuntimeDispatchError, XcmV1MultiAsset, XcmV1MultiLocation, XcmV1MultiassetMultiAssets, XcmV2Response, XcmV2TraitsError, XcmV2TraitsOutcome, XcmV2Xcm, XcmVersionedMultiAssets, XcmVersionedMultiLocation } from '@polkadot/types/lookup';
 
 declare module '@polkadot/api-base/types/events' {
   export interface AugmentedEvents<ApiType extends ApiTypes> {
     assetRegistry: {
-      /**
-       * The asset registered.
-       **/
-      AssetRegistered: AugmentedEvent<ApiType, [u32, XcmV1MultiLocation]>;
-      /**
-       * The asset updated.
-       **/
-      AssetUpdated: AugmentedEvent<ApiType, [u32, XcmV1MultiLocation]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    assetsInfo: {
-      /**
-       * Asset info stored. [assetId, info]
-       **/
-      InfoStored: AugmentedEvent<ApiType, [u32, PalletAssetsInfoAssetInfo]>;
+      RegisteredAsset: AugmentedEvent<ApiType, [u32, OrmlTraitsAssetRegistryAssetMetadata]>;
+      UpdatedAsset: AugmentedEvent<ApiType, [u32, OrmlTraitsAssetRegistryAssetMetadata]>;
       /**
        * Generic event
        **/
@@ -54,6 +38,10 @@ declare module '@polkadot/api-base/types/events' {
        * Rewards claimed
        **/
       RewardsClaimed: AugmentedEvent<ApiType, [u32, u128]>;
+      /**
+       * The activation of the rewards liquidity tokens failed
+       **/
+      RewardsLiquidityAcitvationFailed: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       /**
        * Funds provisioned using vested tokens
        **/
@@ -701,6 +689,17 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
+    transactionPayment: {
+      /**
+       * A transaction fee `actual_fee`, of which `tip` was added to the minimum inclusion fee,
+       * has been paid by `who`.
+       **/
+      TransactionFeePaid: AugmentedEvent<ApiType, [AccountId32, u128, u128]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
     treasury: {
       /**
        * Some funds have been allocated.
@@ -726,6 +725,10 @@ declare module '@polkadot/api-base/types/events' {
        * Spending has finished; this is the amount that rolls over until next spend.
        **/
       Rollover: AugmentedEvent<ApiType, [u128]>;
+      /**
+       * A new spend proposal has been approved.
+       **/
+      SpendApproved: AugmentedEvent<ApiType, [u32, u128, AccountId32]>;
       /**
        * We have ended a spend period and will now allocate funds.
        **/
@@ -814,7 +817,7 @@ declare module '@polkadot/api-base/types/events' {
       /**
        * Some XCM failed.
        **/
-      Fail: AugmentedEvent<ApiType, [Option<H256>, XcmV2TraitsError]>;
+      Fail: AugmentedEvent<ApiType, [Option<H256>, XcmV2TraitsError, u64]>;
       /**
        * An XCM exceeded the individual message weight budget.
        **/
@@ -826,7 +829,7 @@ declare module '@polkadot/api-base/types/events' {
       /**
        * Some XCM was executed ok.
        **/
-      Success: AugmentedEvent<ApiType, [Option<H256>]>;
+      Success: AugmentedEvent<ApiType, [Option<H256>, u64]>;
       /**
        * An upward message was sent to the relay chain.
        **/

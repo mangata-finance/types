@@ -5,20 +5,13 @@ import type { ApiTypes } from '@polkadot/api-base/types';
 import type { Bytes, Compact, Option, U256, U8aFixed, Vec, bool, u128, u16, u32, u64 } from '@polkadot/types-codec';
 import type { AnyNumber, ITuple } from '@polkadot/types-codec/types';
 import type { AccountId32, Call, H160, H256, MultiAddress, Perbill } from '@polkadot/types/interfaces/runtime';
-import type { ArtemisCoreApp, ArtemisCoreMessage, CumulusPrimitivesParachainInherentParachainInherentData, MangataRococoRuntimeOriginCaller, MangataRococoRuntimeSessionKeys, MpMultipurposeLiquidityActivateKind, MpMultipurposeLiquidityBondKind, PalletElectionsPhragmenRenouncing, PalletIssuanceTgeInfo, PalletVestingMangataVestingInfo, ParachainStakingPairedOrLiquidityToken, SpRuntimeHeaderVerHeader, SpRuntimeMultiSignature, XcmV1MultiLocation, XcmV2WeightLimit, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm } from '@polkadot/types/lookup';
+import type { ArtemisCoreApp, ArtemisCoreMessage, CumulusPrimitivesParachainInherentParachainInherentData, MangataRococoRuntimeOriginCaller, MangataRococoRuntimeSessionKeys, MangataTypesAssetsCustomMetadata, MpMultipurposeLiquidityActivateKind, MpMultipurposeLiquidityBondKind, OrmlTraitsAssetRegistryAssetMetadata, PalletElectionsPhragmenRenouncing, PalletIssuanceTgeInfo, PalletVestingMangataVestingInfo, ParachainStakingPairedOrLiquidityToken, SpRuntimeHeaderVerHeader, SpRuntimeMultiSignature, XcmV1MultiLocation, XcmV2WeightLimit, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm } from '@polkadot/types/lookup';
 
 declare module '@polkadot/api-base/types/submittable' {
   export interface AugmentedSubmittables<ApiType extends ApiTypes> {
     assetRegistry: {
-      registerAsset: AugmentedSubmittable<(location: XcmVersionedMultiLocation | { V0: any } | { V1: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [XcmVersionedMultiLocation]>;
-      updateAsset: AugmentedSubmittable<(assetId: u32 | AnyNumber | Uint8Array, location: XcmVersionedMultiLocation | { V0: any } | { V1: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, XcmVersionedMultiLocation]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    assetsInfo: {
-      setInfo: AugmentedSubmittable<(asset: u32 | AnyNumber | Uint8Array, name: Option<Bytes> | null | object | string | Uint8Array, symbol: Option<Bytes> | null | object | string | Uint8Array, description: Option<Bytes> | null | object | string | Uint8Array, decimals: Option<u32> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, Option<Bytes>, Option<Bytes>, Option<Bytes>, Option<u32>]>;
+      registerAsset: AugmentedSubmittable<(metadata: OrmlTraitsAssetRegistryAssetMetadata | { decimals?: any; name?: any; symbol?: any; existentialDeposit?: any; location?: any; additional?: any } | string | Uint8Array, assetId: Option<u32> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [OrmlTraitsAssetRegistryAssetMetadata, Option<u32>]>;
+      updateAsset: AugmentedSubmittable<(assetId: u32 | AnyNumber | Uint8Array, decimals: Option<u32> | null | object | string | Uint8Array, name: Option<Bytes> | null | object | string | Uint8Array, symbol: Option<Bytes> | null | object | string | Uint8Array, existentialDeposit: Option<u128> | null | object | string | Uint8Array, location: Option<Option<XcmVersionedMultiLocation>> | null | object | string | Uint8Array, additional: Option<MangataTypesAssetsCustomMetadata> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, Option<u32>, Option<Bytes>, Option<Bytes>, Option<u128>, Option<Option<XcmVersionedMultiLocation>>, Option<MangataTypesAssetsCustomMetadata>]>;
       /**
        * Generic tx
        **/
@@ -35,20 +28,15 @@ declare module '@polkadot/api-base/types/submittable' {
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
     bootstrap: {
-      /**
-       * claim liquidity tokens from pool created as a result of bootstrap event finish
-       **/
-      claimRewards: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
-      claimRewardsForAccount: AugmentedSubmittable<(account: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
-      finalize: AugmentedSubmittable<(limit: Option<u32> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Option<u32>]>;
+      cancelBootstrap: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
+      claimAndActivateLiquidityTokens: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
+      claimLiquidityTokens: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
+      claimLiquidityTokensForAccount: AugmentedSubmittable<(account: AccountId32 | string | Uint8Array, activateRewards: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, bool]>;
+      finalize: AugmentedSubmittable<(limit: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32]>;
       /**
        * provisions non-vested/non-locked tokens into the boostrstrap
        **/
       provision: AugmentedSubmittable<(tokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
-      /**
-       * provisions vested/locked tokens into the boostrstrap
-       **/
-      provisionVested: AugmentedSubmittable<(tokenId: u32 | AnyNumber | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u128]>;
       /**
        * schedules start of an bootstrap event where
        * - ido_start - number of block when bootstrap event should be started
@@ -56,16 +44,13 @@ declare module '@polkadot/api-base/types/submittable' {
        * - public_phase_length - length of public phase in blocks
        * - max_first_token_to_mgx_ratio - maximum tokens ratio that is held by the pallet during bootstrap event
        * 
-       * max_first_token_to_mgx_ratio[0]       KSM VALUATION
-       * --------------------------------- < ---------------------
-       * max_first_token_to_mgx_ratio[1]       MGX VALUATION
-       * 
        * bootstrap phases:
        * - BeforeStart - blocks 0..ido_start
        * - WhitelistPhase - blocks ido_start..(ido_start + whitelist_phase_length)
        * - PublicPhase - blocks (ido_start + whitelist_phase_length)..(ido_start + whitelist_phase_length  + public_phase_lenght)
        **/
-      scheduleBootstrap: AugmentedSubmittable<(firstTokenId: u32 | AnyNumber | Uint8Array, secondTokenId: u32 | AnyNumber | Uint8Array, idoStart: u32 | AnyNumber | Uint8Array, whitelistPhaseLength: u32 | AnyNumber | Uint8Array, publicPhaseLenght: u32 | AnyNumber | Uint8Array, maxFirstToSecondRatio: ITuple<[u128, u128]> | [u128 | AnyNumber | Uint8Array, u128 | AnyNumber | Uint8Array]) => SubmittableExtrinsic<ApiType>, [u32, u32, u32, u32, u32, ITuple<[u128, u128]>]>;
+      scheduleBootstrap: AugmentedSubmittable<(firstTokenId: u32 | AnyNumber | Uint8Array, secondTokenId: u32 | AnyNumber | Uint8Array, idoStart: u32 | AnyNumber | Uint8Array, whitelistPhaseLength: Option<u32> | null | object | string | Uint8Array, publicPhaseLenght: u32 | AnyNumber | Uint8Array, maxFirstToSecondRatio: Option<ITuple<[u128, u128]>> | null | object | string | Uint8Array, promoteBootstrapPool: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32, u32, Option<u32>, u32, Option<ITuple<[u128, u128]>>, bool]>;
+      updatePromoteBootstrapPool: AugmentedSubmittable<(promoteBootstrapPool: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [bool]>;
       /**
        * provides a list of whitelisted accounts, list is extended with every call
        **/
@@ -339,11 +324,18 @@ declare module '@polkadot/api-base/types/submittable' {
        **/
       cleanDefunctVoters: AugmentedSubmittable<(numVoters: u32 | AnyNumber | Uint8Array, numDefunct: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32]>;
       /**
+       * This comment seems incorrect. As per implementation, rerun_election will force
+       * an election even if a replacement was found.
+       * Based on Shoeb comment: https://github.com/mangata-finance/substrate/pull/69#discussion_r993216128
        * Remove a particular member from the set. This is effective immediately and the bond of
        * the outgoing member is slashed.
        * 
        * If a runner-up is available, then the best runner-up will be removed and replaces the
-       * outgoing member. Otherwise, a new phragmen election is started.
+       * outgoing member. Otherwise, if `rerun_election` is `true`, a new phragmen election is
+       * started, else, nothing happens.
+       * 
+       * If `slash_bond` is set to true, the bond of the member being removed is slashed. Else,
+       * it is returned.
        * 
        * The dispatch origin of this call must be root.
        * 
@@ -354,7 +346,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * will go into phragmen, we assume full block for now.
        * # </weight>
        **/
-      removeMember: AugmentedSubmittable<(who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, hasReplacement: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, bool]>;
+      removeMember: AugmentedSubmittable<(who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, slashBond: bool | boolean | Uint8Array, rerunElection: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, bool, bool]>;
       /**
        * Remove `origin` as a voter.
        * 
@@ -1105,6 +1097,17 @@ declare module '@polkadot/api-base/types/submittable' {
        * exist altogether, thus there is no way it would have been approved in the first place.
        **/
       removeApproval: AugmentedSubmittable<(proposalId: Compact<u32> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Compact<u32>]>;
+      /**
+       * Propose and approve a spend of treasury funds.
+       * 
+       * - `origin`: Must be `SpendOrigin` with the `Success` value being at least `amount`.
+       * - `amount`: The amount to be transferred from the treasury to the `beneficiary`.
+       * - `beneficiary`: The destination account for the transfer.
+       * 
+       * NOTE: For record-keeping purposes, the proposer is deemed to be equivalent to the
+       * beneficiary.
+       **/
+      spend: AugmentedSubmittable<(amount: Compact<u128> | AnyNumber | Uint8Array, beneficiary: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Compact<u128>, MultiAddress]>;
       /**
        * Generic tx
        **/
