@@ -150,7 +150,7 @@ export const mRpc = {
           type: "TokenId"
         }
       ],
-      type: "u128"
+      type: "Balance"
     },
     get_max_instant_burn_amount: {
       description: "",
@@ -164,7 +164,7 @@ export const mRpc = {
           type: "TokenId"
         }
       ],
-      type: "u128"
+      type: "Balance"
     },
     get_vesting_locked_at: {
       description: "",
