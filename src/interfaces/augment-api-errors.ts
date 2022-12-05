@@ -96,11 +96,11 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       MathOverflow: AugmentedError<ApiType>;
       /**
-       * Not enought funds for provisio
+       * Not enough funds for provision
        **/
       NotEnoughAssets: AugmentedError<ApiType>;
       /**
-       * Not enought funds for provisio (vested)
+       * Not enough funds for provision (vested)
        **/
       NotEnoughVestedAssets: AugmentedError<ApiType>;
       /**
@@ -152,47 +152,6 @@ declare module '@polkadot/api-base/types/errors' {
        * wrong ratio
        **/
       WrongRatio: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    bridge: {
-      /**
-       * Target application not found.
-       **/
-      AppNotFound: AugmentedError<ApiType>;
-      /**
-       * Updated AppId is the same as current
-       **/
-      DifferentAppIdRequired: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    bridgedAsset: {
-      /**
-       * Free balance got underflowed after burning.
-       **/
-      FreeBurningUnderflow: AugmentedError<ApiType>;
-      /**
-       * Free balance got overflowed after minting.
-       **/
-      FreeMintingOverflow: AugmentedError<ApiType>;
-      /**
-       * Free balance got overflowed after transfer.
-       **/
-      FreeTransferOverflow: AugmentedError<ApiType>;
-      InsufficientBalance: AugmentedError<ApiType>;
-      /**
-       * Total issuance got underflowed after burning.
-       **/
-      TotalBurningUnderflow: AugmentedError<ApiType>;
-      /**
-       * Total issuance got overflowed after minting.
-       **/
-      TotalMintingOverflow: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -341,132 +300,6 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
-    elections: {
-      /**
-       * Duplicated candidate submission.
-       **/
-      DuplicatedCandidate: AugmentedError<ApiType>;
-      /**
-       * Candidate does not have enough funds.
-       **/
-      InsufficientCandidateFunds: AugmentedError<ApiType>;
-      /**
-       * The renouncing origin presented a wrong `Renouncing` parameter.
-       **/
-      InvalidRenouncing: AugmentedError<ApiType>;
-      /**
-       * Prediction regarding replacement after member removal is wrong.
-       **/
-      InvalidReplacement: AugmentedError<ApiType>;
-      /**
-       * The provided count of number of votes is incorrect.
-       **/
-      InvalidVoteCount: AugmentedError<ApiType>;
-      /**
-       * The provided count of number of candidates is incorrect.
-       **/
-      InvalidWitnessData: AugmentedError<ApiType>;
-      /**
-       * Cannot vote with stake less than minimum balance.
-       **/
-      LowBalance: AugmentedError<ApiType>;
-      /**
-       * Cannot vote more than maximum allowed.
-       **/
-      MaximumVotesExceeded: AugmentedError<ApiType>;
-      /**
-       * Member cannot re-submit candidacy.
-       **/
-      MemberSubmit: AugmentedError<ApiType>;
-      /**
-       * Must be a voter.
-       **/
-      MustBeVoter: AugmentedError<ApiType>;
-      /**
-       * Not a member.
-       **/
-      NotMember: AugmentedError<ApiType>;
-      /**
-       * Must vote for at least one candidate.
-       **/
-      NoVotes: AugmentedError<ApiType>;
-      /**
-       * Runner cannot re-submit candidacy.
-       **/
-      RunnerUpSubmit: AugmentedError<ApiType>;
-      /**
-       * Too many candidates have been created.
-       **/
-      TooManyCandidates: AugmentedError<ApiType>;
-      /**
-       * Cannot vote more than candidates.
-       **/
-      TooManyVotes: AugmentedError<ApiType>;
-      /**
-       * Voter can not pay voting bond.
-       **/
-      UnableToPayBond: AugmentedError<ApiType>;
-      /**
-       * Cannot vote when no candidates or members exist.
-       **/
-      UnableToVote: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    erc20: {
-      /**
-       * Asset could not be burned
-       **/
-      BurnFailure: AugmentedError<ApiType>;
-      /**
-       * Asset ID is invalid.
-       **/
-      InvalidAssetId: AugmentedError<ApiType>;
-      /**
-       * The submitted payload could not be decoded.
-       **/
-      InvalidPayload: AugmentedError<ApiType>;
-      /**
-       * The recipient address is null/default value
-       **/
-      NullRecipient: AugmentedError<ApiType>;
-      /**
-       * Token creation failed
-       **/
-      TokenCreationFailed: AugmentedError<ApiType>;
-      /**
-       * Passed amount is too big
-       **/
-      TooBigAmount: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    eth: {
-      /**
-       * Asset could not be burned
-       **/
-      BurnFailure: AugmentedError<ApiType>;
-      /**
-       * The submitted payload could not be decoded.
-       **/
-      InvalidPayload: AugmentedError<ApiType>;
-      /**
-       * Token creation failed
-       **/
-      TokenCreationFailed: AugmentedError<ApiType>;
-      /**
-       * Passed amount is too big
-       **/
-      TooBigAmount: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
     issuance: {
       /**
        * The issuance config has already been initialized
@@ -492,6 +325,10 @@ declare module '@polkadot/api-base/types/errors' {
        * TGE must be finalized before issuance config is inti
        **/
       TGENotFinalized: AugmentedError<ApiType>;
+      /**
+       * unknown pool
+       **/
+      UnknownPool: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -866,20 +703,6 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
-    verifier: {
-      /**
-       * The message failed verification.
-       **/
-      Invalid: AugmentedError<ApiType>;
-      /**
-       * Verification scheme is not supported.
-       **/
-      NotSupported: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
     vesting: {
       /**
        * Amount being transferred is too low to create a vesting schedule.
@@ -1044,6 +867,9 @@ declare module '@polkadot/api-base/types/errors' {
        * Asset does not exists
        **/
       AssetDoesNotExists: AugmentedError<ApiType>;
+      CalculateCumulativeWorkMaxRatioMathError: AugmentedError<ApiType>;
+      CalculateRewardsAllMathError: AugmentedError<ApiType>;
+      CalculateRewardsMathError: AugmentedError<ApiType>;
       /**
        * Pool considting of passed tokens id is blacklisted
        **/
@@ -1064,6 +890,7 @@ declare module '@polkadot/api-base/types/errors' {
        * Insufficient output amount
        **/
       InsufficientOutputAmount: AugmentedError<ApiType>;
+      LiquidityCheckpointMathError: AugmentedError<ApiType>;
       /**
        * Liquidity token creation failed
        **/
@@ -1072,6 +899,7 @@ declare module '@polkadot/api-base/types/errors' {
        * Math overflow
        **/
       MathOverflow: AugmentedError<ApiType>;
+      NoRights: AugmentedError<ApiType>;
       /**
        * No such liquidity asset exists
        **/

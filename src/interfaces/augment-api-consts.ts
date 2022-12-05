@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import type { ApiTypes } from '@polkadot/api-base/types';
-import type { Bytes, Option, U8aFixed, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
+import type { Bytes, Option, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { Codec } from '@polkadot/types-codec/types';
 import type { AccountId32, Perbill, Percent, Permill } from '@polkadot/types/interfaces/runtime';
 import type { FrameSupportPalletId, FrameSupportWeightsRuntimeDbWeight, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, SpVersionRuntimeVersion, XcmV1MultiLocation } from '@polkadot/types/lookup';
@@ -23,6 +23,7 @@ declare module '@polkadot/api-base/types/consts' {
     };
     bootstrap: {
       bootstrapUpdateBuffer: u32 & AugmentedConst<ApiType>;
+      defaultBootstrapPromotedPoolWeight: u8 & AugmentedConst<ApiType>;
       treasuryPalletId: FrameSupportPalletId & AugmentedConst<ApiType>;
       /**
        * Generic const
@@ -49,60 +50,6 @@ declare module '@polkadot/api-base/types/consts' {
        * Prevents replay attacks from one network to the other
        **/
       signatureNetworkIdentifier: Bytes & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    elections: {
-      /**
-       * How much should be locked up in order to submit one's candidacy.
-       **/
-      candidacyBond: u128 & AugmentedConst<ApiType>;
-      /**
-       * Number of members to elect.
-       **/
-      desiredMembers: u32 & AugmentedConst<ApiType>;
-      /**
-       * Number of runners_up to keep.
-       **/
-      desiredRunnersUp: u32 & AugmentedConst<ApiType>;
-      /**
-       * The maximum number of candidates in a phragmen election.
-       * 
-       * Warning: The election happens onchain, and this value will determine
-       * the size of the election. When this limit is reached no more
-       * candidates are accepted in the election.
-       **/
-      maxCandidates: u32 & AugmentedConst<ApiType>;
-      /**
-       * The maximum number of voters to allow in a phragmen election.
-       * 
-       * Warning: This impacts the size of the election which is run onchain.
-       * When the limit is reached the new voters are ignored.
-       **/
-      maxVoters: u32 & AugmentedConst<ApiType>;
-      /**
-       * Identifier for the elections-phragmen pallet's lock
-       **/
-      palletId: U8aFixed & AugmentedConst<ApiType>;
-      /**
-       * How long each seat is kept. This defines the next block number at which an election
-       * round will happen. If set to zero, no elections are ever triggered and the module will
-       * be in passive mode.
-       **/
-      termDuration: u32 & AugmentedConst<ApiType>;
-      /**
-       * Base deposit associated with voting.
-       * 
-       * This should be sensibly high to economically ensure the pallet cannot be attacked by
-       * creating a gigantic number of votes.
-       **/
-      votingBondBase: u128 & AugmentedConst<ApiType>;
-      /**
-       * The amount of bond that need to be locked for each vote (32 bytes).
-       **/
-      votingBondFactor: u128 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -258,7 +205,7 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       dbWeight: FrameSupportWeightsRuntimeDbWeight & AugmentedConst<ApiType>;
       /**
-       * The designated SS85 prefix of this chain.
+       * The designated SS58 prefix of this chain.
        * 
        * This replaces the "ss58Format" property declared in the chain spec. Reason is
        * that the runtime should know about the prefix in order to make use of it as
@@ -407,6 +354,7 @@ declare module '@polkadot/api-base/types/consts' {
       liquidityMiningIssuanceVault: AccountId32 & AugmentedConst<ApiType>;
       poolFeePercentage: u128 & AugmentedConst<ApiType>;
       rewardsDistributionPeriod: u32 & AugmentedConst<ApiType>;
+      rewardsMigrateAccount: AccountId32 & AugmentedConst<ApiType>;
       treasuryFeePercentage: u128 & AugmentedConst<ApiType>;
       /**
        * Generic const
