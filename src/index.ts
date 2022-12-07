@@ -124,20 +124,6 @@ export const mRpc = {
       ],
       type: "XYKRpcResult<Balance>"
     },
-    calculate_rewards_amount_v2: {
-      description: "",
-      params: [
-        {
-          name: "user",
-          type: "AccountId"
-        },
-        {
-          name: "liquidity_asset_id",
-          type: "TokenId"
-        }
-      ],
-      type: "XYKRpcResult<Balance>"
-    },
     get_max_instant_unreserve_amount: {
       description: "",
       params: [

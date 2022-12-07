@@ -18,15 +18,9 @@ export default {
    * Lookup6: frame_support::weights::PerDispatchClass<frame_support::weights::weight_v2::Weight>
    **/
   FrameSupportWeightsPerDispatchClassWeight: {
-    normal: 'FrameSupportWeightsWeightV2Weight',
-    operational: 'FrameSupportWeightsWeightV2Weight',
-    mandatory: 'FrameSupportWeightsWeightV2Weight'
-  },
-  /**
-   * Lookup7: frame_support::weights::weight_v2::Weight
-   **/
-  FrameSupportWeightsWeightV2Weight: {
-    refTime: 'u64'
+    normal: 'Weight',
+    operational: 'Weight',
+    mandatory: 'Weight'
   },
   /**
    * Lookup11: sp_runtime::generic::digest::Digest
@@ -90,7 +84,7 @@ export default {
    * Lookup19: frame_support::weights::DispatchInfo
    **/
   FrameSupportWeightsDispatchInfo: {
-    weight: 'FrameSupportWeightsWeightV2Weight',
+    weight: 'Weight',
     class: 'FrameSupportWeightsDispatchClass',
     paysFee: 'FrameSupportWeightsPays'
   },
@@ -165,7 +159,7 @@ export default {
         count: 'u32',
       },
       DownwardMessagesProcessed: {
-        weightUsed: 'FrameSupportWeightsWeightV2Weight',
+        weightUsed: 'Weight',
         dmqHead: 'H256'
       }
     }
@@ -407,12 +401,12 @@ export default {
     _enum: {
       Success: {
         messageHash: 'Option<H256>',
-        weight: 'FrameSupportWeightsWeightV2Weight',
+        weight: 'Weight',
       },
       Fail: {
         messageHash: 'Option<H256>',
         error: 'XcmV2TraitsError',
-        weight: 'FrameSupportWeightsWeightV2Weight',
+        weight: 'Weight',
       },
       BadVersion: {
         messageHash: 'Option<H256>',
@@ -430,11 +424,11 @@ export default {
         sender: 'u32',
         sentAt: 'u32',
         index: 'u64',
-        required: 'FrameSupportWeightsWeightV2Weight',
+        required: 'Weight',
       },
       OverweightServiced: {
         index: 'u64',
-        used: 'FrameSupportWeightsWeightV2Weight'
+        used: 'Weight'
       }
     }
   },
@@ -481,7 +475,7 @@ export default {
       UnexpectedResponse: '(XcmV1MultiLocation,u64)',
       ResponseReady: '(u64,XcmV2Response)',
       Notified: '(u64,u8,u8)',
-      NotifyOverweight: '(u64,u8,u8,FrameSupportWeightsWeightV2Weight,FrameSupportWeightsWeightV2Weight)',
+      NotifyOverweight: '(u64,u8,u8,Weight,Weight)',
       NotifyDispatchError: '(u64,u8,u8)',
       NotifyDecodeFailed: '(u64,u8,u8)',
       InvalidResponder: '(XcmV1MultiLocation,u64,Option<XcmV1MultiLocation>)',
@@ -936,17 +930,17 @@ export default {
       },
       WeightExhausted: {
         messageId: '[u8;32]',
-        remainingWeight: 'FrameSupportWeightsWeightV2Weight',
-        requiredWeight: 'FrameSupportWeightsWeightV2Weight',
+        remainingWeight: 'Weight',
+        requiredWeight: 'Weight',
       },
       OverweightEnqueued: {
         messageId: '[u8;32]',
         overweightIndex: 'u64',
-        requiredWeight: 'FrameSupportWeightsWeightV2Weight',
+        requiredWeight: 'Weight',
       },
       OverweightServiced: {
         overweightIndex: 'u64',
-        weightUsed: 'FrameSupportWeightsWeightV2Weight'
+        weightUsed: 'Weight'
       }
     }
   },
@@ -1227,8 +1221,8 @@ export default {
    * Lookup124: frame_system::limits::BlockWeights
    **/
   FrameSystemLimitsBlockWeights: {
-    baseBlock: 'FrameSupportWeightsWeightV2Weight',
-    maxBlock: 'FrameSupportWeightsWeightV2Weight',
+    baseBlock: 'Weight',
+    maxBlock: 'Weight',
     perClass: 'FrameSupportWeightsPerDispatchClassWeightsPerClass'
   },
   /**
@@ -1243,10 +1237,10 @@ export default {
    * Lookup126: frame_system::limits::WeightsPerClass
    **/
   FrameSystemLimitsWeightsPerClass: {
-    baseExtrinsic: 'FrameSupportWeightsWeightV2Weight',
-    maxExtrinsic: 'Option<FrameSupportWeightsWeightV2Weight>',
-    maxTotal: 'Option<FrameSupportWeightsWeightV2Weight>',
-    reserved: 'Option<FrameSupportWeightsWeightV2Weight>'
+    baseExtrinsic: 'Weight',
+    maxExtrinsic: 'Option<Weight>',
+    maxTotal: 'Option<Weight>',
+    reserved: 'Option<Weight>'
   },
   /**
    * Lookup128: frame_system::limits::BlockLength
@@ -1307,12 +1301,8 @@ export default {
    * Lookup141: sp_trie::storage_proof::StorageProof
    **/
   SpTrieStorageProof: {
-    trieNodes: 'BTreeSet'
+    trieNodes: 'BTreeSet<Bytes>'
   },
-  /**
-   * Lookup142: BTreeSet<T>
-   **/
-  BTreeSet: 'Vec<Bytes>',
   /**
    * Lookup143: cumulus_pallet_parachain_system::relay_state_snapshot::MessagingStateSnapshot
    **/
@@ -2084,9 +2074,9 @@ export default {
     suspendThreshold: 'u32',
     dropThreshold: 'u32',
     resumeThreshold: 'u32',
-    thresholdWeight: 'FrameSupportWeightsWeightV2Weight',
-    weightRestrictDecay: 'FrameSupportWeightsWeightV2Weight',
-    xcmpMaxIndividualWeight: 'FrameSupportWeightsWeightV2Weight'
+    thresholdWeight: 'Weight',
+    weightRestrictDecay: 'Weight',
+    xcmpMaxIndividualWeight: 'Weight'
   },
   /**
    * Lookup283: cumulus_pallet_xcmp_queue::pallet::Call<T>
@@ -2095,7 +2085,7 @@ export default {
     _enum: {
       service_overweight: {
         index: 'u64',
-        weightLimit: 'FrameSupportWeightsWeightV2Weight',
+        weightLimit: 'Weight',
       },
       suspend_xcm_execution: 'Null',
       resume_xcm_execution: 'Null',
@@ -2121,19 +2111,19 @@ export default {
         _alias: {
           new_: 'new',
         },
-        new_: 'FrameSupportWeightsWeightV2Weight',
+        new_: 'Weight',
       },
       update_weight_restrict_decay: {
         _alias: {
           new_: 'new',
         },
-        new_: 'FrameSupportWeightsWeightV2Weight',
+        new_: 'Weight',
       },
       update_xcmp_max_individual_weight: {
         _alias: {
           new_: 'new',
         },
-        new_: 'FrameSupportWeightsWeightV2Weight'
+        new_: 'Weight'
       }
     }
   },
@@ -2224,7 +2214,7 @@ export default {
       },
       execute: {
         message: 'XcmVersionedXcm',
-        maxWeight: 'FrameSupportWeightsWeightV2Weight',
+        maxWeight: 'Weight',
       },
       force_xcm_version: {
         location: 'XcmV1MultiLocation',
@@ -2480,7 +2470,7 @@ export default {
    * Lookup323: cumulus_pallet_dmp_queue::ConfigData
    **/
   CumulusPalletDmpQueueConfigData: {
-    maxIndividual: 'FrameSupportWeightsWeightV2Weight'
+    maxIndividual: 'Weight'
   },
   /**
    * Lookup324: cumulus_pallet_dmp_queue::PageIndexData
@@ -2497,7 +2487,7 @@ export default {
     _enum: {
       service_overweight: {
         index: 'u64',
-        weightLimit: 'FrameSupportWeightsWeightV2Weight'
+        weightLimit: 'Weight'
       }
     }
   },
@@ -2667,7 +2657,7 @@ export default {
       },
       sudo_unchecked_weight: {
         call: 'Call',
-        weight: 'FrameSupportWeightsWeightV2Weight',
+        weight: 'Weight',
       },
       set_key: {
         _alias: {
@@ -2691,7 +2681,7 @@ export default {
       },
       sudo_unchecked_weight: {
         call: 'Call',
-        weight: 'FrameSupportWeightsWeightV2Weight',
+        weight: 'Weight',
       },
       sudo_as: {
         who: 'MultiAddress',
@@ -2726,7 +2716,7 @@ export default {
       close: {
         proposalHash: 'H256',
         index: 'Compact<u32>',
-        proposalWeightBound: 'Compact<FrameSupportWeightsWeightV2Weight>',
+        proposalWeightBound: 'Compact<Weight>',
         lengthBound: 'Compact<u32>',
       },
       disapprove_proposal: {
