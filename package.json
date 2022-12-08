@@ -1,9 +1,8 @@
 {
   "name": "@mangata-finance/types",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Polkadot.js type definitions for Mangata Network",
   "author": "Mangata Finance <solutions@mangata.finance>",
-  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -31,7 +30,7 @@
   "devDependencies": {
     "@polkadot/typegen": "^9.10.1",
     "@rollup/plugin-typescript": "^8.3.3",
-    "rollup": "^3.6.0",
+    "rollup": "^2.72.0",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.6.2"
   }
