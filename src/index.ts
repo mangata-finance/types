@@ -124,6 +124,20 @@ export const mRpc = {
       ],
       type: "XYKRpcResult<Balance>"
     },
+    calculate_balanced_sell_amount: {
+      description: "",
+      params: [
+        {
+          name: "total_amount",
+          type: "Balance"
+        },
+        {
+          name: "reserve_amount",
+          type: "Balance"
+        }
+      ],
+      type: "XYKRpcResult<Balance>"
+    },
     get_max_instant_unreserve_amount: {
       description: "",
       params: [

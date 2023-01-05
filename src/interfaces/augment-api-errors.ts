@@ -189,6 +189,11 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       TooEarly: AugmentedError<ApiType>;
       /**
+       * To early to close the proposal, can only close ProposalCloseDelay blocks after proposal
+       * was proposed
+       **/
+      TooEarlyToClose: AugmentedError<ApiType>;
+      /**
        * There can only be a maximum of `MaxProposals` active proposals.
        **/
       TooManyProposals: AugmentedError<ApiType>;
@@ -540,6 +545,44 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    proxy: {
+      /**
+       * Account is already a proxy.
+       **/
+      Duplicate: AugmentedError<ApiType>;
+      /**
+       * Call may not be made by proxy because it may escalate its privileges.
+       **/
+      NoPermission: AugmentedError<ApiType>;
+      /**
+       * Cannot add self as proxy.
+       **/
+      NoSelfProxy: AugmentedError<ApiType>;
+      /**
+       * Proxy registration not found.
+       **/
+      NotFound: AugmentedError<ApiType>;
+      /**
+       * Sender is not a proxy of the account to be proxied.
+       **/
+      NotProxy: AugmentedError<ApiType>;
+      /**
+       * There are too many proxies registered or too many announcements pending.
+       **/
+      TooMany: AugmentedError<ApiType>;
+      /**
+       * Announcement, if made at all, was made too recently.
+       **/
+      Unannounced: AugmentedError<ApiType>;
+      /**
+       * A call which is incompatible with the proxy type's filter was attempted.
+       **/
+      Unproxyable: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     session: {
       /**
        * Registered duplicate key.
@@ -612,6 +655,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       SpecVersionNeedsToIncrease: AugmentedError<ApiType>;
       /**
+       * the storage queue is empty and cannot accept any new txs
+       **/
+      StorageQueueFull: AugmentedError<ApiType>;
+      /**
        * Generic error
        **/
       [key: string]: AugmentedError<ApiType>;
@@ -649,6 +696,41 @@ declare module '@polkadot/api-base/types/errors' {
        * Failed because token with given id does not exits
        **/
       TokenIdNotExists: AugmentedError<ApiType>;
+      TooManyReserves: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    tokenTimeout: {
+      /**
+       * The timeout cannot be released yet
+       **/
+      CantReleaseYet: AugmentedError<ApiType>;
+      /**
+       * Timeout metadata is invalid
+       **/
+      InvalidTimeoutMetadata: AugmentedError<ApiType>;
+      /**
+       * The limit on the maximum curated tokens for which there is a swap threshold is exceeded
+       **/
+      MaxCuratedTokensLimitExceeded: AugmentedError<ApiType>;
+      /**
+       * No tokens of the user are timedout
+       **/
+      NotTimedout: AugmentedError<ApiType>;
+      /**
+       * Timeouts were incorrectly initialized
+       **/
+      TimeoutsIncorrectlyInitialzed: AugmentedError<ApiType>;
+      /**
+       * Timeouts have not been initialzed
+       **/
+      TimeoutsNotInitialized: AugmentedError<ApiType>;
+      /**
+       * An unexpected failure has occured
+       **/
+      UnexpectedFailure: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -927,9 +1009,9 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       NotEnoughReserve: AugmentedError<ApiType>;
       /**
-       * Not enought rewards earned
+       * Not enough rewards earned
        **/
-      NotEnoughtRewardsEarned: AugmentedError<ApiType>;
+      NotEnoughRewardsEarned: AugmentedError<ApiType>;
       /**
        * Unexpected failure
        **/
