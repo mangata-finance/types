@@ -61,6 +61,14 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       [key: string]: Codec;
     };
+    feeLock: {
+      maxCuratedTokens: u32 & AugmentedConst<ApiType>;
+      nativeTokenId: u32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
     issuance: {
       /**
        * Number of blocks per session/round
@@ -289,14 +297,6 @@ declare module '@polkadot/api-base/types/consts' {
        * The maximum number of named reserves that can exist on an account.
        **/
       maxReserves: u32 & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    tokenTimeout: {
-      maxCuratedTokens: u32 & AugmentedConst<ApiType>;
-      nativeTokenId: u32 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/

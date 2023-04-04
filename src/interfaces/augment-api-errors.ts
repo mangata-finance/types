@@ -311,6 +311,40 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    feeLock: {
+      /**
+       * The lock cannot be unlocked yet
+       **/
+      CantUnlockFeeYet: AugmentedError<ApiType>;
+      /**
+       * Locks were incorrectly initialized
+       **/
+      FeeLocksIncorrectlyInitialzed: AugmentedError<ApiType>;
+      /**
+       * Locks have not been initialzed
+       **/
+      FeeLocksNotInitialized: AugmentedError<ApiType>;
+      /**
+       * Lock metadata is invalid
+       **/
+      InvalidFeeLockMetadata: AugmentedError<ApiType>;
+      /**
+       * The limit on the maximum curated tokens for which there is a swap threshold is exceeded
+       **/
+      MaxCuratedTokensLimitExceeded: AugmentedError<ApiType>;
+      /**
+       * No tokens of the user are fee-locked
+       **/
+      NotFeeLocked: AugmentedError<ApiType>;
+      /**
+       * An unexpected failure has occured
+       **/
+      UnexpectedFailure: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     issuance: {
       /**
        * The issuance config has already been initialized
@@ -697,40 +731,6 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       TokenIdNotExists: AugmentedError<ApiType>;
       TooManyReserves: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    tokenTimeout: {
-      /**
-       * The timeout cannot be released yet
-       **/
-      CantReleaseYet: AugmentedError<ApiType>;
-      /**
-       * Timeout metadata is invalid
-       **/
-      InvalidTimeoutMetadata: AugmentedError<ApiType>;
-      /**
-       * The limit on the maximum curated tokens for which there is a swap threshold is exceeded
-       **/
-      MaxCuratedTokensLimitExceeded: AugmentedError<ApiType>;
-      /**
-       * No tokens of the user are timedout
-       **/
-      NotTimedout: AugmentedError<ApiType>;
-      /**
-       * Timeouts were incorrectly initialized
-       **/
-      TimeoutsIncorrectlyInitialzed: AugmentedError<ApiType>;
-      /**
-       * Timeouts have not been initialzed
-       **/
-      TimeoutsNotInitialized: AugmentedError<ApiType>;
-      /**
-       * An unexpected failure has occured
-       **/
-      UnexpectedFailure: AugmentedError<ApiType>;
       /**
        * Generic error
        **/

@@ -183,6 +183,14 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
+    feeLock: {
+      FeeLockMetadataUpdated: AugmentedEvent<ApiType, []>;
+      FeeLockUnlocked: AugmentedEvent<ApiType, [AccountId32, u128]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
     issuance: {
       /**
        * Issuance configuration has been finalized
@@ -676,14 +684,6 @@ declare module '@polkadot/api-base/types/events' {
        * Some balances were withdrawn (e.g. pay for transaction fee)
        **/
       Withdrawn: AugmentedEvent<ApiType, [currencyId: u32, who: AccountId32, amount: u128], { currencyId: u32, who: AccountId32, amount: u128 }>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    tokenTimeout: {
-      TimeoutMetadataUpdated: AugmentedEvent<ApiType, []>;
-      TimeoutReleased: AugmentedEvent<ApiType, [AccountId32, u128]>;
       /**
        * Generic event
        **/
