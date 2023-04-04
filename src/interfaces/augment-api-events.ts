@@ -8,7 +8,7 @@ import '@polkadot/api-base/types/events';
 import type { ApiTypes, AugmentedEvent } from '@polkadot/api-base/types';
 import type { Null, Option, Result, U8aFixed, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { AccountId32, H256, Perbill } from '@polkadot/types/interfaces/runtime';
-import type { FrameSupportDispatchDispatchInfo, FrameSupportTokensMiscBalanceStatus, MangataRococoRuntimeProxyType, OrmlTraitsAssetRegistryAssetMetadata, PalletIssuanceIssuanceInfo, PalletIssuanceTgeInfo, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingDelegatorAdded, SpRuntimeDispatchError, SpWeightsWeightV2Weight, XcmV1MultiAsset, XcmV1MultiLocation, XcmV1MultiassetMultiAssets, XcmV2Response, XcmV2TraitsError, XcmV2TraitsOutcome, XcmV2Xcm, XcmVersionedMultiAssets, XcmVersionedMultiLocation } from '@polkadot/types/lookup';
+import type { FrameSupportDispatchDispatchInfo, FrameSupportTokensMiscBalanceStatus, MangataKusamaRuntimeProxyType, OrmlTraitsAssetRegistryAssetMetadata, PalletIssuanceIssuanceInfo, PalletIssuanceTgeInfo, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingDelegatorAdded, SpRuntimeDispatchError, SpWeightsWeightV2Weight, XcmV1MultiAsset, XcmV1MultiLocation, XcmV1MultiassetMultiAssets, XcmV2Response, XcmV2TraitsError, XcmV2TraitsOutcome, XcmV2Xcm, XcmVersionedMultiAssets, XcmVersionedMultiLocation } from '@polkadot/types/lookup';
 
 export type __AugmentedEvent<ApiType extends ApiTypes> = AugmentedEvent<ApiType>;
 
@@ -216,6 +216,28 @@ declare module '@polkadot/api-base/types/events' {
        * A TGE instance has succeeded
        **/
       TGEInstanceSucceeded: AugmentedEvent<ApiType, [PalletIssuanceTgeInfo]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    maintenance: {
+      /**
+       * Maintenance mode has been switched off
+       **/
+      MaintenanceModeSwitchedOff: AugmentedEvent<ApiType, [AccountId32]>;
+      /**
+       * Maintenance mode has been switched on
+       **/
+      MaintenanceModeSwitchedOn: AugmentedEvent<ApiType, [AccountId32]>;
+      /**
+       * Upgradablilty in maintenance mode has been switched off
+       **/
+      UpgradabilityInMaintenanceModeSwitchedOff: AugmentedEvent<ApiType, [AccountId32]>;
+      /**
+       * Upgradablilty in maintenance mode has been switched on
+       **/
+      UpgradabilityInMaintenanceModeSwitchedOn: AugmentedEvent<ApiType, [AccountId32]>;
       /**
        * Generic event
        **/
@@ -525,7 +547,7 @@ declare module '@polkadot/api-base/types/events' {
       /**
        * A proxy was added.
        **/
-      ProxyAdded: AugmentedEvent<ApiType, [delegator: AccountId32, delegatee: AccountId32, proxyType: MangataRococoRuntimeProxyType, delay: u32], { delegator: AccountId32, delegatee: AccountId32, proxyType: MangataRococoRuntimeProxyType, delay: u32 }>;
+      ProxyAdded: AugmentedEvent<ApiType, [delegator: AccountId32, delegatee: AccountId32, proxyType: MangataKusamaRuntimeProxyType, delay: u32], { delegator: AccountId32, delegatee: AccountId32, proxyType: MangataKusamaRuntimeProxyType, delay: u32 }>;
       /**
        * A proxy was executed correctly, with the given.
        **/
@@ -533,12 +555,12 @@ declare module '@polkadot/api-base/types/events' {
       /**
        * A proxy was removed.
        **/
-      ProxyRemoved: AugmentedEvent<ApiType, [delegator: AccountId32, delegatee: AccountId32, proxyType: MangataRococoRuntimeProxyType, delay: u32], { delegator: AccountId32, delegatee: AccountId32, proxyType: MangataRococoRuntimeProxyType, delay: u32 }>;
+      ProxyRemoved: AugmentedEvent<ApiType, [delegator: AccountId32, delegatee: AccountId32, proxyType: MangataKusamaRuntimeProxyType, delay: u32], { delegator: AccountId32, delegatee: AccountId32, proxyType: MangataKusamaRuntimeProxyType, delay: u32 }>;
       /**
        * A pure account has been created by new proxy with given
        * disambiguation index and proxy type.
        **/
-      PureCreated: AugmentedEvent<ApiType, [pure: AccountId32, who: AccountId32, proxyType: MangataRococoRuntimeProxyType, disambiguationIndex: u16], { pure: AccountId32, who: AccountId32, proxyType: MangataRococoRuntimeProxyType, disambiguationIndex: u16 }>;
+      PureCreated: AugmentedEvent<ApiType, [pure: AccountId32, who: AccountId32, proxyType: MangataKusamaRuntimeProxyType, disambiguationIndex: u16], { pure: AccountId32, who: AccountId32, proxyType: MangataKusamaRuntimeProxyType, disambiguationIndex: u16 }>;
       /**
        * Generic event
        **/
@@ -848,12 +870,19 @@ declare module '@polkadot/api-base/types/events' {
       [key: string]: AugmentedEvent<ApiType>;
     };
     xyk: {
+      AssetsMultiBuySwapped: AugmentedEvent<ApiType, [AccountId32, Vec<u32>, u128, u128]>;
+      AssetsMultiSellSwapped: AugmentedEvent<ApiType, [AccountId32, Vec<u32>, u128, u128]>;
       AssetsSwapped: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128]>;
       BuyAssetFailedDueToSlippage: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u128]>;
       LiquidityActivated: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       LiquidityBurned: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u32, u128]>;
       LiquidityDeactivated: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;
       LiquidityMinted: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128, u32, u128]>;
+      MultiBuyAssetFailedDueToSlippage: AugmentedEvent<ApiType, [AccountId32, Vec<u32>, u128]>;
+      MultiBuyAssetFailedOnAtomicSwap: AugmentedEvent<ApiType, [AccountId32, Vec<u32>, u128]>;
+      MultiSellAssetFailedDueToSlippage: AugmentedEvent<ApiType, [AccountId32, Vec<u32>, u128]>;
+      MultiSellAssetFailedOnAtomicSwap: AugmentedEvent<ApiType, [AccountId32, Vec<u32>, u128]>;
+      MultiSwapFailedDueToNotEnoughAssets: AugmentedEvent<ApiType, [AccountId32, Vec<u32>, u128]>;
       PoolCreated: AugmentedEvent<ApiType, [AccountId32, u32, u128, u32, u128]>;
       PoolPromotionUpdated: AugmentedEvent<ApiType, [u32, Option<u8>]>;
       RewardsClaimed: AugmentedEvent<ApiType, [AccountId32, u32, u128]>;

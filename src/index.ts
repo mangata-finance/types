@@ -11,6 +11,7 @@ import "./interfaces/augment-api-query";
 import "./interfaces/augment-api-rpc";
 import "./interfaces/augment-api-tx";
 import "./interfaces/augment-types";
+import "./interfaces/augment-api-runtime";
 
 export const mTypes = Object.values(definitions).reduce(
   (res: Record<string, any>, { types }): Record<string, any> => ({

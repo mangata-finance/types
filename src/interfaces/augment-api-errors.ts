@@ -126,6 +126,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       PoolAlreadyExists: AugmentedError<ApiType>;
       /**
+       * Bootstrap provisioning blocked by maintenance mode
+       **/
+      ProvisioningBlockedByMaintenanceMode: AugmentedError<ApiType>;
+      /**
        * Tokens used in bootstrap cannot be the same
        **/
       SameToken: AugmentedError<ApiType>;
@@ -299,6 +303,10 @@ declare module '@polkadot/api-base/types/errors' {
     };
     dmpQueue: {
       /**
+       * Dmp message processing is blocked by maintenance mode
+       **/
+      DmpMsgProcessingBlockedByMaintenanceMode: AugmentedError<ApiType>;
+      /**
        * The amount of weight given is possibly not enough for executing the message.
        **/
       OverLimit: AugmentedError<ApiType>;
@@ -374,6 +382,32 @@ declare module '@polkadot/api-base/types/errors' {
        * unknown pool
        **/
       UnknownPool: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    maintenance: {
+      /**
+       * Already in maintenance mode
+       **/
+      AlreadyInMaintenanceMode: AugmentedError<ApiType>;
+      /**
+       * Already not upgradable in maintenance mode
+       **/
+      AlreadyNotUpgradableInMaintenanceMode: AugmentedError<ApiType>;
+      /**
+       * Already upgradable in maintenance mode
+       **/
+      AlreadyUpgradableInMaintenanceMode: AugmentedError<ApiType>;
+      /**
+       * Timeouts were incorrectly initialized
+       **/
+      NotFoundationAccount: AugmentedError<ApiType>;
+      /**
+       * Not in maintenance mode
+       **/
+      NotInMaintenanceMode: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -509,6 +543,10 @@ declare module '@polkadot/api-base/types/errors' {
        * The given code upgrade has not been authorized.
        **/
       Unauthorized: AugmentedError<ApiType>;
+      /**
+       * Upgrades are blocked due to maintenance mode
+       **/
+      UpgradeBlockedByMaintenanceMode: AugmentedError<ApiType>;
       /**
        * The inherent which supplies the validation data did not run this block
        **/
@@ -857,6 +895,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       WeightOverLimit: AugmentedError<ApiType>;
       /**
+       * Xcm message processing is blocked by maintenance mode
+       **/
+      XcmMsgProcessingBlockedByMaintenanceMode: AugmentedError<ApiType>;
+      /**
        * Generic error
        **/
       [key: string]: AugmentedError<ApiType>;
@@ -987,6 +1029,12 @@ declare module '@polkadot/api-base/types/errors' {
        * Math overflow
        **/
       MathOverflow: AugmentedError<ApiType>;
+      MultiBuyAssetCantHaveSamePoolAtomicSwaps: AugmentedError<ApiType>;
+      MultiSwapCantHaveSameTokenConsequetively: AugmentedError<ApiType>;
+      MultiSwapFailedOnBadSlippage: AugmentedError<ApiType>;
+      MultiSwapNotEnoughAssets: AugmentedError<ApiType>;
+      MultiswapShouldBeAtleastTwoHops: AugmentedError<ApiType>;
+      NonSlippageMultiSwapFailure: AugmentedError<ApiType>;
       NoRights: AugmentedError<ApiType>;
       /**
        * No such liquidity asset exists
@@ -1040,6 +1088,10 @@ declare module '@polkadot/api-base/types/errors' {
        * Sold Amount too low
        **/
       SoldAmountTooLow: AugmentedError<ApiType>;
+      /**
+       * Trading blocked by maintenance mode
+       **/
+      TradingBlockedByMaintenanceMode: AugmentedError<ApiType>;
       /**
        * Unexpected failure
        **/
