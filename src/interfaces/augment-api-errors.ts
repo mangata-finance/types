@@ -38,40 +38,6 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
-    authorship: {
-      /**
-       * The uncle is genesis.
-       **/
-      GenesisUncle: AugmentedError<ApiType>;
-      /**
-       * The uncle parent not in the chain.
-       **/
-      InvalidUncleParent: AugmentedError<ApiType>;
-      /**
-       * The uncle isn't recent enough to be included.
-       **/
-      OldUncle: AugmentedError<ApiType>;
-      /**
-       * The uncle is too high in chain.
-       **/
-      TooHighUncle: AugmentedError<ApiType>;
-      /**
-       * Too many uncles.
-       **/
-      TooManyUncles: AugmentedError<ApiType>;
-      /**
-       * The uncle is already included.
-       **/
-      UncleAlreadyIncluded: AugmentedError<ApiType>;
-      /**
-       * Uncles already set in the block.
-       **/
-      UnclesAlreadySet: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
     bootstrap: {
       /**
        * Bootstrate event already started
@@ -81,6 +47,10 @@ declare module '@polkadot/api-base/types/errors' {
        * Bootstrap already Finished
        **/
       BootstrapFinished: AugmentedError<ApiType>;
+      /**
+       * Bootstrap must be pre finalized before it can be finalized
+       **/
+      BootstrapMustBePreFinalized: AugmentedError<ApiType>;
       /**
        * no rewards to claim
        **/
@@ -181,6 +151,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       DuplicateVote: AugmentedError<ApiType>;
       /**
+       * Requires foundation account or root
+       **/
+      NotFoundationAccountOrRoot: AugmentedError<ApiType>;
+      /**
        * Account is not a member
        **/
       NotMember: AugmentedError<ApiType>;
@@ -194,9 +168,9 @@ declare module '@polkadot/api-base/types/errors' {
       TooEarly: AugmentedError<ApiType>;
       /**
        * To early to close the proposal, can only close ProposalCloseDelay blocks after proposal
-       * was proposed
+       * was proposed unless by a foundation account
        **/
-      TooEarlyToClose: AugmentedError<ApiType>;
+      TooEarlyToCloseByNonFoundationAccount: AugmentedError<ApiType>;
       /**
        * There can only be a maximum of `MaxProposals` active proposals.
        **/
@@ -353,6 +327,84 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    identity: {
+      /**
+       * Account ID is already named.
+       **/
+      AlreadyClaimed: AugmentedError<ApiType>;
+      /**
+       * Empty index.
+       **/
+      EmptyIndex: AugmentedError<ApiType>;
+      /**
+       * Fee is changed.
+       **/
+      FeeChanged: AugmentedError<ApiType>;
+      /**
+       * The index is invalid.
+       **/
+      InvalidIndex: AugmentedError<ApiType>;
+      /**
+       * Invalid judgement.
+       **/
+      InvalidJudgement: AugmentedError<ApiType>;
+      /**
+       * The target is invalid.
+       **/
+      InvalidTarget: AugmentedError<ApiType>;
+      /**
+       * The provided judgement was for a different identity.
+       **/
+      JudgementForDifferentIdentity: AugmentedError<ApiType>;
+      /**
+       * Judgement given.
+       **/
+      JudgementGiven: AugmentedError<ApiType>;
+      /**
+       * Error that occurs when there is an issue paying for judgement.
+       **/
+      JudgementPaymentFailed: AugmentedError<ApiType>;
+      /**
+       * No identity found.
+       **/
+      NoIdentity: AugmentedError<ApiType>;
+      /**
+       * Account isn't found.
+       **/
+      NotFound: AugmentedError<ApiType>;
+      /**
+       * Account isn't named.
+       **/
+      NotNamed: AugmentedError<ApiType>;
+      /**
+       * Sub-account isn't owned by sender.
+       **/
+      NotOwned: AugmentedError<ApiType>;
+      /**
+       * Sender is not a sub-account.
+       **/
+      NotSub: AugmentedError<ApiType>;
+      /**
+       * Sticky judgement.
+       **/
+      StickyJudgement: AugmentedError<ApiType>;
+      /**
+       * Too many additional fields.
+       **/
+      TooManyFields: AugmentedError<ApiType>;
+      /**
+       * Maximum amount of registrars reached. Cannot add any more.
+       **/
+      TooManyRegistrars: AugmentedError<ApiType>;
+      /**
+       * Too many subs-accounts.
+       **/
+      TooManySubAccounts: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     issuance: {
       /**
        * The issuance config has already been initialized
@@ -465,18 +517,26 @@ declare module '@polkadot/api-base/types/errors' {
       [key: string]: AugmentedError<ApiType>;
     };
     parachainStaking: {
+      AggregatorDNE: AugmentedError<ApiType>;
+      AggregatorExists: AugmentedError<ApiType>;
+      AggregatorLiquidityTokenTaken: AugmentedError<ApiType>;
       AlreadyActive: AugmentedError<ApiType>;
       AlreadyDelegatedCandidate: AugmentedError<ApiType>;
       AlreadyOffline: AugmentedError<ApiType>;
+      CandidateAlreadyApprovedByAggregator: AugmentedError<ApiType>;
       CandidateAlreadyLeaving: AugmentedError<ApiType>;
       CandidateBondBelowMin: AugmentedError<ApiType>;
       CandidateCannotLeaveYet: AugmentedError<ApiType>;
       CandidateDNE: AugmentedError<ApiType>;
       CandidateExists: AugmentedError<ApiType>;
+      CandidateNotAggregating: AugmentedError<ApiType>;
+      CandidateNotAggregatingUnderAggregator: AugmentedError<ApiType>;
+      CandidateNotApprovedByAggregator: AugmentedError<ApiType>;
       CandidateNotLeaving: AugmentedError<ApiType>;
       CannotDelegateIfLeaving: AugmentedError<ApiType>;
       CannotGoOnlineIfLeaving: AugmentedError<ApiType>;
       CannotSetBelowMin: AugmentedError<ApiType>;
+      CollatorRoundRewardsDNE: AugmentedError<ApiType>;
       DelegationBelowMin: AugmentedError<ApiType>;
       DelegationDNE: AugmentedError<ApiType>;
       DelegatorAlreadyLeaving: AugmentedError<ApiType>;
@@ -486,9 +546,11 @@ declare module '@polkadot/api-base/types/errors' {
       DelegatorDNEinTopNorBottom: AugmentedError<ApiType>;
       DelegatorExists: AugmentedError<ApiType>;
       DelegatorNotLeaving: AugmentedError<ApiType>;
+      DelegatorRewardsDNE: AugmentedError<ApiType>;
       ExceedMaxCollatorCandidates: AugmentedError<ApiType>;
       ExceedMaxDelegationsPerDelegator: AugmentedError<ApiType>;
       ExceedMaxTotalDelegatorsPerCandidate: AugmentedError<ApiType>;
+      IncorrectRewardDelegatorCount: AugmentedError<ApiType>;
       InsufficientBalance: AugmentedError<ApiType>;
       InvalidSchedule: AugmentedError<ApiType>;
       MathError: AugmentedError<ApiType>;
@@ -501,6 +563,7 @@ declare module '@polkadot/api-base/types/errors' {
       PendingDelegationRequestNotDueYet: AugmentedError<ApiType>;
       StakingLiquidityTokenAlreadyListed: AugmentedError<ApiType>;
       StakingLiquidityTokenNotListed: AugmentedError<ApiType>;
+      TargettedAggregatorSameAsCurrent: AugmentedError<ApiType>;
       TooLowCandidateCountToLeaveCandidates: AugmentedError<ApiType>;
       TooLowCandidateCountWeightHintCancelLeaveCandidates: AugmentedError<ApiType>;
       TooLowCandidateCountWeightHintJoinCandidates: AugmentedError<ApiType>;
@@ -515,7 +578,7 @@ declare module '@polkadot/api-base/types/errors' {
     };
     parachainSystem: {
       /**
-       * The inherent which supplies the host configuration did not run this block
+       * The inherent which supplies the host configuration did not run this block.
        **/
       HostConfigurationNotAvailable: AugmentedError<ApiType>;
       /**
@@ -527,16 +590,16 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       NotScheduled: AugmentedError<ApiType>;
       /**
-       * Attempt to upgrade validation function while existing upgrade pending
+       * Attempt to upgrade validation function while existing upgrade pending.
        **/
       OverlappingUpgrades: AugmentedError<ApiType>;
       /**
-       * Polkadot currently prohibits this parachain from upgrading its validation function
+       * Polkadot currently prohibits this parachain from upgrading its validation function.
        **/
       ProhibitedByPolkadot: AugmentedError<ApiType>;
       /**
        * The supplied validation function has compiled into a blob larger than Polkadot is
-       * willing to run
+       * willing to run.
        **/
       TooBig: AugmentedError<ApiType>;
       /**
@@ -548,7 +611,7 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       UpgradeBlockedByMaintenanceMode: AugmentedError<ApiType>;
       /**
-       * The inherent which supplies the validation data did not run this block
+       * The inherent which supplies the validation data did not run this block.
        **/
       ValidationDataNotAvailable: AugmentedError<ApiType>;
       /**
@@ -557,6 +620,10 @@ declare module '@polkadot/api-base/types/errors' {
       [key: string]: AugmentedError<ApiType>;
     };
     polkadotXcm: {
+      /**
+       * The given account is not an identifiable sovereign account for any location.
+       **/
+      AccountNotSovereign: AugmentedError<ApiType>;
       /**
        * The location is invalid since it already has a subscription from us.
        **/
@@ -583,13 +650,33 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       Empty: AugmentedError<ApiType>;
       /**
+       * The operation required fees to be paid which the initiator could not meet.
+       **/
+      FeesNotMet: AugmentedError<ApiType>;
+      /**
        * The message execution fails the filter.
        **/
       Filtered: AugmentedError<ApiType>;
       /**
+       * The unlock operation cannot succeed because there are still users of the lock.
+       **/
+      InUse: AugmentedError<ApiType>;
+      /**
+       * Invalid asset for the operation.
+       **/
+      InvalidAsset: AugmentedError<ApiType>;
+      /**
        * Origin is invalid for sending.
        **/
       InvalidOrigin: AugmentedError<ApiType>;
+      /**
+       * A remote lock with the corresponding data could not be found.
+       **/
+      LockNotFound: AugmentedError<ApiType>;
+      /**
+       * The owner does not own (all) of the asset that they wish to do the operation on.
+       **/
+      LowBalance: AugmentedError<ApiType>;
       /**
        * The referenced subscription could not be found.
        **/
@@ -604,6 +691,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       TooManyAssets: AugmentedError<ApiType>;
       /**
+       * The asset owner has too many locks on the asset.
+       **/
+      TooManyLocks: AugmentedError<ApiType>;
+      /**
        * The desired destination was unreachable, generally because there is a no way of routing
        * to it.
        **/
@@ -612,6 +703,38 @@ declare module '@polkadot/api-base/types/errors' {
        * The message's weight could not be determined.
        **/
       UnweighableMessage: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    proofOfStake: {
+      CalculateRewardsAllMathError: AugmentedError<ApiType>;
+      CalculateRewardsMathError: AugmentedError<ApiType>;
+      DeprecatedExtrinsic: AugmentedError<ApiType>;
+      LiquidityCheckpointMathError: AugmentedError<ApiType>;
+      MathError: AugmentedError<ApiType>;
+      /**
+       * Math overflow
+       **/
+      MathOverflow: AugmentedError<ApiType>;
+      MissingRewardsInfoError: AugmentedError<ApiType>;
+      /**
+       * Not a promoted pool
+       **/
+      NotAPromotedPool: AugmentedError<ApiType>;
+      /**
+       * Not enought assets
+       **/
+      NotEnoughAssets: AugmentedError<ApiType>;
+      /**
+       * Not enough rewards earned
+       **/
+      NotEnoughRewardsEarned: AugmentedError<ApiType>;
+      /**
+       * Past time calculation
+       **/
+      PastTimeCalculation: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -1031,10 +1154,7 @@ declare module '@polkadot/api-base/types/errors' {
       MathOverflow: AugmentedError<ApiType>;
       MultiBuyAssetCantHaveSamePoolAtomicSwaps: AugmentedError<ApiType>;
       MultiSwapCantHaveSameTokenConsequetively: AugmentedError<ApiType>;
-      MultiSwapFailedOnBadSlippage: AugmentedError<ApiType>;
-      MultiSwapNotEnoughAssets: AugmentedError<ApiType>;
       MultiswapShouldBeAtleastTwoHops: AugmentedError<ApiType>;
-      NonSlippageMultiSwapFailure: AugmentedError<ApiType>;
       NoRights: AugmentedError<ApiType>;
       /**
        * No such liquidity asset exists

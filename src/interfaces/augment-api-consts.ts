@@ -9,24 +9,12 @@ import type { ApiTypes, AugmentedConst } from '@polkadot/api-base/types';
 import type { Bytes, Option, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { Codec } from '@polkadot/types-codec/types';
 import type { AccountId32, Perbill, Percent, Permill } from '@polkadot/types/interfaces/runtime';
-import type { FrameSupportPalletId, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, SpVersionRuntimeVersion, SpWeightsRuntimeDbWeight, XcmV1MultiLocation } from '@polkadot/types/lookup';
+import type { FrameSupportPalletId, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, SpVersionRuntimeVersion, SpWeightsRuntimeDbWeight, SpWeightsWeightV2Weight, XcmV3MultiLocation } from '@polkadot/types/lookup';
 
 export type __AugmentedConst<ApiType extends ApiTypes> = AugmentedConst<ApiType>;
 
 declare module '@polkadot/api-base/types/consts' {
   interface AugmentedConsts<ApiType extends ApiTypes> {
-    authorship: {
-      /**
-       * The number of blocks back we should accept uncles.
-       * This means that we will deal with uncle-parents that are
-       * `UncleGenerations + 1` before `now`.
-       **/
-      uncleGenerations: u32 & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
     bootstrap: {
       bootstrapUpdateBuffer: u32 & AugmentedConst<ApiType>;
       defaultBootstrapPromotedPoolWeight: u8 & AugmentedConst<ApiType>;
@@ -64,6 +52,40 @@ declare module '@polkadot/api-base/types/consts' {
     feeLock: {
       maxCuratedTokens: u32 & AugmentedConst<ApiType>;
       nativeTokenId: u32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
+    identity: {
+      /**
+       * The amount held on deposit for a registered identity
+       **/
+      basicDeposit: u128 & AugmentedConst<ApiType>;
+      /**
+       * The amount held on deposit per additional field for a registered identity.
+       **/
+      fieldDeposit: u128 & AugmentedConst<ApiType>;
+      /**
+       * Maximum number of additional fields that may be stored in an ID. Needed to bound the I/O
+       * required to access an identity, but can be pretty high.
+       **/
+      maxAdditionalFields: u32 & AugmentedConst<ApiType>;
+      /**
+       * Maxmimum number of registrars allowed in the system. Needed to bound the complexity
+       * of, e.g., updating judgements.
+       **/
+      maxRegistrars: u32 & AugmentedConst<ApiType>;
+      /**
+       * The maximum number of sub-accounts allowed per identified account.
+       **/
+      maxSubAccounts: u32 & AugmentedConst<ApiType>;
+      /**
+       * The amount held on deposit for a registered subaccount. This should account for the fact
+       * that one storage item's value will increase by the size of an account ID, and there will
+       * be another trie item whose value is the size of an account ID plus 32 bytes.
+       **/
+      subAccountDeposit: u128 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -136,6 +158,7 @@ declare module '@polkadot/api-base/types/consts' {
        * Default commission due to collators, is `CollatorCommission` storage value in genesis
        **/
       defaultCollatorCommission: Perbill & AugmentedConst<ApiType>;
+      defaultPayoutLimit: u32 & AugmentedConst<ApiType>;
       /**
        * Number of rounds that delegation {more, less} requests must wait before executable
        **/
@@ -196,6 +219,17 @@ declare module '@polkadot/api-base/types/consts' {
        * The account id that holds the liquidity mining issuance
        **/
       stakingIssuanceVault: AccountId32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
+    proofOfStake: {
+      /**
+       * The account id that holds the liquidity mining issuance
+       **/
+      liquidityMiningIssuanceVault: AccountId32 & AugmentedConst<ApiType>;
+      rewardsDistributionPeriod: u32 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -397,11 +431,11 @@ declare module '@polkadot/api-base/types/consts' {
        * The actually weight for an XCM message is `T::BaseXcmWeight +
        * T::Weigher::weight(&msg)`.
        **/
-      baseXcmWeight: u64 & AugmentedConst<ApiType>;
+      baseXcmWeight: SpWeightsWeightV2Weight & AugmentedConst<ApiType>;
       /**
        * Self chain location.
        **/
-      selfLocation: XcmV1MultiLocation & AugmentedConst<ApiType>;
+      selfLocation: XcmV3MultiLocation & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -409,12 +443,7 @@ declare module '@polkadot/api-base/types/consts' {
     };
     xyk: {
       buyAndBurnFeePercentage: u128 & AugmentedConst<ApiType>;
-      /**
-       * The account id that holds the liquidity mining issuance
-       **/
-      liquidityMiningIssuanceVault: AccountId32 & AugmentedConst<ApiType>;
       poolFeePercentage: u128 & AugmentedConst<ApiType>;
-      rewardsDistributionPeriod: u32 & AugmentedConst<ApiType>;
       rewardsMigrateAccount: AccountId32 & AugmentedConst<ApiType>;
       treasuryFeePercentage: u128 & AugmentedConst<ApiType>;
       /**
