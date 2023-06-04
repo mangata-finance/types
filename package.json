@@ -3,6 +3,7 @@
   "version": "0.24.0",
   "description": "Polkadot.js type definitions for Mangata Network",
   "author": "Mangata Finance <solutions@mangata.finance>",
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -17,8 +18,8 @@
   "scripts": {
     "build": "rm -fr dist/* && rollup -c",
     "buildTypes": "yarn generate:defs && yarn generate:meta",
-    "generate:defs": "ts-node --skip-project node_modules/.bin/polkadot-types-from-defs --package @mangata-finance/interfaces --input ./src/interfaces --endpoint ./metadata.json",
-    "generate:meta": "ts-node --skip-project node_modules/.bin/polkadot-types-from-chain --package @mangata-finance/interfaces --endpoint ./metadata.json --output ./src/interfaces"
+    "generate:defs": "node --experimental-specifier-resolution=node --loader ts-node/esm node_modules/.bin/polkadot-types-from-defs --package @mangata-finance/types/interfaces --input ./src/interfaces --endpoint ./metadata.json",
+    "generate:meta": "node --experimental-specifier-resolution=node --loader ts-node/esm node_modules/.bin/polkadot-types-from-chain --package @mangata-finance/types/interfaces --endpoint ./metadata.json --output ./src/interfaces"
   },
   "files": [
     "dist"
@@ -28,13 +29,15 @@
     "types"
   ],
   "devDependencies": {
-    "@polkadot/typegen": "^9.14.2",
     "@rollup/plugin-typescript": "^8.3.3",
     "rollup": "^2.72.0",
     "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.6.2"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.0-dev.20230602"
   },
   "dependencies": {
-    "@polkadot/api-base": "^9.14.2"
+    "@polkadot/api": "^10.7.3",
+    "@polkadot/typegen": "^10.7.3",
+    "@polkadot/types": "^10.7.3"
   }
 }
