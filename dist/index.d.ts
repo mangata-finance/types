@@ -38,7 +38,7 @@ import { BenchmarkBatch, BenchmarkConfig, BenchmarkList, BenchmarkMetadata, Benc
 import { BridgedBlockHash, BridgedBlockNumber, BridgedHeader, BridgeMessageId, CallOrigin, ChainId, DeliveredMessages, DispatchFeePayment, InboundLaneData, InboundRelayer, InitializationData, LaneId, MessageData, MessageKey, MessageNonce, MessagesDeliveryProofOf, MessagesProofOf, OperatingMode, OutboundLaneData, OutboundMessageFee, OutboundPayload, Parameter, RelayerId, UnrewardedRelayer, UnrewardedRelayersState } from '@polkadot/types/interfaces/bridges';
 import { StatementKind } from '@polkadot/types/interfaces/claims';
 import { CollectiveOrigin, MemberCount, ProposalIndex, Votes, VotesTo230 } from '@polkadot/types/interfaces/collective';
-import { ContractConstructorSpecLatest, ContractConstructorSpecV0, ContractConstructorSpecV1, ContractConstructorSpecV2, ContractConstructorSpecV3, ContractContractSpecV0, ContractContractSpecV1, ContractContractSpecV2, ContractContractSpecV3, ContractContractSpecV4, ContractCryptoHasher, ContractDiscriminant, ContractDisplayName, ContractEventParamSpecLatest, ContractEventParamSpecV0, ContractEventParamSpecV2, ContractEventSpecLatest, ContractEventSpecV0, ContractEventSpecV1, ContractEventSpecV2, ContractLayoutArray, ContractLayoutCell, ContractLayoutEnum, ContractLayoutHash, ContractLayoutHashingStrategy, ContractLayoutKey, ContractLayoutStruct, ContractLayoutStructField, ContractMessageParamSpecLatest, ContractMessageParamSpecV0, ContractMessageParamSpecV2, ContractMessageSpecLatest, ContractMessageSpecV0, ContractMessageSpecV1, ContractMessageSpecV2, ContractMetadata, ContractMetadataLatest, ContractMetadataV0, ContractMetadataV1, ContractMetadataV2, ContractMetadataV3, ContractMetadataV4, ContractProject, ContractProjectContract, ContractProjectInfo, ContractProjectSource, ContractProjectV0, ContractSelector, ContractStorageLayout, ContractTypeSpec } from '@polkadot/types/interfaces/contractsAbi';
+import { ContractConstructorSpecLatest, ContractConstructorSpecV0, ContractConstructorSpecV1, ContractConstructorSpecV2, ContractConstructorSpecV3, ContractConstructorSpecV4, ContractContractSpecV0, ContractContractSpecV1, ContractContractSpecV2, ContractContractSpecV3, ContractContractSpecV4, ContractCryptoHasher, ContractDiscriminant, ContractDisplayName, ContractEnvironmentV4, ContractEventParamSpecLatest, ContractEventParamSpecV0, ContractEventParamSpecV2, ContractEventSpecLatest, ContractEventSpecV0, ContractEventSpecV1, ContractEventSpecV2, ContractLayoutArray, ContractLayoutCell, ContractLayoutEnum, ContractLayoutHash, ContractLayoutHashingStrategy, ContractLayoutKey, ContractLayoutStruct, ContractLayoutStructField, ContractMessageParamSpecLatest, ContractMessageParamSpecV0, ContractMessageParamSpecV2, ContractMessageSpecLatest, ContractMessageSpecV0, ContractMessageSpecV1, ContractMessageSpecV2, ContractMessageSpecV3, ContractMetadata, ContractMetadataLatest, ContractMetadataV0, ContractMetadataV1, ContractMetadataV2, ContractMetadataV3, ContractMetadataV4, ContractProject, ContractProjectContract, ContractProjectInfo, ContractProjectSource, ContractProjectV0, ContractSelector, ContractStorageLayout, ContractTypeSpec } from '@polkadot/types/interfaces/contractsAbi';
 import { FundIndex, FundInfo, LastContribution, TrieIndex } from '@polkadot/types/interfaces/crowdloan';
 import { AccountVote, AccountVoteSplit, AccountVoteStandard, Conviction, Delegations, PreimageStatus, PreimageStatusAvailable, PriorLock, PropIndex, Proposal, ProxyState, ReferendumIndex, ReferendumInfo, ReferendumInfoFinished, ReferendumInfoTo239, ReferendumStatus, Tally, Voting, VotingDelegating, VotingDirect, VotingDirectVote } from '@polkadot/types/interfaces/democracy';
 import { ApprovalFlag, DefunctVoter, Renouncing, SetIndex, Vote, VoteIndex, VoterInfo, VoteThreshold } from '@polkadot/types/interfaces/elections';
@@ -7593,6 +7593,7 @@ declare module '@polkadot/types/types/registry' {
         ContractConstructorSpecV1: ContractConstructorSpecV1;
         ContractConstructorSpecV2: ContractConstructorSpecV2;
         ContractConstructorSpecV3: ContractConstructorSpecV3;
+        ContractConstructorSpecV4: ContractConstructorSpecV4;
         ContractContractSpecV0: ContractContractSpecV0;
         ContractContractSpecV1: ContractContractSpecV1;
         ContractContractSpecV2: ContractContractSpecV2;
@@ -7601,6 +7602,7 @@ declare module '@polkadot/types/types/registry' {
         ContractCryptoHasher: ContractCryptoHasher;
         ContractDiscriminant: ContractDiscriminant;
         ContractDisplayName: ContractDisplayName;
+        ContractEnvironmentV4: ContractEnvironmentV4;
         ContractEventParamSpecLatest: ContractEventParamSpecLatest;
         ContractEventParamSpecV0: ContractEventParamSpecV0;
         ContractEventParamSpecV2: ContractEventParamSpecV2;
@@ -7637,6 +7639,7 @@ declare module '@polkadot/types/types/registry' {
         ContractMessageSpecV0: ContractMessageSpecV0;
         ContractMessageSpecV1: ContractMessageSpecV1;
         ContractMessageSpecV2: ContractMessageSpecV2;
+        ContractMessageSpecV3: ContractMessageSpecV3;
         ContractMetadata: ContractMetadata;
         ContractMetadataLatest: ContractMetadataLatest;
         ContractMetadataV0: ContractMetadataV0;
