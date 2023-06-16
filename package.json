@@ -3,22 +3,26 @@
   "version": "0.24.0",
   "description": "Polkadot.js type definitions for Mangata Network",
   "author": "Mangata Finance <solutions@mangata.finance>",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "type": "module",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
   },
+  "engines": {
+    "node": ">=14.16"
+  },
   "license": "GPL-3.0",
   "scripts": {
-    "build": "rm -fr dist/* && rollup -c",
+    "build": "rm -fr dist/* && tsup",
     "buildTypes": "yarn generate:defs && yarn generate:meta",
-    "generate:defs": "ts-node --skip-project node_modules/.bin/polkadot-types-from-defs --package @mangata-finance/interfaces --input ./src/interfaces --endpoint ./metadata.json",
-    "generate:meta": "ts-node --skip-project node_modules/.bin/polkadot-types-from-chain --package @mangata-finance/interfaces --endpoint ./metadata.json --output ./src/interfaces"
+    "generate:defs": "node --experimental-specifier-resolution=node --loader ts-node/esm node_modules/.bin/polkadot-types-from-defs --package @mangata-finance/types/interfaces --input ./src/interfaces --endpoint ./metadata.json",
+    "generate:meta": "node --experimental-specifier-resolution=node --loader ts-node/esm node_modules/.bin/polkadot-types-from-chain --package @mangata-finance/types/interfaces --endpoint ./metadata.json --output ./src/interfaces",
+    "peer": "add-no-save --peer-deps",
+    "lint": "tsc --noEmit --pretty"
   },
   "files": [
     "dist"
@@ -28,13 +32,13 @@
     "types"
   ],
   "devDependencies": {
-    "@polkadot/typegen": "^9.14.2",
-    "@rollup/plugin-typescript": "^8.3.3",
-    "rollup": "^2.72.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.6.2"
+    "@polkadot/typegen": "^10.7.3",
+    "ts-node": "^10.9.1",
+    "tsup": "^6.7.0",
+    "typescript": "^4.9.5",
+    "yarn-add-no-save": "^1.0.3"
   },
-  "dependencies": {
-    "@polkadot/api-base": "^9.14.2"
+  "peerDependencies": {
+    "@polkadot/types": "^10.7.3"
   }
 }

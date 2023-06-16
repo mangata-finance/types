@@ -1,4 +1,9 @@
 {
+  "ts-node": {
+    // It is faster to skip typechecking.
+    // Remove if you want ts-node to do typechecking.
+    "experimentalSpecifierResolution": "node"
+  },
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -11,10 +16,9 @@
     "skipLibCheck": true,
     "declaration": true,
     "declarationDir": ".",
-    "typeRoots": ["./node_modules/@polkadot/ts", "./node_modules/@types"],
     "paths": {
       // this is the package name we use (in the interface imports, --package for generators)
-      "@mangata-finance/*": ["src/*"],
+      "@mangata-finance/types/*": ["src/*"],
       // here we replace the @polkadot/api augmentation with our own, generated from chain
       "@polkadot/api/augment": ["src/interfaces/augment-api.ts"],
       "@polkadot/types/lookup": ["src/interfaces/types-lookup.ts"],
