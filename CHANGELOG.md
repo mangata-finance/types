@@ -1,3 +1,10 @@
+# [1.0.0-rc.2](https://github.com/mangata-finance/types/compare/v1.0.0-rc.1...v1.0.0-rc.2) (2023-06-19)
+
+
+### Bug Fixes
+
+* change engine node version to 16 ([0ebeeff](https://github.com/mangata-finance/types/commit/0ebeeff03eb807d02cb7998a15bb316cb9c01ae5))
+
 # 1.0.0-rc.1 (2023-06-16)
 
 
