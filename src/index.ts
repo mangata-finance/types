@@ -182,6 +182,34 @@ export const mRpc = {
         }
       ],
       type: "VestingInfosWithLockedAt<Balance, BlockNumber>"
+    },
+    is_sell_asset_lock_free: {
+      description: "",
+      params: [
+        {
+          name: "path",
+          type: "Vec<TokendId>"
+        },
+        {
+          name: "input_amount",
+          type: "Balance"
+        }
+      ],
+      type: "RpcResult<Option<bool>>"
+    },
+    is_buy_asset_lock_free: {
+      description: "",
+      params: [
+        {
+          name: "path",
+          type: "Vec<TokendId>"
+        },
+        {
+          name: "input_amount",
+          type: "Balance"
+        }
+      ],
+      type: "RpcResult<Option<bool>>"
     }
   }
 };

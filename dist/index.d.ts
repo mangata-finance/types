@@ -8646,6 +8646,22 @@ declare const mRpc: {
             }[];
             type: string;
         };
+        is_sell_asset_lock_free: {
+            description: string;
+            params: {
+                name: string;
+                type: string;
+            }[];
+            type: string;
+        };
+        is_buy_asset_lock_free: {
+            description: string;
+            params: {
+                name: string;
+                type: string;
+            }[];
+            type: string;
+        };
     };
 };
 declare const typesBundleForPolkadotApps: OverrideBundleDefinition;
