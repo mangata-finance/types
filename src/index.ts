@@ -169,33 +169,19 @@ export const mRpc = {
       ],
       type: "Balance"
     },
-    get_vesting_locked_at: {
-      description: "",
-      params: [
-        {
-          name: "who",
-          type: "AccountId"
-        },
-        {
-          name: "token_id",
-          type: "TokenId"
-        }
-      ],
-      type: "VestingInfosWithLockedAt<Balance, BlockNumber>"
-    },
     is_sell_asset_lock_free: {
       description: "",
       params: [
         {
           name: "path",
-          type: "Vec<TokendId>"
+          type: "Vec<TokenId>"
         },
         {
           name: "input_amount",
           type: "Balance"
         }
       ],
-      type: "RpcResult<Option<bool>>"
+      type: "bool"
     },
     is_buy_asset_lock_free: {
       description: "",
@@ -209,7 +195,23 @@ export const mRpc = {
           type: "Balance"
         }
       ],
-      type: "RpcResult<Option<bool>>"
+      type: "bool"
+    }
+  },
+  vesting: {
+    getVestingLockedAt: {
+      description: "",
+      params: [
+        {
+          name: "who",
+          type: "AccountId"
+        },
+        {
+          name: "token_id",
+          type: "TokenId"
+        }
+      ],
+      type: "VestingInfosWithLockedAt<Balance, BlockNumber>"
     }
   }
 };
