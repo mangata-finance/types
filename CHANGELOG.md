@@ -1,3 +1,10 @@
+# [1.0.0-rc.5](https://github.com/mangata-finance/types/compare/v1.0.0-rc.4...v1.0.0-rc.5) (2023-06-27)
+
+
+### Bug Fixes
+
+* update metadata and fix rpc methods ([2f0ff39](https://github.com/mangata-finance/types/commit/2f0ff3935ee5ddaf7ec43546c0daff2bdae84626))
+
 # [1.0.0-rc.4](https://github.com/mangata-finance/types/compare/v1.0.0-rc.3...v1.0.0-rc.4) (2023-06-27)
 
 
