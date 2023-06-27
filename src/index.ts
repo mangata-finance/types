@@ -202,7 +202,7 @@ export const mRpc = {
       params: [
         {
           name: "path",
-          type: "Vec<TokendId>"
+          type: "Vec<TokenId>"
         },
         {
           name: "input_amount",
