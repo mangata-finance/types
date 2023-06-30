@@ -10,6 +10,9 @@ import { mTypes, mRpc } from "@mangata-finance/type-definitions";
 // src/interfaces/augment-types.ts
 import "@polkadot/types/types/registry";
 
+// src/interfaces/types-lookup.ts
+import "@polkadot/types/lookup";
+
 // src/interfaces/lookup.ts
 var lookup_exports = {};
 __export(lookup_exports, {
@@ -3661,9 +3664,6 @@ var lookup_default = {
    **/
   MangataRococoRuntimeRuntime: "Null"
 };
-
-// src/interfaces/types-lookup.ts
-import "@polkadot/types/lookup";
 
 // src/index.ts
 var options = ({
