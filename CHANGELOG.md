@@ -1,3 +1,16 @@
+# [1.0.0-rc.6](https://github.com/mangata-finance/types/compare/v1.0.0-rc.5...v1.0.0-rc.6) (2023-06-30)
+
+
+### Bug Fixes
+
+* node version ([e283703](https://github.com/mangata-finance/types/commit/e2837034584ab174b4a1bf92371878f403580998))
+* versions ([c278623](https://github.com/mangata-finance/types/commit/c2786237aa300e08722d6c8f3770cfb42c8c43ed))
+
+
+### Features
+
+* add lookup types ([9bd8776](https://github.com/mangata-finance/types/commit/9bd8776e391e508cba114d4c02d82dc0e1126d5c))
+
 # [1.0.0-rc.5](https://github.com/mangata-finance/types/compare/v1.0.0-rc.4...v1.0.0-rc.5) (2023-06-27)
 
 
