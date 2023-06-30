@@ -52,11 +52,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Install peer
-        run: yarn peer
+      - name: npm registry and install
+        run: |
+          yarn config set registry https://registry.npmjs.org
+          rm yarn.lock
+          yarn
+          yarn peer
 
       - name: Build types
         run: yarn buildTypes
