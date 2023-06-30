@@ -17,7 +17,7 @@ import "./interfaces/augment-api-runtime";
 
 import * as lookupTypes from "./interfaces/lookup";
 
-export const options = ({
+const options = ({
   types = {},
   rpc = {},
   ...otherOptions
@@ -33,3 +33,5 @@ export const options = ({
   },
   ...otherOptions
 });
+
+export { options, lookupTypes };
