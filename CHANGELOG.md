@@ -1,3 +1,10 @@
+# [1.0.0-rc.10](https://github.com/mangata-finance/types/compare/v1.0.0-rc.9...v1.0.0-rc.10) (2023-06-30)
+
+
+### Bug Fixes
+
+* import interfaces ([70df05e](https://github.com/mangata-finance/types/commit/70df05e392aaf22ca317c346a8ce8ed97a9e0ea9))
+
 # [1.0.0-rc.9](https://github.com/mangata-finance/types/compare/v1.0.0-rc.8...v1.0.0-rc.9) (2023-06-30)
 
 
