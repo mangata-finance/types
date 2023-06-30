@@ -28,6 +28,9 @@
     "mangata",
     "types"
   ],
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@polkadot/typegen": "^10.7.3",
     "@semantic-release/changelog": "^6.0.3",
