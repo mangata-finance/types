@@ -46,6 +46,6 @@
     "@polkadot/types": "^10.7.3"
   },
   "dependencies": {
-    "@mangata-finance/type-definitions": "1.0.0-rc.2"
+    "@mangata-finance/type-definitions": "1.0.0-rc.3"
   }
 }
