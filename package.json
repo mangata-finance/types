@@ -24,9 +24,6 @@
     "peer": "add-no-save --peer-deps",
     "lint": "tsc --noEmit --pretty"
   },
-  "files": [
-    "dist"
-  ],
   "keywords": [
     "mangata",
     "types"

@@ -6,7 +6,6 @@ var __export = (target, all) => {
 
 // src/index.ts
 import { mTypes, mRpc } from "@mangata-finance/type-definitions";
-import "@polkadot/types/lookup";
 
 // src/interfaces/augment-types.ts
 import "@polkadot/types/types/registry";
@@ -3662,6 +3661,9 @@ var lookup_default = {
    **/
   MangataRococoRuntimeRuntime: "Null"
 };
+
+// src/interfaces/types-lookup.ts
+import "@polkadot/types/lookup";
 
 // src/index.ts
 var options = ({
