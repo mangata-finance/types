@@ -1,3 +1,10 @@
+# [1.0.0-rc.11](https://github.com/mangata-finance/types/compare/v1.0.0-rc.10...v1.0.0-rc.11) (2023-07-01)
+
+
+### Bug Fixes
+
+* lookup types ([918ae73](https://github.com/mangata-finance/types/commit/918ae73774c42fb28232259700b3235a757b3abc))
+
 # [1.0.0-rc.10](https://github.com/mangata-finance/types/compare/v1.0.0-rc.9...v1.0.0-rc.10) (2023-06-30)
 
 
