@@ -6,8 +6,6 @@ import "./interfaces/augment-api";
 import "./interfaces/augment-types";
 import "./interfaces/types-lookup.js";
 
-import * as lookupTypes from "./interfaces/lookup";
-
 export const options = ({
   types = {},
   rpc = {},
@@ -15,7 +13,6 @@ export const options = ({
 }: ApiOptions = {}): ApiOptions => ({
   types: {
     ...mTypes,
-    ...(lookupTypes as unknown as RegistryTypes),
     ...types
   },
   rpc: {
