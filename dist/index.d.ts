@@ -1,4 +1,3 @@
-import { ApiOptions } from '@polkadot/api/types';
 import { ApiTypes, AugmentedConst, AugmentedError, AugmentedEvent, AugmentedQuery, QueryableStorageEntry, AugmentedSubmittable, SubmittableExtrinsic, SubmittableExtrinsicFunction, AugmentedCall, DecoratedCallBase } from '@polkadot/api-base/types';
 import { u32, u8, Bytes, u128, u16, u64, Option, Result, Null, Vec, bool, U8aFixed, BTreeMap, Compact, Text, HashMap, U256, U64, f64, Json, Struct, BitVec, Bool, f32, F32, F64, i128, I128, i16, I16, i256, I256, i32, I32, i64, I64, i8, I8, isize, ISize, OptionBool, Raw, Type, U128, U16, u256, U32, U8, usize, USize, Enum, BTreeSet, Set } from '@polkadot/types-codec';
 import { Codec, AnyNumber, ITuple, IMethod } from '@polkadot/types-codec/types';
@@ -12400,7 +12399,3 @@ declare module '@polkadot/types/lookup' {
     /** @name MangataRococoRuntimeRuntime (499) */
     type MangataRococoRuntimeRuntime = Null;
 }
-
-declare const options: ({ types, rpc, ...otherOptions }?: ApiOptions) => ApiOptions;
-
-export { options };

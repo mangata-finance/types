@@ -40,12 +40,10 @@
     "ts-node": "^10.9.1",
     "tsup": "^6.7.0",
     "typescript": "^4.9.5",
-    "yarn-add-no-save": "^1.0.3"
+    "yarn-add-no-save": "^1.0.3",
+    "@mangata-finance/type-definitions": "1.0.0"
   },
   "peerDependencies": {
     "@polkadot/types": "^10.7.3"
-  },
-  "dependencies": {
-    "@mangata-finance/type-definitions": "1.0.0-rc.3"
   }
 }
