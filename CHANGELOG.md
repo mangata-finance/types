@@ -1,3 +1,10 @@
+# [1.1.0-rc.1](https://github.com/mangata-finance/types/compare/v1.0.0...v1.1.0-rc.1) (2023-08-21)
+
+
+### Features
+
+* update metadata ([a5d886f](https://github.com/mangata-finance/types/commit/a5d886feb1ca2b3a75b0c15141e944776e565d97))
+
 # 1.0.0 (2023-08-21)
 
 
