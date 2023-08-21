@@ -1,3 +1,38 @@
+# 1.0.0 (2023-08-21)
+
+
+### Bug Fixes
+
+* change engine node version to 16 ([0ebeeff](https://github.com/mangata-finance/types/commit/0ebeeff03eb807d02cb7998a15bb316cb9c01ae5))
+* import interfaces ([70df05e](https://github.com/mangata-finance/types/commit/70df05e392aaf22ca317c346a8ce8ed97a9e0ea9))
+* lookup types ([918ae73](https://github.com/mangata-finance/types/commit/918ae73774c42fb28232259700b3235a757b3abc))
+* lookup types ([6cb6926](https://github.com/mangata-finance/types/commit/6cb692676e887e9f121b09a79b8ff550e4ac8840))
+* node version ([e283703](https://github.com/mangata-finance/types/commit/e2837034584ab174b4a1bf92371878f403580998))
+* only esm support ([1c97709](https://github.com/mangata-finance/types/commit/1c977095f52b84902c0f5eaa0047c3d14dd5526c))
+* types ([8eab625](https://github.com/mangata-finance/types/commit/8eab625940f897df532bcaa941ccb5c656e40efe))
+* types ([1b25c89](https://github.com/mangata-finance/types/commit/1b25c892c016746976aa15da4e3dfec9abbb89de))
+* typo in type TokenId ([0de6875](https://github.com/mangata-finance/types/commit/0de687597dde7b8472c8f9595a4f209b8d78a62c))
+* update metadata and fix rpc methods ([2f0ff39](https://github.com/mangata-finance/types/commit/2f0ff3935ee5ddaf7ec43546c0daff2bdae84626))
+* versions ([c278623](https://github.com/mangata-finance/types/commit/c2786237aa300e08722d6c8f3770cfb42c8c43ed))
+
+
+### Features
+
+* add lookup types ([9bd8776](https://github.com/mangata-finance/types/commit/9bd8776e391e508cba114d4c02d82dc0e1126d5c))
+* add two new rpc methods ([f47094f](https://github.com/mangata-finance/types/commit/f47094fea56d63a0e29342fd2d1eb28ae35ad8d1))
+* add type definitions ([bce5922](https://github.com/mangata-finance/types/commit/bce59226269ccc96f34b31f0a61332a5fa658be3))
+* build types ([7b1ae71](https://github.com/mangata-finance/types/commit/7b1ae711c7d8f6af148ade46905d0c5fe2fc9912))
+* downgrde rollup due to the esm module only ([a6c652e](https://github.com/mangata-finance/types/commit/a6c652efb8162f42bd62e296f70525e0f1f46b0a))
+* rework some of the files ([437ac88](https://github.com/mangata-finance/types/commit/437ac885fd04a620fd145138c9bbe246db066e74))
+* update metadata ([e7bb8fc](https://github.com/mangata-finance/types/commit/e7bb8fcf9db7f20bb6d9ca376dfd3eed13c7acb0))
+* update metadata and refactor ([7f2ce6e](https://github.com/mangata-finance/types/commit/7f2ce6eee67fc4b04a96b15775f3f684c4f62df5))
+
+
+### BREAKING CHANGES
+
+* esm support
+* support only esm
+
 # [1.0.0-rc.13](https://github.com/mangata-finance/types/compare/v1.0.0-rc.12...v1.0.0-rc.13) (2023-07-06)
 
 
