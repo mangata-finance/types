@@ -1,8 +1,8 @@
 import { ApiTypes, AugmentedConst, AugmentedError, AugmentedEvent, AugmentedQuery, QueryableStorageEntry, AugmentedSubmittable, SubmittableExtrinsic, SubmittableExtrinsicFunction, AugmentedCall, DecoratedCallBase } from '@polkadot/api-base/types';
 import { u32, u8, Bytes, u128, u16, u64, Option, Result, Null, Vec, bool, U8aFixed, BTreeMap, Compact, Text, HashMap, U256, U64, f64, Json, Struct, BitVec, Bool, f32, F32, F64, i128, I128, i16, I16, i256, I256, i32, I32, i64, I64, i8, I8, isize, ISize, OptionBool, Raw, Type, U128, U16, u256, U32, U8, usize, USize, Enum, BTreeSet, Set } from '@polkadot/types-codec';
 import { Codec, AnyNumber, ITuple, IMethod } from '@polkadot/types-codec/types';
-import { Perbill, Percent, AccountId32, Permill, H256, Call, MultiAddress, Hash, SignedBlock, BlockNumber, Header, StorageData, AccountId, Justification, H160, H64, KeyValue, Index, SlotDuration, Block, KeyTypeId, Balance, H512, AccountId20, AccountId33, AccountIdOf, AccountIndex, Address, AssetId, BalanceOf, BlockNumberFor, BlockNumberOf, CallHash, CallHashOf, ChangesTrieConfiguration, ChangesTrieSignal, CodecHash, Consensus, ConsensusEngineId, CrateVersion, Digest, DigestItem, EncodedJustification, ExtrinsicsWeight, Fixed128, Fixed64, FixedI128, FixedI64, FixedU128, FixedU64, H1024, H128, H2048, H32, HeaderPartial, I32F32, IndicesLookupSource, Justifications, LockIdentifier, LookupSource, LookupTarget, ModuleId, Moment, MultiSigner, OpaqueCall, Origin, OriginCaller, PalletId, PalletsOrigin, PalletVersion, Pays, Perquintill, PerU16, Phantom, PhantomData, PreRuntime, Releases, RuntimeCall, RuntimeDbWeight, RuntimeEvent, Seal, SealV0, SignedBlockWithJustification, SignedBlockWithJustifications, Slot, StorageInfo, StorageProof, TransactionInfo, TransactionLongevity, TransactionPriority, TransactionStorageProof, TransactionTag, U32F32, ValidatorId, ValidatorIdOf, Weight, WeightMultiplier, WeightV0, WeightV1, WeightV2 } from '@polkadot/types/interfaces/runtime';
-import { FrameSupportPalletId, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, SpWeightsRuntimeDbWeight, SpVersionRuntimeVersion, SpWeightsWeightV2Weight, XcmV3MultiLocation, OrmlTraitsAssetRegistryAssetMetadata, SpRuntimeDispatchError, XcmV3TraitsOutcome, PalletIssuanceIssuanceInfo, PalletIssuanceTgeInfo, XcmV3Xcm, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingPayoutRounds, ParachainStakingDelegatorAdded, XcmVersionedMultiAssets, XcmV3MultiassetMultiAssets, XcmVersionedMultiLocation, XcmV3TraitsError, XcmV3Response, MangataRococoRuntimeProxyType, FrameSupportDispatchDispatchInfo, FrameSupportTokensMiscBalanceStatus, XcmV3MultiAsset, SpRuntimeModuleError, SpConsensusAuraSr25519AppSr25519Public, PalletBootstrapBootstrapPhase, PalletCollectiveMangataVotes, PalletCrowdloanRewardsRewardInfo, CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueuePageIndexData, PalletFeeLockAccountFeeLockDataInfo, PalletFeeLockFeeLockMetadataInfo, PalletIdentityRegistration, PalletIdentityRegistrarInfo, PalletMaintenanceMaintenanceStatusInfo, PalletMultipurposeLiquidityRelockStatusInfo, PalletMultipurposeLiquidityReserveStatusInfo, ParachainStakingAggregatorMetadataType, ParachainStakingCollatorSnapshot, ParachainStakingBond, ParachainStakingCollatorCandidate, ParachainStakingDelegator, ParachainStakingRoundInfo, ParachainStakingRoundCollatorRewardInfoType, CumulusPalletParachainSystemCodeUpgradeAuthorization, PolkadotPrimitivesV2AbridgedHostConfiguration, PolkadotCorePrimitivesOutboundHrmpMessage, SpTrieStorageProof, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, PolkadotPrimitivesV2UpgradeRestriction, PolkadotPrimitivesV2PersistedValidationData, PalletXcmVersionMigrationStage, PalletXcmQueryStatus, XcmVersionedAssetId, PalletXcmRemoteLockedFungibleRecord, PalletProofOfStakePromotedPools, PalletProofOfStakeRewardInfo, PalletProxyAnnouncement, PalletProxyProxyDefinition, SpCoreCryptoKeyTypeId, MangataRococoRuntimeSessionKeys, FrameSystemAccountInfo, FrameSupportDispatchPerDispatchClassWeight, SpRuntimeDigest, FrameSystemEventRecord, FrameSystemPhase, FrameSystemLastRuntimeUpgradeInfo, OrmlTokensAccountData, OrmlTokensBalanceLock, OrmlTokensReserveData, PalletTransactionPaymentMangataReleases, PalletTreasuryProposal, PalletVestingMangataReleases, PalletVestingMangataVestingInfo, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueQueueConfigData, MangataTypesAssetsCustomMetadata, SpRuntimeMultiSignature, PalletIdentityJudgement, PalletIdentityBitFlags, PalletIdentityIdentityInfo, XcmVersionedXcm, ParachainStakingPairedOrLiquidityToken, ParachainStakingMetadataUpdateAction, MangataTypesMultipurposeLiquidityBondKind, CumulusPrimitivesParachainInherentParachainInherentData, XcmV3WeightLimit, MangataTypesMultipurposeLiquidityActivateKind, MangataRococoRuntimeOriginCaller, XcmVersionedMultiAsset } from '@polkadot/types/lookup';
+import { Perbill, Percent, AccountId32, Permill, H256, Call, MultiAddress, Hash, SignedBlock, BlockNumber, Header, StorageData, AccountId, Justification, H160, H64, KeyValue, Index, SlotDuration, Block, KeyTypeId, H512, Balance, AccountId20, AccountId33, AccountIdOf, AccountIndex, Address, AssetId, BalanceOf, BlockNumberFor, BlockNumberOf, CallHash, CallHashOf, ChangesTrieConfiguration, ChangesTrieSignal, CodecHash, Consensus, ConsensusEngineId, CrateVersion, Digest, DigestItem, EncodedJustification, ExtrinsicsWeight, Fixed128, Fixed64, FixedI128, FixedI64, FixedU128, FixedU64, H1024, H128, H2048, H32, HeaderPartial, I32F32, IndicesLookupSource, Justifications, LockIdentifier, LookupSource, LookupTarget, ModuleId, Moment, MultiSigner, OpaqueCall, Origin, OriginCaller, PalletId, PalletsOrigin, PalletVersion, Pays, Perquintill, PerU16, Phantom, PhantomData, PreRuntime, Releases, RuntimeCall, RuntimeDbWeight, RuntimeEvent, Seal, SealV0, SignedBlockWithJustification, SignedBlockWithJustifications, Slot, StorageInfo, StorageProof, TransactionInfo, TransactionLongevity, TransactionPriority, TransactionStorageProof, TransactionTag, U32F32, ValidatorId, ValidatorIdOf, Weight, WeightMultiplier, WeightV0, WeightV1, WeightV2 } from '@polkadot/types/interfaces/runtime';
+import { FrameSupportPalletId, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, SpWeightsRuntimeDbWeight, SpVersionRuntimeVersion, SpWeightsWeightV2Weight, XcmV3MultiLocation, OrmlTraitsAssetRegistryAssetMetadata, SpRuntimeDispatchError, XcmV3TraitsOutcome, PalletIssuanceIssuanceInfo, PalletIssuanceTgeInfo, XcmV3Xcm, ParachainStakingCandidateBondRequest, ParachainStakingDelegationRequest, ParachainStakingPayoutRounds, ParachainStakingDelegatorAdded, XcmVersionedMultiAssets, XcmV3MultiassetMultiAssets, XcmVersionedMultiLocation, XcmV3TraitsError, XcmV3Response, CommonRuntimeConfigPalletProxyProxyType, FrameSupportDispatchDispatchInfo, FrameSupportTokensMiscBalanceStatus, XcmV3MultiAsset, SpRuntimeModuleError, SpConsensusAuraSr25519AppSr25519Public, PalletBootstrapBootstrapPhase, PalletCollectiveMangataVotes, PalletCrowdloanRewardsRewardInfo, CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueuePageIndexData, PalletFeeLockAccountFeeLockDataInfo, PalletFeeLockFeeLockMetadataInfo, PalletIdentityRegistration, PalletIdentityRegistrarInfo, PalletMaintenanceMaintenanceStatusInfo, PalletMultipurposeLiquidityRelockStatusInfo, PalletMultipurposeLiquidityReserveStatusInfo, ParachainStakingAggregatorMetadataType, ParachainStakingCollatorSnapshot, ParachainStakingBond, ParachainStakingCollatorCandidate, ParachainStakingDelegator, ParachainStakingRoundInfo, ParachainStakingRoundCollatorRewardInfoType, CumulusPalletParachainSystemCodeUpgradeAuthorization, PolkadotPrimitivesV2AbridgedHostConfiguration, PolkadotCorePrimitivesOutboundHrmpMessage, SpTrieStorageProof, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, PolkadotPrimitivesV2UpgradeRestriction, PolkadotPrimitivesV2PersistedValidationData, PalletXcmVersionMigrationStage, PalletXcmQueryStatus, XcmVersionedAssetId, PalletXcmRemoteLockedFungibleRecord, PalletProofOfStakePromotedPools, PalletProofOfStakeRewardInfo, PalletProxyAnnouncement, PalletProxyProxyDefinition, SpCoreCryptoKeyTypeId, MangataRococoRuntimeSessionKeys, FrameSystemAccountInfo, FrameSupportDispatchPerDispatchClassWeight, SpRuntimeDigest, FrameSystemEventRecord, FrameSystemPhase, FrameSystemLastRuntimeUpgradeInfo, OrmlTokensAccountData, OrmlTokensBalanceLock, OrmlTokensReserveData, PalletTransactionPaymentMangataReleases, PalletTreasuryProposal, PalletVestingMangataReleases, PalletVestingMangataVestingInfo, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueQueueConfigData, MangataTypesAssetsCustomMetadata, SpRuntimeMultiSignature, PalletIdentityJudgement, PalletIdentityBitFlags, PalletIdentityIdentityInfo, XcmVersionedXcm, ParachainStakingPairedOrLiquidityToken, ParachainStakingMetadataUpdateAction, MangataTypesMultipurposeLiquidityBondKind, CumulusPrimitivesParachainInherentParachainInherentData, XcmV3WeightLimit, MangataTypesMultipurposeLiquidityActivateKind, MangataRococoRuntimeOriginCaller, XcmVersionedMultiAsset } from '@polkadot/types/lookup';
 import { Data, StorageKey, Metadata } from '@polkadot/types';
 import { Observable, IExtrinsic } from '@polkadot/types/types';
 import { AugmentedRpc } from '@polkadot/rpc-core/types';
@@ -500,7 +500,6 @@ declare module '@polkadot/api-base/types/consts' {
         xyk: {
             buyAndBurnFeePercentage: u128 & AugmentedConst<ApiType>;
             poolFeePercentage: u128 & AugmentedConst<ApiType>;
-            rewardsMigrateAccount: AccountId32 & AugmentedConst<ApiType>;
             treasuryFeePercentage: u128 & AugmentedConst<ApiType>;
             /**
              * Generic const
@@ -727,6 +726,10 @@ declare module '@polkadot/api-base/types/errors' {
              **/
             InvalidFreeClaimSignature: AugmentedError<ApiType>;
             /**
+             * Math overflow
+             **/
+            MathOverflow: AugmentedError<ApiType>;
+            /**
              * User trying to claim an award did not have an claim associated with it. This may mean
              * they did not contribute to the crowdloan, or they have not yet associated a native id
              * with their contribution
@@ -736,6 +739,10 @@ declare module '@polkadot/api-base/types/errors' {
              * User provided a signature from a non-contributor relay account
              **/
             NonContributedAddressProvided: AugmentedError<ApiType>;
+            /**
+             * Period not set
+             **/
+            PeriodNotSet: AugmentedError<ApiType>;
             /**
              * The contribution is not high enough to be eligible for rewards
              **/
@@ -2501,10 +2508,10 @@ declare module '@polkadot/api-base/types/events' {
             /**
              * A proxy was added.
              **/
-            ProxyAdded: AugmentedEvent<ApiType, [delegator: AccountId32, delegatee: AccountId32, proxyType: MangataRococoRuntimeProxyType, delay: u32], {
+            ProxyAdded: AugmentedEvent<ApiType, [delegator: AccountId32, delegatee: AccountId32, proxyType: CommonRuntimeConfigPalletProxyProxyType, delay: u32], {
                 delegator: AccountId32;
                 delegatee: AccountId32;
-                proxyType: MangataRococoRuntimeProxyType;
+                proxyType: CommonRuntimeConfigPalletProxyProxyType;
                 delay: u32;
             }>;
             /**
@@ -2516,20 +2523,20 @@ declare module '@polkadot/api-base/types/events' {
             /**
              * A proxy was removed.
              **/
-            ProxyRemoved: AugmentedEvent<ApiType, [delegator: AccountId32, delegatee: AccountId32, proxyType: MangataRococoRuntimeProxyType, delay: u32], {
+            ProxyRemoved: AugmentedEvent<ApiType, [delegator: AccountId32, delegatee: AccountId32, proxyType: CommonRuntimeConfigPalletProxyProxyType, delay: u32], {
                 delegator: AccountId32;
                 delegatee: AccountId32;
-                proxyType: MangataRococoRuntimeProxyType;
+                proxyType: CommonRuntimeConfigPalletProxyProxyType;
                 delay: u32;
             }>;
             /**
              * A pure account has been created by new proxy with given
              * disambiguation index and proxy type.
              **/
-            PureCreated: AugmentedEvent<ApiType, [pure: AccountId32, who: AccountId32, proxyType: MangataRococoRuntimeProxyType, disambiguationIndex: u16], {
+            PureCreated: AugmentedEvent<ApiType, [pure: AccountId32, who: AccountId32, proxyType: CommonRuntimeConfigPalletProxyProxyType, disambiguationIndex: u16], {
                 pure: AccountId32;
                 who: AccountId32;
-                proxyType: MangataRococoRuntimeProxyType;
+                proxyType: CommonRuntimeConfigPalletProxyProxyType;
                 disambiguationIndex: u16;
             }>;
             /**
@@ -3165,9 +3172,15 @@ declare module '@polkadot/api-base/types/storage' {
             [key: string]: QueryableStorageEntry<ApiType>;
         };
         crowdloan: {
-            accountsPayable: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<Option<PalletCrowdloanRewardsRewardInfo>>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
-            claimedRelayChainIds: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<Option<Null>>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
-            crowdloanAllocation: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+            accountsPayable: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: AccountId32 | string | Uint8Array) => Observable<Option<PalletCrowdloanRewardsRewardInfo>>, [u32, AccountId32]> & QueryableStorageEntry<ApiType, [u32, AccountId32]>;
+            claimedRelayChainIds: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: AccountId32 | string | Uint8Array) => Observable<Option<Null>>, [u32, AccountId32]> & QueryableStorageEntry<ApiType, [u32, AccountId32]>;
+            crowdloanAllocation: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<u128>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
+            /**
+             * Id of current crowdloan rewards distribution, automatically incremented by
+             * [`Pallet::<T>::complete_initialization`]
+             **/
+            crowdloanId: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+            crowdloanPeriod: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<Option<ITuple<[u32, u32]>>>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
             /**
              * Vesting block height at the initialization of the pallet
              **/
@@ -3186,7 +3199,7 @@ declare module '@polkadot/api-base/types/storage' {
              * Total number of contributors to aid hinting benchmarking
              **/
             totalContributors: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
-            unassociatedContributions: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<Option<PalletCrowdloanRewardsRewardInfo>>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
+            unassociatedContributions: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: AccountId32 | string | Uint8Array) => Observable<Option<PalletCrowdloanRewardsRewardInfo>>, [u32, AccountId32]> & QueryableStorageEntry<ApiType, [u32, AccountId32]>;
             /**
              * Generic query
              **/
@@ -3577,7 +3590,10 @@ declare module '@polkadot/api-base/types/storage' {
         };
         proofOfStake: {
             /**
-             * Stores information about pool weight and accumulated rewards
+             * Stores information about pool weight and accumulated rewards. The accumulated
+             * rewards amount is the number of rewards that can be claimed per liquidity
+             * token. Here is tracked the number of rewards per liquidity token relationship.
+             * Expect larger values when the number of liquidity tokens are smaller.
              **/
             promotedPoolRewards: AugmentedQuery<ApiType, () => Observable<BTreeMap<u32, PalletProofOfStakePromotedPools>>, []> & QueryableStorageEntry<ApiType, []>;
             rewardsInfo: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: u32 | AnyNumber | Uint8Array) => Observable<PalletProofOfStakeRewardInfo>, [AccountId32, u32]> & QueryableStorageEntry<ApiType, [AccountId32, u32]>;
@@ -4297,16 +4313,20 @@ declare module '@polkadot/api-base/types/submittable' {
                 Ecdsa: any;
             } | string | Uint8Array])[]) => SubmittableExtrinsic<ApiType>, [AccountId32, AccountId32, Vec<ITuple<[AccountId32, SpRuntimeMultiSignature]>>]>;
             /**
-             * Collect whatever portion of your reward are currently vested.
+             * Collect rewards from particular crowdloan.
+             * If crowdloan_id is not set current [`CrowdloanId`] id will be used.
+             * Caller is instantly rewarded with [`InitializationPayment`] % of available rewards,
+             * remaining funds are locked according to schedule(using `pallet_mangata_vesting` configured
+             * by [`Pallet::<T>::complete_initialization`] call.
              **/
-            claim: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
+            claim: AugmentedSubmittable<(crowdloanId: Option<u32> | null | Uint8Array | u32 | AnyNumber) => SubmittableExtrinsic<ApiType>, [Option<u32>]>;
             /**
              * This extrinsic completes the initialization if some checks are fullfiled. These checks are:
              * -The reward contribution money matches the crowdloan pot
              * -The end vesting block is higher than the init vesting block
              * -The initialization has not complete yet
              **/
-            completeInitialization: AugmentedSubmittable<(leaseEndingBlock: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32]>;
+            completeInitialization: AugmentedSubmittable<(leaseStartBlock: u32 | AnyNumber | Uint8Array, leaseEndingBlock: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32]>;
             /**
              * Initialize the reward distribution storage. It shortcuts whenever an error is found
              * This does not enforce any checks other than making sure we dont go over funds
@@ -4315,8 +4335,10 @@ declare module '@polkadot/api-base/types/submittable' {
             initializeRewardVec: AugmentedSubmittable<(rewards: Vec<ITuple<[AccountId32, Option<AccountId32>, u128]>> | ([AccountId32 | string | Uint8Array, Option<AccountId32> | null | Uint8Array | AccountId32 | string, u128 | AnyNumber | Uint8Array])[]) => SubmittableExtrinsic<ApiType>, [Vec<ITuple<[AccountId32, Option<AccountId32>, u128]>>]>;
             /**
              * Initialize the reward distribution storage. It shortcuts whenever an error is found
-             * This does not enforce any checks other than making sure we dont go over funds
-             * complete_initialization should perform any additional
+             * Sets crowdloan allocation for:
+             * - current round of crowdloan - if it has not been completed (`[Pallet::<T>::complete_initialization]`)
+             * - following round of crowdloan rewards payment if previous one has been already
+             * completed
              **/
             setCrowdloanAllocation: AugmentedSubmittable<(crowdloanAllocationAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
             /**
@@ -5230,7 +5252,7 @@ declare module '@polkadot/api-base/types/submittable' {
                 Address32: any;
             } | {
                 Address20: any;
-            } | string | Uint8Array, proxyType: MangataRococoRuntimeProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MangataRococoRuntimeProxyType, u32]>;
+            } | string | Uint8Array, proxyType: CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, CommonRuntimeConfigPalletProxyProxyType, u32]>;
             /**
              * Publish the hash of a proxy-call that will be made in the future.
              *
@@ -5279,7 +5301,7 @@ declare module '@polkadot/api-base/types/submittable' {
              *
              * Fails if there are insufficient funds to pay for deposit.
              **/
-            createPure: AugmentedSubmittable<(proxyType: MangataRococoRuntimeProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array, index: u16 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataRococoRuntimeProxyType, u32, u16]>;
+            createPure: AugmentedSubmittable<(proxyType: CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array, index: u16 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [CommonRuntimeConfigPalletProxyProxyType, u32, u16]>;
             /**
              * Removes a previously spawned pure proxy.
              *
@@ -5308,7 +5330,7 @@ declare module '@polkadot/api-base/types/submittable' {
                 Address32: any;
             } | {
                 Address20: any;
-            } | string | Uint8Array, proxyType: MangataRococoRuntimeProxyType | 'AutoCompound' | number | Uint8Array, index: u16 | AnyNumber | Uint8Array, height: Compact<u32> | AnyNumber | Uint8Array, extIndex: Compact<u32> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MangataRococoRuntimeProxyType, u16, Compact<u32>, Compact<u32>]>;
+            } | string | Uint8Array, proxyType: CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number | Uint8Array, index: u16 | AnyNumber | Uint8Array, height: Compact<u32> | AnyNumber | Uint8Array, extIndex: Compact<u32> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, CommonRuntimeConfigPalletProxyProxyType, u16, Compact<u32>, Compact<u32>]>;
             /**
              * Dispatch the given `call` from an account that the sender is authorised for through
              * `add_proxy`.
@@ -5330,7 +5352,7 @@ declare module '@polkadot/api-base/types/submittable' {
                 Address32: any;
             } | {
                 Address20: any;
-            } | string | Uint8Array, forceProxyType: Option<MangataRococoRuntimeProxyType> | null | Uint8Array | MangataRococoRuntimeProxyType | 'AutoCompound' | number, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, Option<MangataRococoRuntimeProxyType>, Call]>;
+            } | string | Uint8Array, forceProxyType: Option<CommonRuntimeConfigPalletProxyProxyType> | null | Uint8Array | CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, Option<CommonRuntimeConfigPalletProxyProxyType>, Call]>;
             /**
              * Dispatch the given `call` from an account that the sender is authorized for through
              * `add_proxy`.
@@ -5364,7 +5386,7 @@ declare module '@polkadot/api-base/types/submittable' {
                 Address32: any;
             } | {
                 Address20: any;
-            } | string | Uint8Array, forceProxyType: Option<MangataRococoRuntimeProxyType> | null | Uint8Array | MangataRococoRuntimeProxyType | 'AutoCompound' | number, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MultiAddress, Option<MangataRococoRuntimeProxyType>, Call]>;
+            } | string | Uint8Array, forceProxyType: Option<CommonRuntimeConfigPalletProxyProxyType> | null | Uint8Array | CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MultiAddress, Option<CommonRuntimeConfigPalletProxyProxyType>, Call]>;
             /**
              * Remove the given announcement of a delegate.
              *
@@ -5439,7 +5461,7 @@ declare module '@polkadot/api-base/types/submittable' {
                 Address32: any;
             } | {
                 Address20: any;
-            } | string | Uint8Array, proxyType: MangataRococoRuntimeProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MangataRococoRuntimeProxyType, u32]>;
+            } | string | Uint8Array, proxyType: CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, CommonRuntimeConfigPalletProxyProxyType, u32]>;
             /**
              * Generic tx
              **/
@@ -7382,10 +7404,8 @@ declare module '@polkadot/api-base/types/calls' {
     }
 }
 
-/** @name RPCAmountsResult */
-interface RPCAmountsResult extends Struct {
-    readonly firstAssetAmount: Balance;
-    readonly secondAssetAmount: Balance;
+/** @name NumberOrHex */
+interface NumberOrHex extends u128 {
 }
 /** @name ShufflingSeed */
 interface ShufflingSeed extends Struct {
@@ -7404,10 +7424,6 @@ interface VestingInfo extends Struct {
 /** @name VestingInfosWithLockedAt */
 interface VestingInfosWithLockedAt extends Struct {
     readonly vestingInfosWithLockedAt: Vec<ITuple<[VestingInfo, Balance]>>;
-}
-/** @name XYKRpcResult */
-interface XYKRpcResult extends Struct {
-    readonly price: Balance;
 }
 
 declare module '@polkadot/types/types/registry' {
@@ -8056,6 +8072,7 @@ declare module '@polkadot/types/types/registry' {
         NpApiError: NpApiError;
         NpPoolId: NpPoolId;
         Null: Null;
+        NumberOrHex: NumberOrHex;
         OccupiedCore: OccupiedCore;
         OccupiedCoreAssumption: OccupiedCoreAssumption;
         OffchainAccuracy: OffchainAccuracy;
@@ -8234,7 +8251,6 @@ declare module '@polkadot/types/types/registry' {
         RewardPoint: RewardPoint;
         RoundSnapshot: RoundSnapshot;
         RoundState: RoundState;
-        RPCAmountsResult: RPCAmountsResult;
         RpcMethods: RpcMethods;
         RuntimeApiMetadataLatest: RuntimeApiMetadataLatest;
         RuntimeApiMetadataV15: RuntimeApiMetadataV15;
@@ -8558,7 +8574,6 @@ declare module '@polkadot/types/types/registry' {
         XcmV1: XcmV1;
         XcmV2: XcmV2;
         XcmVersion: XcmVersion;
-        XYKRpcResult: XYKRpcResult;
     }
 }
 
@@ -8762,7 +8777,7 @@ declare module '@polkadot/types/lookup' {
         readonly asPureCreated: {
             readonly pure: AccountId32;
             readonly who: AccountId32;
-            readonly proxyType: MangataRococoRuntimeProxyType;
+            readonly proxyType: CommonRuntimeConfigPalletProxyProxyType;
             readonly disambiguationIndex: u16;
         } & Struct;
         readonly isAnnounced: boolean;
@@ -8775,20 +8790,20 @@ declare module '@polkadot/types/lookup' {
         readonly asProxyAdded: {
             readonly delegator: AccountId32;
             readonly delegatee: AccountId32;
-            readonly proxyType: MangataRococoRuntimeProxyType;
+            readonly proxyType: CommonRuntimeConfigPalletProxyProxyType;
             readonly delay: u32;
         } & Struct;
         readonly isProxyRemoved: boolean;
         readonly asProxyRemoved: {
             readonly delegator: AccountId32;
             readonly delegatee: AccountId32;
-            readonly proxyType: MangataRococoRuntimeProxyType;
+            readonly proxyType: CommonRuntimeConfigPalletProxyProxyType;
             readonly delay: u32;
         } & Struct;
         readonly type: 'ProxyExecuted' | 'PureCreated' | 'Announced' | 'ProxyAdded' | 'ProxyRemoved';
     }
-    /** @name MangataRococoRuntimeProxyType (41) */
-    interface MangataRococoRuntimeProxyType extends Enum {
+    /** @name CommonRuntimeConfigPalletProxyProxyType (41) */
+    interface CommonRuntimeConfigPalletProxyProxyType extends Enum {
         readonly isAutoCompound: boolean;
         readonly type: 'AutoCompound';
     }
@@ -10468,32 +10483,32 @@ declare module '@polkadot/types/lookup' {
         readonly isProxy: boolean;
         readonly asProxy: {
             readonly real: MultiAddress;
-            readonly forceProxyType: Option<MangataRococoRuntimeProxyType>;
+            readonly forceProxyType: Option<CommonRuntimeConfigPalletProxyProxyType>;
             readonly call: Call;
         } & Struct;
         readonly isAddProxy: boolean;
         readonly asAddProxy: {
             readonly delegate: MultiAddress;
-            readonly proxyType: MangataRococoRuntimeProxyType;
+            readonly proxyType: CommonRuntimeConfigPalletProxyProxyType;
             readonly delay: u32;
         } & Struct;
         readonly isRemoveProxy: boolean;
         readonly asRemoveProxy: {
             readonly delegate: MultiAddress;
-            readonly proxyType: MangataRococoRuntimeProxyType;
+            readonly proxyType: CommonRuntimeConfigPalletProxyProxyType;
             readonly delay: u32;
         } & Struct;
         readonly isRemoveProxies: boolean;
         readonly isCreatePure: boolean;
         readonly asCreatePure: {
-            readonly proxyType: MangataRococoRuntimeProxyType;
+            readonly proxyType: CommonRuntimeConfigPalletProxyProxyType;
             readonly delay: u32;
             readonly index: u16;
         } & Struct;
         readonly isKillPure: boolean;
         readonly asKillPure: {
             readonly spawner: MultiAddress;
-            readonly proxyType: MangataRococoRuntimeProxyType;
+            readonly proxyType: CommonRuntimeConfigPalletProxyProxyType;
             readonly index: u16;
             readonly height: Compact<u32>;
             readonly extIndex: Compact<u32>;
@@ -10517,7 +10532,7 @@ declare module '@polkadot/types/lookup' {
         readonly asProxyAnnounced: {
             readonly delegate: MultiAddress;
             readonly real: MultiAddress;
-            readonly forceProxyType: Option<MangataRococoRuntimeProxyType>;
+            readonly forceProxyType: Option<CommonRuntimeConfigPalletProxyProxyType>;
             readonly call: Call;
         } & Struct;
         readonly type: 'Proxy' | 'AddProxy' | 'RemoveProxy' | 'RemoveProxies' | 'CreatePure' | 'KillPure' | 'Announce' | 'RemoveAnnouncement' | 'RejectAnnouncement' | 'ProxyAnnounced';
@@ -10754,12 +10769,16 @@ declare module '@polkadot/types/lookup' {
             readonly proofs: Vec<ITuple<[AccountId32, SpRuntimeMultiSignature]>>;
         } & Struct;
         readonly isClaim: boolean;
+        readonly asClaim: {
+            readonly crowdloanId: Option<u32>;
+        } & Struct;
         readonly isUpdateRewardAddress: boolean;
         readonly asUpdateRewardAddress: {
             readonly newRewardAccount: AccountId32;
         } & Struct;
         readonly isCompleteInitialization: boolean;
         readonly asCompleteInitialization: {
+            readonly leaseStartBlock: u32;
             readonly leaseEndingBlock: u32;
         } & Struct;
         readonly isSetCrowdloanAllocation: boolean;
@@ -11688,7 +11707,7 @@ declare module '@polkadot/types/lookup' {
     /** @name PalletProxyProxyDefinition (331) */
     interface PalletProxyProxyDefinition extends Struct {
         readonly delegate: AccountId32;
-        readonly proxyType: MangataRococoRuntimeProxyType;
+        readonly proxyType: CommonRuntimeConfigPalletProxyProxyType;
         readonly delay: u32;
     }
     /** @name PalletProxyAnnouncement (335) */
@@ -11866,13 +11885,13 @@ declare module '@polkadot/types/lookup' {
         readonly isMathError: boolean;
         readonly type: 'NotVesting' | 'AtMaxVestingSchedules' | 'AmountLow' | 'ScheduleIndexOutOfBounds' | 'InvalidScheduleParams' | 'NoSuitableScheduleFound' | 'SudoUnlockIsDisallowed' | 'InvalidVestingIndex' | 'MathError';
     }
-    /** @name PalletCrowdloanRewardsRewardInfo (370) */
+    /** @name PalletCrowdloanRewardsRewardInfo (371) */
     interface PalletCrowdloanRewardsRewardInfo extends Struct {
         readonly totalReward: u128;
         readonly claimedReward: u128;
         readonly contributedRelayAddresses: Vec<AccountId32>;
     }
-    /** @name PalletCrowdloanRewardsError (371) */
+    /** @name PalletCrowdloanRewardsError (372) */
     interface PalletCrowdloanRewardsError extends Enum {
         readonly isAlreadyAssociated: boolean;
         readonly isBatchBeyondFundPot: boolean;
@@ -11890,9 +11909,11 @@ declare module '@polkadot/types/lookup' {
         readonly isNonContributedAddressProvided: boolean;
         readonly isInsufficientNumberOfValidProofs: boolean;
         readonly isClaimingLessThanED: boolean;
-        readonly type: 'AlreadyAssociated' | 'BatchBeyondFundPot' | 'FirstClaimAlreadyDone' | 'RewardNotHighEnough' | 'InvalidClaimSignature' | 'InvalidFreeClaimSignature' | 'NoAssociatedClaim' | 'RewardsAlreadyClaimed' | 'RewardVecAlreadyInitialized' | 'RewardVecNotFullyInitializedYet' | 'RewardsDoNotMatchFund' | 'TooManyContributors' | 'VestingPeriodNonValid' | 'NonContributedAddressProvided' | 'InsufficientNumberOfValidProofs' | 'ClaimingLessThanED';
+        readonly isMathOverflow: boolean;
+        readonly isPeriodNotSet: boolean;
+        readonly type: 'AlreadyAssociated' | 'BatchBeyondFundPot' | 'FirstClaimAlreadyDone' | 'RewardNotHighEnough' | 'InvalidClaimSignature' | 'InvalidFreeClaimSignature' | 'NoAssociatedClaim' | 'RewardsAlreadyClaimed' | 'RewardVecAlreadyInitialized' | 'RewardVecNotFullyInitializedYet' | 'RewardsDoNotMatchFund' | 'TooManyContributors' | 'VestingPeriodNonValid' | 'NonContributedAddressProvided' | 'InsufficientNumberOfValidProofs' | 'ClaimingLessThanED' | 'MathOverflow' | 'PeriodNotSet';
     }
-    /** @name PalletIssuanceError (373) */
+    /** @name PalletIssuanceError (374) */
     interface PalletIssuanceError extends Enum {
         readonly isIssuanceConfigAlreadyInitialized: boolean;
         readonly isIssuanceConfigNotInitialized: boolean;
@@ -11903,7 +11924,7 @@ declare module '@polkadot/types/lookup' {
         readonly isUnknownPool: boolean;
         readonly type: 'IssuanceConfigAlreadyInitialized' | 'IssuanceConfigNotInitialized' | 'TgeNotFinalized' | 'TgeIsAlreadyFinalized' | 'IssuanceConfigInvalid' | 'MathError' | 'UnknownPool';
     }
-    /** @name PalletMultipurposeLiquidityReserveStatusInfo (374) */
+    /** @name PalletMultipurposeLiquidityReserveStatusInfo (375) */
     interface PalletMultipurposeLiquidityReserveStatusInfo extends Struct {
         readonly stakedUnactivatedReserves: u128;
         readonly activatedUnstakedReserves: u128;
@@ -11911,13 +11932,13 @@ declare module '@polkadot/types/lookup' {
         readonly unspentReserves: u128;
         readonly relockAmount: u128;
     }
-    /** @name PalletMultipurposeLiquidityRelockStatusInfo (376) */
+    /** @name PalletMultipurposeLiquidityRelockStatusInfo (377) */
     interface PalletMultipurposeLiquidityRelockStatusInfo extends Struct {
         readonly amount: u128;
         readonly startingBlock: u32;
         readonly endingBlockAsBalance: u128;
     }
-    /** @name PalletMultipurposeLiquidityError (378) */
+    /** @name PalletMultipurposeLiquidityError (379) */
     interface PalletMultipurposeLiquidityError extends Enum {
         readonly isNotALiquidityToken: boolean;
         readonly isRelockCountLimitExceeded: boolean;
@@ -11927,7 +11948,7 @@ declare module '@polkadot/types/lookup' {
         readonly isMathError: boolean;
         readonly type: 'NotALiquidityToken' | 'RelockCountLimitExceeded' | 'RelockInstanceIndexOOB' | 'NotEnoughUnspentReserves' | 'NotEnoughTokens' | 'MathError';
     }
-    /** @name PalletBootstrapBootstrapPhase (380) */
+    /** @name PalletBootstrapBootstrapPhase (381) */
     interface PalletBootstrapBootstrapPhase extends Enum {
         readonly isBeforeStart: boolean;
         readonly isWhitelist: boolean;
@@ -11935,10 +11956,10 @@ declare module '@polkadot/types/lookup' {
         readonly isFinished: boolean;
         readonly type: 'BeforeStart' | 'Whitelist' | 'Public' | 'Finished';
     }
-    /** @name FrameSupportPalletId (383) */
+    /** @name FrameSupportPalletId (384) */
     interface FrameSupportPalletId extends U8aFixed {
     }
-    /** @name PalletBootstrapError (384) */
+    /** @name PalletBootstrapError (385) */
     interface PalletBootstrapError extends Enum {
         readonly isUnsupportedTokenId: boolean;
         readonly isNotEnoughAssets: boolean;
@@ -11965,40 +11986,40 @@ declare module '@polkadot/types/lookup' {
         readonly isBootstrapMustBePreFinalized: boolean;
         readonly type: 'UnsupportedTokenId' | 'NotEnoughAssets' | 'NotEnoughVestedAssets' | 'MathOverflow' | 'Unauthorized' | 'BootstrapStartInThePast' | 'PhaseLengthCannotBeZero' | 'AlreadyStarted' | 'ValuationRatio' | 'FirstProvisionInSecondTokenId' | 'PoolAlreadyExists' | 'NotFinishedYet' | 'NothingToClaim' | 'WrongRatio' | 'BootstrapNotReadyToBeFinished' | 'SameToken' | 'TokenIdDoesNotExists' | 'TokensActivationFailed' | 'BootstrapNotSchduled' | 'BootstrapFinished' | 'TooLateToUpdateBootstrap' | 'ProvisioningBlockedByMaintenanceMode' | 'BootstrapMustBePreFinalized';
     }
-    /** @name ParachainStakingRoundInfo (385) */
+    /** @name ParachainStakingRoundInfo (386) */
     interface ParachainStakingRoundInfo extends Struct {
         readonly current: u32;
         readonly first: u32;
         readonly length: u32;
     }
-    /** @name ParachainStakingDelegator (386) */
+    /** @name ParachainStakingDelegator (387) */
     interface ParachainStakingDelegator extends Struct {
         readonly id: AccountId32;
         readonly delegations: ParachainStakingSetOrderedSetBond;
         readonly requests: ParachainStakingPendingDelegationRequests;
         readonly status: ParachainStakingDelegatorStatus;
     }
-    /** @name ParachainStakingSetOrderedSetBond (387) */
+    /** @name ParachainStakingSetOrderedSetBond (388) */
     interface ParachainStakingSetOrderedSetBond extends Vec<ParachainStakingBond> {
     }
-    /** @name ParachainStakingBond (388) */
+    /** @name ParachainStakingBond (389) */
     interface ParachainStakingBond extends Struct {
         readonly owner: AccountId32;
         readonly amount: u128;
         readonly liquidityToken: u32;
     }
-    /** @name ParachainStakingPendingDelegationRequests (390) */
+    /** @name ParachainStakingPendingDelegationRequests (391) */
     interface ParachainStakingPendingDelegationRequests extends Struct {
         readonly requests: BTreeMap<AccountId32, ParachainStakingDelegationRequest>;
     }
-    /** @name ParachainStakingDelegatorStatus (394) */
+    /** @name ParachainStakingDelegatorStatus (395) */
     interface ParachainStakingDelegatorStatus extends Enum {
         readonly isActive: boolean;
         readonly isLeaving: boolean;
         readonly asLeaving: u32;
         readonly type: 'Active' | 'Leaving';
     }
-    /** @name ParachainStakingCollatorCandidate (395) */
+    /** @name ParachainStakingCollatorCandidate (396) */
     interface ParachainStakingCollatorCandidate extends Struct {
         readonly id: AccountId32;
         readonly bond: u128;
@@ -12011,10 +12032,10 @@ declare module '@polkadot/types/lookup' {
         readonly request: Option<ParachainStakingCandidateBondRequest>;
         readonly state: ParachainStakingCollatorStatus;
     }
-    /** @name ParachainStakingSetOrderedSetAccountId32 (396) */
+    /** @name ParachainStakingSetOrderedSetAccountId32 (397) */
     interface ParachainStakingSetOrderedSetAccountId32 extends Vec<AccountId32> {
     }
-    /** @name ParachainStakingCollatorStatus (398) */
+    /** @name ParachainStakingCollatorStatus (399) */
     interface ParachainStakingCollatorStatus extends Enum {
         readonly isActive: boolean;
         readonly isIdle: boolean;

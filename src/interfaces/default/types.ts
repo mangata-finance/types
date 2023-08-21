@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { Compact, Struct, Vec, u32 } from '@polkadot/types-codec';
+import type { Compact, Struct, Vec, u128, u32 } from '@polkadot/types-codec';
 import type { ITuple } from '@polkadot/types-codec/types';
 import type { Balance, BlockNumber, Digest, H256, H512, Hash } from '@polkadot/types/interfaces/runtime';
 
@@ -16,11 +16,8 @@ export interface Header extends Struct {
   readonly count: BlockNumber;
 }
 
-/** @name RPCAmountsResult */
-export interface RPCAmountsResult extends Struct {
-  readonly firstAssetAmount: Balance;
-  readonly secondAssetAmount: Balance;
-}
+/** @name NumberOrHex */
+export interface NumberOrHex extends u128 {}
 
 /** @name ShufflingSeed */
 export interface ShufflingSeed extends Struct {
@@ -41,11 +38,6 @@ export interface VestingInfo extends Struct {
 /** @name VestingInfosWithLockedAt */
 export interface VestingInfosWithLockedAt extends Struct {
   readonly vestingInfosWithLockedAt: Vec<ITuple<[VestingInfo, Balance]>>;
-}
-
-/** @name XYKRpcResult */
-export interface XYKRpcResult extends Struct {
-  readonly price: Balance;
 }
 
 export type PHANTOM_DEFAULT = 'default';

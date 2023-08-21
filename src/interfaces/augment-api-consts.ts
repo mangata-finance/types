@@ -444,7 +444,6 @@ declare module '@polkadot/api-base/types/consts' {
     xyk: {
       buyAndBurnFeePercentage: u128 & AugmentedConst<ApiType>;
       poolFeePercentage: u128 & AugmentedConst<ApiType>;
-      rewardsMigrateAccount: AccountId32 & AugmentedConst<ApiType>;
       treasuryFeePercentage: u128 & AugmentedConst<ApiType>;
       /**
        * Generic const

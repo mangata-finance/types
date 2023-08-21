@@ -226,6 +226,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       InvalidFreeClaimSignature: AugmentedError<ApiType>;
       /**
+       * Math overflow
+       **/
+      MathOverflow: AugmentedError<ApiType>;
+      /**
        * User trying to claim an award did not have an claim associated with it. This may mean
        * they did not contribute to the crowdloan, or they have not yet associated a native id
        * with their contribution
@@ -235,6 +239,10 @@ declare module '@polkadot/api-base/types/errors' {
        * User provided a signature from a non-contributor relay account
        **/
       NonContributedAddressProvided: AugmentedError<ApiType>;
+      /**
+       * Period not set
+       **/
+      PeriodNotSet: AugmentedError<ApiType>;
       /**
        * The contribution is not high enough to be eligible for rewards
        **/

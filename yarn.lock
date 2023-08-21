@@ -232,10 +232,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@mangata-finance/type-definitions@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@mangata-finance/type-definitions/-/type-definitions-1.0.0.tgz#f6acdf660c742980c1334a63878310cc3c1e21ea"
-  integrity sha512-WfEEtddpPEXrYhsA77aPWdgbjh660lAEv7bRa9U6AUk4fmN57YaQhnwp3o2X9/NgG1+UChsbttCxoa1QkFfV+w==
+"@mangata-finance/type-definitions@2.0.0-rc.2":
+  version "2.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@mangata-finance/type-definitions/-/type-definitions-2.0.0-rc.2.tgz#cf110d1df795a3d41e1dc5a02b9ec74cd0d27e14"
+  integrity sha512-9CLlplxbbHbUw8rpXLFJcuuDZMBYD7uO/EQr3afjPsLzGHolNMNaPEs0wMxS363gDfUz9UNSOUyz9zNF6bMDGA==
 
 "@noble/curves@1.1.0":
   version "1.1.0"
@@ -4575,7 +4575,7 @@ write-file-atomic@^4.0.0, write-file-atomic@^4.0.1:
 
 ws@^8.13.0, ws@^8.8.1:
   version "8.13.0"
-  resolved "https://registry.npmjs.org/ws/-/ws-8.13.0.tgz#9a9fb92f93cf41512a0735c8f4dd09b8a1211cd0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.13.0.tgz#9a9fb92f93cf41512a0735c8f4dd09b8a1211cd0"
   integrity sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==
 
 xtend@~4.0.1:
