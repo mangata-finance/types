@@ -1,3 +1,10 @@
+# [1.1.0-rc.2](https://github.com/mangata-finance/types/compare/v1.1.0-rc.1...v1.1.0-rc.2) (2023-08-21)
+
+
+### Bug Fixes
+
+* update type definitions ([731976e](https://github.com/mangata-finance/types/commit/731976e8d301a348abe6becf84ec0159cb16ebca))
+
 # [1.1.0-rc.1](https://github.com/mangata-finance/types/compare/v1.0.0...v1.1.0-rc.1) (2023-08-21)
 
 
