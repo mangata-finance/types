@@ -3,7 +3,10 @@
 
 import type { Compact, Struct, Vec, u128, u32 } from '@polkadot/types-codec';
 import type { ITuple } from '@polkadot/types-codec/types';
-import type { Balance, BlockNumber, Digest, H256, H512, Hash } from '@polkadot/types/interfaces/runtime';
+import type { BlockNumber, Digest, H256, H512, Hash } from '@polkadot/types/interfaces/runtime';
+
+/** @name Balance */
+export interface Balance extends u128 {}
 
 /** @name Header */
 export interface Header extends Struct {
