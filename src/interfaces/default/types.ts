@@ -1,12 +1,9 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { Compact, Struct, Vec, u128, u32 } from '@polkadot/types-codec';
+import type { Compact, Enum, Struct, U256, Vec, u32, u64 } from '@polkadot/types-codec';
 import type { ITuple } from '@polkadot/types-codec/types';
-import type { BlockNumber, Digest, H256, H512, Hash } from '@polkadot/types/interfaces/runtime';
-
-/** @name Balance */
-export interface Balance extends u128 {}
+import type { Balance, BlockNumber, Digest, H256, H512, Hash } from '@polkadot/types/interfaces/runtime';
 
 /** @name Header */
 export interface Header extends Struct {
@@ -20,7 +17,13 @@ export interface Header extends Struct {
 }
 
 /** @name NumberOrHex */
-export interface NumberOrHex extends u128 {}
+export interface NumberOrHex extends Enum {
+  readonly isNumber: boolean;
+  readonly asNumber: u64;
+  readonly isHex: boolean;
+  readonly asHex: U256;
+  readonly type: 'Number' | 'Hex';
+}
 
 /** @name ShufflingSeed */
 export interface ShufflingSeed extends Struct {
