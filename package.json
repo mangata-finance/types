@@ -32,7 +32,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@mangata-finance/type-definitions": "2.0.0-rc.5",
+    "@mangata-finance/type-definitions": "2.0.0-rc.6",
     "@polkadot/typegen": "^10.7.3",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
