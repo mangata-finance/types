@@ -10,7 +10,7 @@ import type { Data } from '@polkadot/types';
 import type { Bytes, Compact, Option, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { AnyNumber, IMethod, ITuple } from '@polkadot/types-codec/types';
 import type { AccountId32, Call, H256, MultiAddress, Perbill, Permill } from '@polkadot/types/interfaces/runtime';
-import type { CumulusPrimitivesParachainInherentParachainInherentData, MangataKusamaRuntimeOriginCaller, MangataKusamaRuntimeProxyType, MangataKusamaRuntimeSessionKeys, MangataTypesAssetsCustomMetadata, MangataTypesMultipurposeLiquidityActivateKind, MangataTypesMultipurposeLiquidityBondKind, OrmlTraitsAssetRegistryAssetMetadata, PalletIdentityBitFlags, PalletIdentityIdentityInfo, PalletIdentityJudgement, PalletIssuanceTgeInfo, PalletVestingMangataVestingInfo, ParachainStakingMetadataUpdateAction, ParachainStakingPairedOrLiquidityToken, SpRuntimeMultiSignature, SpWeightsWeightV2Weight, XcmV3MultiLocation, XcmV3WeightLimit, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm } from '@polkadot/types/lookup';
+import type { CommonRuntimeConfigPalletProxyProxyType, CumulusPrimitivesParachainInherentParachainInherentData, MangataRococoRuntimeOriginCaller, MangataRococoRuntimeSessionKeys, MangataTypesAssetsCustomMetadata, MangataTypesMultipurposeLiquidityActivateKind, MangataTypesMultipurposeLiquidityBondKind, OrmlTraitsAssetRegistryAssetMetadata, PalletIdentityBitFlags, PalletIdentityIdentityInfo, PalletIdentityJudgement, PalletIssuanceTgeInfo, PalletVestingMangataVestingInfo, ParachainStakingMetadataUpdateAction, ParachainStakingPairedOrLiquidityToken, SpRuntimeMultiSignature, SpWeightsWeightV2Weight, XcmV3MultiLocation, XcmV3WeightLimit, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm } from '@polkadot/types/lookup';
 
 export type __AugmentedSubmittable = AugmentedSubmittable<() => unknown>;
 export type __SubmittableExtrinsic<ApiType extends ApiTypes> = SubmittableExtrinsic<ApiType>;
@@ -312,16 +312,20 @@ declare module '@polkadot/api-base/types/submittable' {
        **/
       changeAssociationWithRelayKeys: AugmentedSubmittable<(rewardAccount: AccountId32 | string | Uint8Array, previousAccount: AccountId32 | string | Uint8Array, proofs: Vec<ITuple<[AccountId32, SpRuntimeMultiSignature]>> | ([AccountId32 | string | Uint8Array, SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array])[]) => SubmittableExtrinsic<ApiType>, [AccountId32, AccountId32, Vec<ITuple<[AccountId32, SpRuntimeMultiSignature]>>]>;
       /**
-       * Collect whatever portion of your reward are currently vested.
+       * Collect rewards from particular crowdloan.
+       * If crowdloan_id is not set current [`CrowdloanId`] id will be used.
+       * Caller is instantly rewarded with [`InitializationPayment`] % of available rewards,
+       * remaining funds are locked according to schedule(using `pallet_mangata_vesting` configured
+       * by [`Pallet::<T>::complete_initialization`] call.
        **/
-      claim: AugmentedSubmittable<() => SubmittableExtrinsic<ApiType>, []>;
+      claim: AugmentedSubmittable<(crowdloanId: Option<u32> | null | Uint8Array | u32 | AnyNumber) => SubmittableExtrinsic<ApiType>, [Option<u32>]>;
       /**
        * This extrinsic completes the initialization if some checks are fullfiled. These checks are:
        * -The reward contribution money matches the crowdloan pot
        * -The end vesting block is higher than the init vesting block
        * -The initialization has not complete yet
        **/
-      completeInitialization: AugmentedSubmittable<(leaseEndingBlock: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32]>;
+      completeInitialization: AugmentedSubmittable<(leaseStartBlock: u32 | AnyNumber | Uint8Array, leaseEndingBlock: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32, u32]>;
       /**
        * Initialize the reward distribution storage. It shortcuts whenever an error is found
        * This does not enforce any checks other than making sure we dont go over funds
@@ -330,14 +334,16 @@ declare module '@polkadot/api-base/types/submittable' {
       initializeRewardVec: AugmentedSubmittable<(rewards: Vec<ITuple<[AccountId32, Option<AccountId32>, u128]>> | ([AccountId32 | string | Uint8Array, Option<AccountId32> | null | Uint8Array | AccountId32 | string, u128 | AnyNumber | Uint8Array])[]) => SubmittableExtrinsic<ApiType>, [Vec<ITuple<[AccountId32, Option<AccountId32>, u128]>>]>;
       /**
        * Initialize the reward distribution storage. It shortcuts whenever an error is found
-       * This does not enforce any checks other than making sure we dont go over funds
-       * complete_initialization should perform any additional
+       * Sets crowdloan allocation for:
+       * - current round of crowdloan - if it has not been completed (`[Pallet::<T>::complete_initialization]`)
+       * - following round of crowdloan rewards payment if previous one has been already
+       * completed
        **/
       setCrowdloanAllocation: AugmentedSubmittable<(crowdloanAllocationAmount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
       /**
        * Update reward address, proving that the caller owns the current native key
        **/
-      updateRewardAddress: AugmentedSubmittable<(newRewardAccount: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
+      updateRewardAddress: AugmentedSubmittable<(newRewardAccount: AccountId32 | string | Uint8Array, crowdloanId: Option<u32> | null | Uint8Array | u32 | AnyNumber) => SubmittableExtrinsic<ApiType>, [AccountId32, Option<u32>]>;
       /**
        * Generic tx
        **/
@@ -996,7 +1002,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - `delay`: The announcement period required of the initial proxy. Will generally be
        * zero.
        **/
-      addProxy: AugmentedSubmittable<(delegate: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, proxyType: MangataKusamaRuntimeProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MangataKusamaRuntimeProxyType, u32]>;
+      addProxy: AugmentedSubmittable<(delegate: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, proxyType: CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, CommonRuntimeConfigPalletProxyProxyType, u32]>;
       /**
        * Publish the hash of a proxy-call that will be made in the future.
        * 
@@ -1035,7 +1041,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * 
        * Fails if there are insufficient funds to pay for deposit.
        **/
-      createPure: AugmentedSubmittable<(proxyType: MangataKusamaRuntimeProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array, index: u16 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataKusamaRuntimeProxyType, u32, u16]>;
+      createPure: AugmentedSubmittable<(proxyType: CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array, index: u16 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [CommonRuntimeConfigPalletProxyProxyType, u32, u16]>;
       /**
        * Removes a previously spawned pure proxy.
        * 
@@ -1054,7 +1060,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * Fails with `NoPermission` in case the caller is not a previously created pure
        * account whose `pure` call has corresponding parameters.
        **/
-      killPure: AugmentedSubmittable<(spawner: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, proxyType: MangataKusamaRuntimeProxyType | 'AutoCompound' | number | Uint8Array, index: u16 | AnyNumber | Uint8Array, height: Compact<u32> | AnyNumber | Uint8Array, extIndex: Compact<u32> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MangataKusamaRuntimeProxyType, u16, Compact<u32>, Compact<u32>]>;
+      killPure: AugmentedSubmittable<(spawner: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, proxyType: CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number | Uint8Array, index: u16 | AnyNumber | Uint8Array, height: Compact<u32> | AnyNumber | Uint8Array, extIndex: Compact<u32> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, CommonRuntimeConfigPalletProxyProxyType, u16, Compact<u32>, Compact<u32>]>;
       /**
        * Dispatch the given `call` from an account that the sender is authorised for through
        * `add_proxy`.
@@ -1066,7 +1072,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - `force_proxy_type`: Specify the exact proxy type to be used and checked for this call.
        * - `call`: The call to be made by the `real` account.
        **/
-      proxy: AugmentedSubmittable<(real: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, forceProxyType: Option<MangataKusamaRuntimeProxyType> | null | Uint8Array | MangataKusamaRuntimeProxyType | 'AutoCompound' | number, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, Option<MangataKusamaRuntimeProxyType>, Call]>;
+      proxy: AugmentedSubmittable<(real: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, forceProxyType: Option<CommonRuntimeConfigPalletProxyProxyType> | null | Uint8Array | CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, Option<CommonRuntimeConfigPalletProxyProxyType>, Call]>;
       /**
        * Dispatch the given `call` from an account that the sender is authorized for through
        * `add_proxy`.
@@ -1080,7 +1086,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - `force_proxy_type`: Specify the exact proxy type to be used and checked for this call.
        * - `call`: The call to be made by the `real` account.
        **/
-      proxyAnnounced: AugmentedSubmittable<(delegate: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, real: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, forceProxyType: Option<MangataKusamaRuntimeProxyType> | null | Uint8Array | MangataKusamaRuntimeProxyType | 'AutoCompound' | number, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MultiAddress, Option<MangataKusamaRuntimeProxyType>, Call]>;
+      proxyAnnounced: AugmentedSubmittable<(delegate: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, real: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, forceProxyType: Option<CommonRuntimeConfigPalletProxyProxyType> | null | Uint8Array | CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MultiAddress, Option<CommonRuntimeConfigPalletProxyProxyType>, Call]>;
       /**
        * Remove the given announcement of a delegate.
        * 
@@ -1125,7 +1131,17 @@ declare module '@polkadot/api-base/types/submittable' {
        * - `proxy`: The account that the `caller` would like to remove as a proxy.
        * - `proxy_type`: The permissions currently enabled for the removed proxy account.
        **/
-      removeProxy: AugmentedSubmittable<(delegate: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, proxyType: MangataKusamaRuntimeProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MangataKusamaRuntimeProxyType, u32]>;
+      removeProxy: AugmentedSubmittable<(delegate: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, proxyType: CommonRuntimeConfigPalletProxyProxyType | 'AutoCompound' | number | Uint8Array, delay: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, CommonRuntimeConfigPalletProxyProxyType, u32]>;
+      /**
+       * Generic tx
+       **/
+      [key: string]: SubmittableExtrinsicFunction<ApiType>;
+    };
+    rootTesting: {
+      /**
+       * A dispatch that will fill the block weight up to the given ratio.
+       **/
+      fillBlock: AugmentedSubmittable<(ratio: Perbill | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Perbill]>;
       /**
        * Generic tx
        **/
@@ -1158,7 +1174,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - `O(1)`. Actual cost depends on the number of length of `T::Keys::key_ids()` which is
        * fixed.
        **/
-      setKeys: AugmentedSubmittable<(keys: MangataKusamaRuntimeSessionKeys | { aura?: any } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataKusamaRuntimeSessionKeys, Bytes]>;
+      setKeys: AugmentedSubmittable<(keys: MangataRococoRuntimeSessionKeys | { aura?: any } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataRococoRuntimeSessionKeys, Bytes]>;
       /**
        * Generic tx
        **/
@@ -1556,7 +1572,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - Weight of derivative `call` execution + T::WeightInfo::dispatch_as().
        * # </weight>
        **/
-      dispatchAs: AugmentedSubmittable<(asOrigin: MangataKusamaRuntimeOriginCaller | { system: any } | { Void: any } | { PolkadotXcm: any } | { CumulusXcm: any } | { Council: any } | string | Uint8Array, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataKusamaRuntimeOriginCaller, Call]>;
+      dispatchAs: AugmentedSubmittable<(asOrigin: MangataRococoRuntimeOriginCaller | { system: any } | { Void: any } | { PolkadotXcm: any } | { CumulusXcm: any } | { Council: any } | string | Uint8Array, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MangataRococoRuntimeOriginCaller, Call]>;
       /**
        * Send a batch of dispatch calls.
        * Unlike `batch`, it allows errors and won't interrupt.

@@ -194,6 +194,10 @@ declare module '@polkadot/api-base/types/errors' {
     };
     crowdloan: {
       /**
+       * Trying to introduce a batch that goes beyond the limits of the funds
+       **/
+      AllocationDoesNotMatch: AugmentedError<ApiType>;
+      /**
        * User trying to associate a native identity with a relay chain identity for posterior
        * reward claiming provided an already associated relay chain identity
        **/
@@ -226,6 +230,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       InvalidFreeClaimSignature: AugmentedError<ApiType>;
       /**
+       * Math overflow
+       **/
+      MathOverflow: AugmentedError<ApiType>;
+      /**
        * User trying to claim an award did not have an claim associated with it. This may mean
        * they did not contribute to the crowdloan, or they have not yet associated a native id
        * with their contribution
@@ -235,6 +243,10 @@ declare module '@polkadot/api-base/types/errors' {
        * User provided a signature from a non-contributor relay account
        **/
       NonContributedAddressProvided: AugmentedError<ApiType>;
+      /**
+       * Period not set
+       **/
+      PeriodNotSet: AugmentedError<ApiType>;
       /**
        * The contribution is not high enough to be eligible for rewards
        **/
@@ -1196,6 +1208,7 @@ declare module '@polkadot/api-base/types/errors' {
        * Pool already promoted
        **/
       PoolAlreadyPromoted: AugmentedError<ApiType>;
+      PoolIsEmpty: AugmentedError<ApiType>;
       /**
        * Asset ids cannot be the same
        **/
