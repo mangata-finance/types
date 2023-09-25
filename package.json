@@ -41,7 +41,7 @@
     "tsup": "7.2.0",
     "typescript": "5.2.2",
     "yarn-add-no-save": "1.0.3",
-    "@mangata-finance/type-definitions": "2.0.0-rc.7"
+    "@mangata-finance/type-definitions": "2.0.0-rc.8"
   },
   "peerDependencies": {
     "@polkadot/types": "10.9.1"

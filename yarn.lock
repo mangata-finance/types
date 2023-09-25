@@ -232,10 +232,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@mangata-finance/type-definitions@2.0.0-rc.7":
-  version "2.0.0-rc.7"
-  resolved "https://registry.yarnpkg.com/@mangata-finance/type-definitions/-/type-definitions-2.0.0-rc.7.tgz#32a3e97d519ee48c80a8b7e5e32c988424ab0950"
-  integrity sha512-UVMNKAIZWm6+uauKEObqZAQruR1Ny+k8CnjTUavRyNPYM1UuolKesobyU2jbDQE1dbRLYvTDs3aXZdA687+NKQ==
+"@mangata-finance/type-definitions@2.0.0-rc.8":
+  version "2.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/@mangata-finance/type-definitions/-/type-definitions-2.0.0-rc.8.tgz#6e1824d7adfab3cb8157707ea8ec1f815db7dc7c"
+  integrity sha512-w5JHVpaj2jgoKC1vgiwkfZ69Y53Wekgl9+SLWu8CgNb41QflPtVV04vh0yPS/clHAEwnA8gtkp2noicrsqAH9Q==
 
 "@noble/curves@1.1.0":
   version "1.1.0"
