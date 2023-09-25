@@ -1,3 +1,10 @@
+# [2.0.0-rc.2](https://github.com/mangata-finance/types/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2023-09-25)
+
+
+### Bug Fixes
+
+* tokenId typo in type ([c3bd925](https://github.com/mangata-finance/types/commit/c3bd92518f68e8a7bbeac7279cc7f862b36272b3))
+
 # [2.0.0-rc.1](https://github.com/mangata-finance/types/compare/v1.0.0...v2.0.0-rc.1) (2023-09-25)
 
 
