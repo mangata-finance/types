@@ -1,3 +1,16 @@
+# [2.0.0-rc.1](https://github.com/mangata-finance/types/compare/v1.0.0...v2.0.0-rc.1) (2023-09-25)
+
+
+### Features
+
+* generate new metadara ([bd78f78](https://github.com/mangata-finance/types/commit/bd78f7881ffa8254c2e9abddd27b853598a19f7c))
+* update types ([4837b16](https://github.com/mangata-finance/types/commit/4837b166a62f3a16eb804eb183325a30e78c9ea5))
+
+
+### BREAKING CHANGES
+
+* new rpc types
+
 # 1.0.0 (2023-08-21)
 
 
