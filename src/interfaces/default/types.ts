@@ -17,7 +17,7 @@ export interface Header extends Struct {
 
 /** @name RpcAssetMetadata */
 export interface RpcAssetMetadata extends Struct {
-  readonly token_id: TokenId;
+  readonly tokenId: TokenId;
   readonly decimals: u32;
   readonly name: Bytes;
   readonly symbol: Bytes;
