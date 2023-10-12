@@ -343,7 +343,7 @@ declare module '@polkadot/api-base/types/submittable' {
       /**
        * Update reward address, proving that the caller owns the current native key
        **/
-      updateRewardAddress: AugmentedSubmittable<(newRewardAccount: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32]>;
+      updateRewardAddress: AugmentedSubmittable<(newRewardAccount: AccountId32 | string | Uint8Array, crowdloanId: Option<u32> | null | Uint8Array | u32 | AnyNumber) => SubmittableExtrinsic<ApiType>, [AccountId32, Option<u32>]>;
       /**
        * Generic tx
        **/

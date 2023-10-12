@@ -1,9 +1,8 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { Compact, Struct, Vec, u128, u32 } from '@polkadot/types-codec';
-import type { ITuple } from '@polkadot/types-codec/types';
-import type { Balance, BlockNumber, Digest, H256, H512, Hash } from '@polkadot/types/interfaces/runtime';
+import type { Bytes, Compact, Struct, u32 } from '@polkadot/types-codec';
+import type { BlockNumber, Digest, H256, H512, Hash } from '@polkadot/types/interfaces/runtime';
 
 /** @name Header */
 export interface Header extends Struct {
@@ -16,8 +15,13 @@ export interface Header extends Struct {
   readonly count: BlockNumber;
 }
 
-/** @name NumberOrHex */
-export interface NumberOrHex extends u128 {}
+/** @name RpcAssetMetadata */
+export interface RpcAssetMetadata extends Struct {
+  readonly tokenId: TokenId;
+  readonly decimals: u32;
+  readonly name: Bytes;
+  readonly symbol: Bytes;
+}
 
 /** @name ShufflingSeed */
 export interface ShufflingSeed extends Struct {
@@ -27,17 +31,5 @@ export interface ShufflingSeed extends Struct {
 
 /** @name TokenId */
 export interface TokenId extends u32 {}
-
-/** @name VestingInfo */
-export interface VestingInfo extends Struct {
-  readonly locked: Balance;
-  readonly perBlock: Balance;
-  readonly startingBlock: BlockNumber;
-}
-
-/** @name VestingInfosWithLockedAt */
-export interface VestingInfosWithLockedAt extends Struct {
-  readonly vestingInfosWithLockedAt: Vec<ITuple<[VestingInfo, Balance]>>;
-}
 
 export type PHANTOM_DEFAULT = 'default';

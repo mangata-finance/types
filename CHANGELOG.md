@@ -1,3 +1,49 @@
+# [2.0.0](https://github.com/mangata-finance/types/compare/v1.0.0...v2.0.0) (2023-10-12)
+
+
+### Bug Fixes
+
+* tokenId typo in type ([c3bd925](https://github.com/mangata-finance/types/commit/c3bd92518f68e8a7bbeac7279cc7f862b36272b3))
+* update types definition package ([44f7760](https://github.com/mangata-finance/types/commit/44f7760e4a7be5b6e0bfea48c11bb89ac50989f8))
+
+
+### Features
+
+* generate new metadara ([bd78f78](https://github.com/mangata-finance/types/commit/bd78f7881ffa8254c2e9abddd27b853598a19f7c))
+* update types ([4837b16](https://github.com/mangata-finance/types/commit/4837b166a62f3a16eb804eb183325a30e78c9ea5))
+
+
+### BREAKING CHANGES
+
+* new rpc types
+
+# [2.0.0-rc.3](https://github.com/mangata-finance/types/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2023-09-25)
+
+
+### Bug Fixes
+
+* update types definition package ([44f7760](https://github.com/mangata-finance/types/commit/44f7760e4a7be5b6e0bfea48c11bb89ac50989f8))
+
+# [2.0.0-rc.2](https://github.com/mangata-finance/types/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2023-09-25)
+
+
+### Bug Fixes
+
+* tokenId typo in type ([c3bd925](https://github.com/mangata-finance/types/commit/c3bd92518f68e8a7bbeac7279cc7f862b36272b3))
+
+# [2.0.0-rc.1](https://github.com/mangata-finance/types/compare/v1.0.0...v2.0.0-rc.1) (2023-09-25)
+
+
+### Features
+
+* generate new metadara ([bd78f78](https://github.com/mangata-finance/types/commit/bd78f7881ffa8254c2e9abddd27b853598a19f7c))
+* update types ([4837b16](https://github.com/mangata-finance/types/commit/4837b166a62f3a16eb804eb183325a30e78c9ea5))
+
+
+### BREAKING CHANGES
+
+* new rpc types
+
 # 1.0.0 (2023-08-21)
 
 

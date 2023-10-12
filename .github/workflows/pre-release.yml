@@ -17,15 +17,14 @@ jobs:
       - name: Setup Node version and cache dependencies
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
           cache: "yarn"
 
-      - name: npm registry and install
-        run: |
-          yarn config set registry https://registry.npmjs.org
-          rm yarn.lock
-          yarn
-          yarn peer
+      - name: Install deps
+        run: yarn install
+
+      - name: Install peer deps
+        run: yarn peer
 
       - name: Build types
         run: yarn buildTypes
@@ -53,12 +52,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: npm registry and install
-        run: |
-          yarn config set registry https://registry.npmjs.org
-          rm yarn.lock
-          yarn
-          yarn peer
+      - name: Install deps
+        run: yarn install
+
+      - name: Install peer deps
+        run: yarn peer
 
       - name: Build types
         run: yarn buildTypes
